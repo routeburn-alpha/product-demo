@@ -196,7 +196,7 @@
 	}
 
 	.choice.wrong {
-		border-color: #dc2626;
+		border-color: var(--quiz-danger);
 		background: #fef2f2;
 		color: #7f1d1d;
 	}
@@ -221,7 +221,7 @@
 	}
 
 	.choice.wrong .letter {
-		background: #dc2626;
+		background: var(--quiz-danger);
 		color: #fff;
 	}
 
