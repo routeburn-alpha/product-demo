@@ -17,6 +17,25 @@
 {@render children()}
 
 <style>
+	/*
+	 * Arsenal FC brand palette — raw colors.
+	 * Prefer the semantic --quiz-* aliases below in component styles;
+	 * the raw --arsenal-* tokens exist so the palette can be retuned in one place.
+	 */
+	:global(:root) {
+		--arsenal-navy: #023474;  /* Arsenal primary navy — quiz box backgrounds */
+		--arsenal-red: #ef0107;   /* Arsenal accent red — CTAs, interactive, error states */
+		--arsenal-gold: #9c824a;  /* Arsenal accent gold — highlights and details */
+		--arsenal-white: #ffffff; /* On-primary text on navy backgrounds */
+
+		/* Semantic quiz aliases — use these in component CSS. */
+		--quiz-primary: var(--arsenal-navy);       /* primary quiz box background */
+		--quiz-on-primary: var(--arsenal-white);   /* text on --quiz-primary */
+		--quiz-accent: var(--arsenal-gold);        /* highlights and accent details */
+		--quiz-secondary: var(--arsenal-red);      /* important CTAs and interactive states */
+		--quiz-danger: var(--arsenal-red);         /* error / destructive states */
+	}
+
 	:global(body) {
 		margin: 0;
 		background: #fafafa;
