@@ -53,6 +53,16 @@ Use these in component CSS, not the raw tokens above.
 
 `--quiz-secondary` and `--quiz-danger` both currently point at `--arsenal-red`. They're kept separate so the meaning is explicit at the call site, and so a future change (e.g. introducing a distinct CTA color) can be made by retargeting one alias without touching the other.
 
+### Neutral text tokens
+
+The Arsenal palette covers brand surfaces and states, but not body-text neutrals. One general-purpose text token lives alongside the quiz tokens for cases where a label is secondary but not error-tinted:
+
+| Token | Hex | Use it for |
+|---|---|---|
+| `--text-muted` | `#737373` | Secondary labels, captions, progress indicators. Meets WCAG AA on light surfaces — 4.59 : 1 on `#fafafa`, 4.74 : 1 on `#FFFFFF`. |
+
+Live use-sites today: `.progress`, `.pack-title`, `.result-label`, `.result-score .of`, `.meta`. If you find yourself reaching for `#888` or any other arbitrary gray for low-emphasis text, use this token instead.
+
 ---
 
 ## 2. Applied to the quiz UI: before / after
@@ -198,21 +208,16 @@ Full results live in [`quiz-color-contrast.md`](./quiz-color-contrast.md). Headl
 | Pair | Ratio | Verdict |
 |---|---|---|
 | White on Arsenal Navy (`.prompt` on `.question-card`) | **12.46 : 1** | ✓ AA wide pass |
-| White on Arsenal Red (`.choice.wrong .letter`) | **4.49 : 1** | ✗ Marginal fail — see follow-up #32 |
-| White on green-600 (`.choice.correct .letter`) | **3.30 : 1** | ✗ Pre-existing — see follow-up #32 |
-| `#888` secondary labels on light surfaces (`.progress`, `.pack-title`, `.result-label`, `.meta`) | ~**3.4–3.6 : 1** | ✗ Pre-existing — see follow-up #33 |
+| White on Arsenal Red (`.choice.wrong .letter`, 1.2rem / 700) | **4.49 : 1** | ✓ AA large-text |
+| White on green-600 (`.choice.correct .letter`, 1.2rem / 700) | **3.30 : 1** | ✓ AA large-text |
+| `--text-muted` on light surfaces (`.progress`, `.pack-title`, `.result-label`, `.result-score .of`, `.meta`) | **4.59–4.74 : 1** | ✓ AA normal |
 
-### Known follow-up tasks
-
-Filed against idea #1, not yet picked up:
-
-- **Task #32** — Bump `.letter` font-size to qualify as WCAG large text, which drops the threshold to 3 : 1 and resolves both letter-badge failures without changing brand colors.
-- **Task #33** — Add a `--text-muted: #737373` semantic token and replace the four `#888` use-sites in one sweep.
+**Every text and meaningful non-text pair in the quiz UI passes WCAG AA at HEAD.** See contrast doc for the full table.
 
 ### Not yet exercised
 
-- **Color vision deficiency (CVD) simulation.** The contrast audit calls out the wrong/correct badges as the highest-risk pair for deuteranopia/protanopia (red ↔ green collapse). Mitigation will likely be a small ✓/✕ icon inside the letter badge so the cue isn't color-only. Worth pairing with task #32 when it lands.
-- **Screen-reader walkthrough.** No regressions expected (no ARIA semantics changed), but a one-pass with VoiceOver before declaring idea #1 "All Customers" is a good practice.
+- **Color vision deficiency (CVD) simulation.** The contrast audit calls out the wrong/correct letter badges as the highest-risk pair for deuteranopia/protanopia (red ↔ green collapse). The text on the choice and the explanation copy carry the semantics in writing, so users don't depend on color alone, but a small ✓/✕ icon inside the badge would close the gap. Worth filing if idea #1 is promoted to "All Customers".
+- **Screen-reader walkthrough.** No regressions expected (no ARIA semantics changed), but a one-pass with VoiceOver before promotion is a good practice. Also unfiled.
 
 ---
 
@@ -220,10 +225,10 @@ Filed against idea #1, not yet picked up:
 
 ### Adding a new semantic token
 
-1. Decide whether the use case is genuinely new (no existing `--quiz-*` fits) or a missed alias.
-2. Add it to `:root` in `app/src/routes/+layout.svelte`, mapped to a raw `--arsenal-*` token (or to a new raw token if it's a new brand color).
-3. Add a row to the **Semantic quiz tokens** table in §1 of this doc.
-4. Use it.
+1. Decide whether the use case is genuinely new (no existing token fits) or a missed alias.
+2. Add it to `:root` in `app/src/routes/+layout.svelte`. Map it to a raw `--arsenal-*` token if it's brand-derived; declare a new value directly if it's a neutral (like `--text-muted`).
+3. Add a row to the relevant table in §1 of this doc (semantic quiz tokens, or neutral text tokens).
+4. Use it. Add an entry to the contrast doc for the new pair.
 
 ### Retuning the palette
 

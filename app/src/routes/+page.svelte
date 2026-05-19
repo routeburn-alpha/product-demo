@@ -129,7 +129,7 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: 0.85rem;
-		color: #888;
+		color: var(--text-muted);
 	}
 
 	.play {
