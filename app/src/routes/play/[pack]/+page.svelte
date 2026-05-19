@@ -153,7 +153,7 @@
 	.prompt {
 		font-size: 1.25rem;
 		font-weight: 600;
-		color: #111;
+		color: var(--quiz-on-primary);
 		margin: 0 0 1.5rem;
 		line-height: 1.4;
 	}
