@@ -205,11 +205,11 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		border-radius: 6px;
 		background: #f5f5f5;
-		font-size: 0.8rem;
+		font-size: 1.2rem;
 		font-weight: 700;
 		color: #555;
 		flex-shrink: 0;
