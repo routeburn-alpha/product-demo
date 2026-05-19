@@ -34,6 +34,9 @@
 		--quiz-accent: var(--arsenal-gold);        /* highlights and accent details */
 		--quiz-secondary: var(--arsenal-red);      /* important CTAs and interactive states */
 		--quiz-danger: var(--arsenal-red);         /* error / destructive states */
+
+		/* Neutral text tokens — passes WCAG AA on light surfaces. */
+		--text-muted: #737373;                     /* secondary labels (~4.6:1 on #fafafa / #fff) */
 	}
 
 	:global(body) {

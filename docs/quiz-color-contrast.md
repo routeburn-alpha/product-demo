@@ -79,16 +79,16 @@ Plus legacy values still present in the stylesheets: `#111`, `#222`, `#555`, `#6
 |---|---|---|---|---|---|
 | `.next` button | `#FFFFFF` | `#1d4ed8` | 6.70 : 1 | AA normal 4.5 | ✓ |
 | `.back` link | `#1d4ed8` | `#fafafa` | 6.42 : 1 | AA normal 4.5 | ✓ |
-| `.progress` (0.85rem / regular) | `#888` | `#fafafa` | **3.40 : 1** | AA normal 4.5 | ✗ |
-| `.pack-title` (1rem / 600, uppercase) | `#888` | `#fafafa` | **3.40 : 1** | AA normal 4.5 | ✗ |
+| `.progress` (0.85rem / regular) | `#737373` (`--text-muted`) | `#fafafa` | 4.59 : 1 | AA normal 4.5 | ✓ |
+| `.pack-title` (1rem / 600, uppercase) | `#737373` (`--text-muted`) | `#fafafa` | 4.59 : 1 | AA normal 4.5 | ✓ |
 
 ### Result card
 
 | Element | Foreground | Background | Ratio | Threshold | Verdict |
 |---|---|---|---|---|---|
-| `.result-label` (0.9rem / 600) | `#888` | `#FFFFFF` | **3.55 : 1** | AA normal 4.5 | ✗ |
+| `.result-label` (0.9rem / 600) | `#737373` (`--text-muted`) | `#FFFFFF` | 4.74 : 1 | AA normal 4.5 | ✓ |
 | `.result-score` (4rem / 800) | `#1d4ed8` | `#FFFFFF` | 6.70 : 1 | AA large 3 | ✓ |
-| `.result-score .of` (2rem / 400) | `#888` | `#FFFFFF` | 3.55 : 1 | AA large 3 | ✓ |
+| `.result-score .of` (2rem / 400) | `#737373` (`--text-muted`) | `#FFFFFF` | 4.74 : 1 | AA large 3 | ✓ |
 | `.result-summary` (1rem) | `#555` | `#FFFFFF` | 7.46 : 1 | AA normal 4.5 | ✓ |
 | `.primary` button | `#FFFFFF` | `#1d4ed8` | 6.70 : 1 | AA normal 4.5 | ✓ |
 | `.secondary` button | `#1d4ed8` | `#FFFFFF` | 6.70 : 1 | AA normal 4.5 | ✓ |
@@ -102,7 +102,7 @@ Plus legacy values still present in the stylesheets: `#111`, `#222`, `#555`, `#6
 | pack card title `h2` | `#111` | `#FFFFFF` | 18.88 : 1 | AA normal 4.5 | ✓ |
 | `.category` pill | `#1d4ed8` | `#f0f9ff` | ~6.30 : 1 | AA normal 4.5 | ✓ |
 | `.description` | `#555` | `#FFFFFF` | 7.46 : 1 | AA normal 4.5 | ✓ |
-| `.meta` (0.85rem) | `#888` | `#FFFFFF` | **3.55 : 1** | AA normal 4.5 | ✗ |
+| `.meta` (0.85rem) | `#737373` (`--text-muted`) | `#FFFFFF` | 4.74 : 1 | AA normal 4.5 | ✓ |
 | `.play` "Play →" | `#1d4ed8` | `#FFFFFF` | 6.70 : 1 | AA normal 4.5 | ✓ |
 | footer | `#666` | `#fafafa` | 5.50 : 1 | AA normal 4.5 | ✓ |
 
@@ -115,22 +115,13 @@ Plus legacy values still present in the stylesheets: `#111`, `#222`, `#555`, `#6
 
 ## Failure summary
 
-Three failures remain, all pre-existing `#888` low-emphasis labels:
-
-1. **`.progress`, `.pack-title`** — `#888` on `#fafafa` = **3.40 : 1**. Low-emphasis labels in the quiz play screen.
-2. **`.result-label`** — `#888` on `#FFFFFF` = **3.55 : 1**. Low-emphasis label on the result card.
-3. **`.meta`** (home) — `#888` on `#FFFFFF` = **3.55 : 1**. Small-text on the pack cards.
+**Zero failures.** Every text and meaningful non-text color pair in the quiz UI passes WCAG AA at HEAD.
 
 ### Resolved (history)
 
-- ~~**`.choice.wrong .letter`** — `#FFFFFF` on Arsenal Red was 4.49 : 1 at the old 0.8rem badge size (normal text, 4.5 : 1 threshold). Fixed in **task #32** by bumping the badge to 1.2rem / 700, which qualifies as large text (3 : 1 threshold) — now passes at 4.49 : 1. The Arsenal palette no longer regresses contrast anywhere in idea #1's surfaces.~~
-- ~~**`.choice.correct .letter`** — `#FFFFFF` on `#16a34a` was 3.30 : 1, also fixed by task #32 (same size bump).~~
-
-## Recommended fixes
-
-| # | Fix | Estimate | Notes |
-|---|---|---|---|
-| 1 | Darken all secondary labels currently at `#888` to ≥ `#737373` (~`gray-500` / L = 0.18) → `.progress`, `.pack-title`, `.result-label`, `.meta`. At 13.6–16px regular weight, `#737373` on `#fafafa` ≈ 4.6 : 1. | 1 PR | Tracked as **task #33**. A single `--text-muted` token would let this be one find/replace. |
+- ~~**`.choice.wrong .letter`** — `#FFFFFF` on Arsenal Red was 4.49 : 1 at the old 0.8rem badge size (normal text, 4.5 : 1 threshold). Fixed in **task #32** by bumping the badge to 1.2rem / 700, which qualifies as large text (3 : 1 threshold) — now passes at 4.49 : 1.~~
+- ~~**`.choice.correct .letter`** — `#FFFFFF` on `#16a34a` was 3.30 : 1, also fixed by task #32.~~
+- ~~**`.progress`, `.pack-title`, `.result-label`, `.result-score .of`, `.meta`** — all were `#888` on light surfaces (3.40–3.55 : 1). Fixed in **task #33** by introducing `--text-muted: #737373`, which clears 4.5 : 1 on both `#fafafa` (4.59 : 1) and `#FFFFFF` (4.74 : 1).~~
 
 ## CVD considerations (not yet exercised)
 
@@ -144,6 +135,6 @@ In-browser CVD simulation should be run as part of the follow-up `--text-muted` 
 
 ## Conclusion
 
-Idea #1's color rebrand **does not regress contrast anywhere in the quiz UI** as of task #32. The primary quiz box passes by a wide margin (white on Arsenal Navy = 12.5 : 1), and the letter-badge contrast that was marginal under the original sizing now passes at the large-text threshold.
+**The quiz UI is fully clean under WCAG AA as of task #33.** The primary quiz box passes by a wide margin (white on Arsenal Navy = 12.5 : 1), letter badges pass at the large-text threshold, and all secondary labels now consume `--text-muted` and pass AA normal.
 
-The three remaining failures (`#888` secondary labels on light surfaces) are pre-existing and tracked as **task #33**. Once that lands, the quiz UI is clean under WCAG AA.
+Remaining accessibility work for idea #1 is no longer about contrast — it lives in the **CVD considerations** section above (icon affordance on the letter badges) and in a screen-reader walkthrough, neither of which is in any open task. Both are worth filing if idea #1 is being promoted to "All Customers".

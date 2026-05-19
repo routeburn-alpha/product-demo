@@ -131,13 +131,13 @@
 	}
 
 	.progress {
-		color: #888;
+		color: var(--text-muted);
 	}
 
 	.pack-title {
 		font-size: 1rem;
 		font-weight: 600;
-		color: #888;
+		color: var(--text-muted);
 		margin: 0 0 0.75rem;
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
@@ -276,7 +276,7 @@
 	}
 
 	.result-label {
-		color: #888;
+		color: var(--text-muted);
 		font-size: 0.9rem;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -293,7 +293,7 @@
 	}
 
 	.result-score .of {
-		color: #888;
+		color: var(--text-muted);
 		font-weight: 400;
 		font-size: 2rem;
 	}
