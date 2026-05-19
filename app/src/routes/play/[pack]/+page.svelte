@@ -144,7 +144,7 @@
 	}
 
 	.question-card {
-		background: #fff;
+		background: var(--quiz-primary);
 		border: 1px solid #e2e2e2;
 		border-radius: 12px;
 		padding: 1.75rem;
