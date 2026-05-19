@@ -35,6 +35,22 @@
       "correctIndex": 1,
       "difficulty": 2,
       "explanation": "Lillie Hitchcock Coit left a third of her estate to the city 'for the purpose of adding to the beauty of San Francisco'; the tower opened in 1933 (Wikipedia: 'Coit Tower')."
+    },
+    {
+      "id": "sf-food-1",
+      "prompt": "Which San Francisco bakery, founded in 1849, claims to be the city's original sourdough?",
+      "choices": ["Tartine", "Acme Bread", "Boudin Bakery", "Semifreddi's"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Boudin Bakery has baked sourdough in San Francisco since 1849 using a mother dough that traces back to its founding (boudinbakery.com/our-story; Wikipedia: 'Boudin Bakery')."
+    },
+    {
+      "id": "sf-food-2",
+      "prompt": "Which seafood stew, created by Italian immigrant fishermen at Fisherman's Wharf in the late 1800s, is considered a San Francisco original?",
+      "choices": ["Bouillabaisse", "Cioppino", "Caldeirada", "Zuppa di pesce"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Cioppino was developed by Ligurian fishermen working out of Fisherman's Wharf, combining the day's catch with tomato and wine (Wikipedia: 'Cioppino')."
     }
   ]
 }
