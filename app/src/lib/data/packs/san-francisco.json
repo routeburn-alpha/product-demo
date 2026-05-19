@@ -19,6 +19,22 @@
       "correctIndex": 1,
       "difficulty": 2,
       "explanation": "North Beach has been the city's Italian-American enclave since the late 1800s, and still hosts the annual North Beach Festival (Wikipedia: 'North Beach, San Francisco')."
+    },
+    {
+      "id": "sf-lm-1",
+      "prompt": "Which San Francisco Bay island housed a federal penitentiary from 1934 to 1963?",
+      "choices": ["Angel Island", "Treasure Island", "Alcatraz Island", "Yerba Buena Island"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Alcatraz operated as a federal maximum-security prison from 1934 to 1963 and is now managed by the National Park Service (nps.gov/alca; Wikipedia: 'Alcatraz Federal Penitentiary')."
+    },
+    {
+      "id": "sf-lm-2",
+      "prompt": "Coit Tower atop Telegraph Hill was funded by a 1929 bequest from which San Francisco socialite?",
+      "choices": ["Phoebe Apperson Hearst", "Lillie Hitchcock Coit", "Alma de Bretteville Spreckels", "Jane Lathrop Stanford"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Lillie Hitchcock Coit left a third of her estate to the city 'for the purpose of adding to the beauty of San Francisco'; the tower opened in 1933 (Wikipedia: 'Coit Tower')."
     }
   ]
 }
