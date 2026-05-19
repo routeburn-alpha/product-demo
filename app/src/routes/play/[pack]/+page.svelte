@@ -144,7 +144,7 @@
 	}
 
 	.question-card {
-		background: #fff;
+		background: var(--quiz-primary);
 		border: 1px solid #e2e2e2;
 		border-radius: 12px;
 		padding: 1.75rem;
@@ -153,7 +153,7 @@
 	.prompt {
 		font-size: 1.25rem;
 		font-weight: 600;
-		color: #111;
+		color: var(--quiz-on-primary);
 		margin: 0 0 1.5rem;
 		line-height: 1.4;
 	}
