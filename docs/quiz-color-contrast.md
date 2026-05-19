@@ -20,7 +20,7 @@ State of the code at HEAD (after PRs #2–#5 landed, with the Arsenal Navy + Ars
   - Normal text: **4.5 : 1**
   - Large text (≥ 18pt regular **or** ≥ 14pt bold ≈ ≥ 24px regular / ≥ 18.66px bold): **3 : 1**
   - Non-text UI components & graphical objects (WCAG 2.1 SC 1.4.11): **3 : 1**
-- **Letter-badge sizing note:** the `.letter` element uses `font-size: 0.8rem` (~12.8px) with `font-weight: 700`. WCAG defines "bold large text" as ≥ 14pt (~18.66px). At 12.8px the badge text is **normal text** for WCAG purposes, so the 4.5 : 1 threshold applies.
+- **Letter-badge sizing note:** as of task #32, `.letter` uses `font-size: 1.2rem` (~19.2px) with `font-weight: 700`. WCAG defines "bold large text" as ≥ 14pt (~18.66px), so the badge text qualifies as **large text** and the **3 : 1** threshold applies. (Before task #32 it was 0.8rem / ~12.8px, which was normal text — and is the reason the letter-badge rows previously failed; see Failure summary.)
 - **What was not tested here:** color vision deficiency (CVD) simulation in a real screen-reader environment. Sim-only checks below give a representative read; an in-browser CVD pass (e.g. Chrome DevTools "Emulate vision deficiencies" with deuteranopia, protanopia, tritanopia, achromatopsia) is recommended before any production sign-off. See follow-ups.
 
 ## Palette tokens in play
@@ -58,13 +58,13 @@ Plus legacy values still present in the stylesheets: `#111`, `#222`, `#555`, `#6
 
 **Note on the default `.choice` border:** the white-on-white edge fails 3 : 1 when read against the button's own background, but the button sits on a navy card, so the user perceives the border as separating the white button from the navy fill — at which point the 9.93 : 1 figure governs. No functional accessibility issue.
 
-### Letter badges (`.letter`, 0.8rem / 700, ~12.8px — normal text per WCAG)
+### Letter badges (`.letter`, 1.2rem / 700, ~19.2px — large text per WCAG)
 
 | State | Foreground | Background | Ratio | Threshold | Verdict |
 |---|---|---|---|---|---|
-| default | `#555` | `#f5f5f5` | 6.86 : 1 | AA normal 4.5 | ✓ |
-| `.correct` | `#FFFFFF` | `#16a34a` | **3.30 : 1** | AA normal 4.5 | ✗ |
-| `.wrong` | `#FFFFFF` | `#EF0107` | **4.49 : 1** | AA normal 4.5 | ✗ (by 0.01) |
+| default | `#555` | `#f5f5f5` | 6.86 : 1 | AA large 3 | ✓ |
+| `.correct` | `#FFFFFF` | `#16a34a` | 3.30 : 1 | AA large 3 | ✓ |
+| `.wrong` | `#FFFFFF` | `#EF0107` | 4.49 : 1 | AA large 3 | ✓ |
 
 ### Feedback panels (`.explanation`)
 
@@ -115,22 +115,22 @@ Plus legacy values still present in the stylesheets: `#111`, `#222`, `#555`, `#6
 
 ## Failure summary
 
-Five failures total, ranked by visibility in the quiz play flow:
+Three failures remain, all pre-existing `#888` low-emphasis labels:
 
-1. **`.choice.wrong .letter`** — `#FFFFFF` on `#EF0107` = **4.49 : 1** (target 4.5 : 1). Introduced by task #6. The previous value `#FFFFFF` on `#dc2626` was 4.83 : 1, so the Arsenal palette regressed contrast by 0.34 at this single point — and crosses below the threshold by 0.01. Some online checkers (WebAIM) round to one decimal and will report this as "4.5, pass"; the precise sRGB calculation is `4.491`. **Either reading puts this on the edge** and it warrants a fix on principle.
-2. **`.choice.correct .letter`** — `#FFFFFF` on `#16a34a` = **3.30 : 1**. Pre-existing (not touched by idea #1) but lives in the same UI as #1, so worth fixing as part of the rebrand pass.
-3. **`.progress`, `.pack-title`** — `#888` on `#fafafa` = **3.40 : 1**. Pre-existing low-emphasis labels in the quiz play screen.
-4. **`.result-label`** — `#888` on `#FFFFFF` = **3.55 : 1**. Pre-existing low-emphasis label on the result card.
-5. **`.meta`** (home) — `#888` on `#FFFFFF` = **3.55 : 1**. Pre-existing small-text on the pack cards.
+1. **`.progress`, `.pack-title`** — `#888` on `#fafafa` = **3.40 : 1**. Low-emphasis labels in the quiz play screen.
+2. **`.result-label`** — `#888` on `#FFFFFF` = **3.55 : 1**. Low-emphasis label on the result card.
+3. **`.meta`** (home) — `#888` on `#FFFFFF` = **3.55 : 1**. Small-text on the pack cards.
+
+### Resolved (history)
+
+- ~~**`.choice.wrong .letter`** — `#FFFFFF` on Arsenal Red was 4.49 : 1 at the old 0.8rem badge size (normal text, 4.5 : 1 threshold). Fixed in **task #32** by bumping the badge to 1.2rem / 700, which qualifies as large text (3 : 1 threshold) — now passes at 4.49 : 1. The Arsenal palette no longer regresses contrast anywhere in idea #1's surfaces.~~
+- ~~**`.choice.correct .letter`** — `#FFFFFF` on `#16a34a` was 3.30 : 1, also fixed by task #32 (same size bump).~~
 
 ## Recommended fixes
 
-Each is a small, atomic change. I recommend filing one task per fix rather than bundling — each is independently merge-able.
-
 | # | Fix | Estimate | Notes |
 |---|---|---|---|
-| 1 | Increase `.letter` font-size from `0.8rem` to ≥ `1rem` (16px) at `font-weight: 700` to qualify as "bold large text" (3 : 1 threshold), OR set `.choice.wrong .letter` and `.choice.correct .letter` text to a darker color (e.g. `--arsenal-navy` for the correct badge — passes ~7 : 1 on green-600; the wrong badge would need a careful darker red since Arsenal Red is its brand point). | 1 PR | The font-size bump is the cheaper, less-brand-risky option. Visually the badges grow slightly. |
-| 2 | Darken all secondary labels currently at `#888` to ≥ `#737373` (~`gray-500` / L = 0.18) → `.progress`, `.pack-title`, `.result-label`, `.meta`. At 13.6–16px regular weight, `#737373` on `#fafafa` ≈ 4.6 : 1. | 1 PR | A single token (`--text-muted`) would let this be one find/replace. Worth pairing with task #8 (style guide). |
+| 1 | Darken all secondary labels currently at `#888` to ≥ `#737373` (~`gray-500` / L = 0.18) → `.progress`, `.pack-title`, `.result-label`, `.meta`. At 13.6–16px regular weight, `#737373` on `#fafafa` ≈ 4.6 : 1. | 1 PR | Tracked as **task #33**. A single `--text-muted` token would let this be one find/replace. |
 
 ## CVD considerations (not yet exercised)
 
@@ -140,10 +140,10 @@ The Arsenal palette plus the existing green/red semantic accents form three coup
 - **Arsenal Red CTA (none yet)** — not a concern in the current code since CTAs remain blue; revisit if a future task swaps CTAs to red.
 - **Achromatopsia (monochrome)** — every state currently reads in pure grayscale because we always pair color with a text label or a clear background tint difference. No action.
 
-In-browser CVD simulation should be run as part of the follow-up "style guide" task (#8) once the recommended fixes above land.
+In-browser CVD simulation should be run as part of the follow-up `--text-muted` cleanup (task #33) or as its own task.
 
 ## Conclusion
 
-Idea #1's color rebrand **does not regress contrast in the primary quiz box** (white on Arsenal Navy = 12.5 : 1 is excellent), but the rebrand drops the wrong-answer letter badge by 0.01 below AA — a fix is warranted on principle even if rounded checkers won't flag it. The four other failures are pre-existing low-emphasis labels at `#888` and have lived in the codebase since before this idea.
+Idea #1's color rebrand **does not regress contrast anywhere in the quiz UI** as of task #32. The primary quiz box passes by a wide margin (white on Arsenal Navy = 12.5 : 1), and the letter-badge contrast that was marginal under the original sizing now passes at the large-text threshold.
 
-Recommend filing the two follow-up tasks above before declaring idea #1 ready for "All Customers" status.
+The three remaining failures (`#888` secondary labels on light surfaces) are pre-existing and tracked as **task #33**. Once that lands, the quiz UI is clean under WCAG AA.
