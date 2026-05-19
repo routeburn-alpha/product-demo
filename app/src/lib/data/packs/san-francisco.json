@@ -3,5 +3,22 @@
   "title": "San Francisco",
   "category": "Places",
   "description": "Fog, hills, and Painted Ladies — how well do you know the City by the Bay?",
-  "questions": []
+  "questions": [
+    {
+      "id": "sf-nb-1",
+      "prompt": "Which San Francisco neighborhood was the epicenter of the 1967 'Summer of Love' counterculture movement?",
+      "choices": ["The Mission", "The Castro", "Haight-Ashbury", "North Beach"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Haight-Ashbury — the intersection of Haight and Ashbury streets — drew tens of thousands of young people during the 1967 Summer of Love (Wikipedia: 'Summer of Love')."
+    },
+    {
+      "id": "sf-nb-2",
+      "prompt": "Which neighborhood is historically known as San Francisco's 'Little Italy'?",
+      "choices": ["Russian Hill", "North Beach", "Cow Hollow", "The Marina"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "North Beach has been the city's Italian-American enclave since the late 1800s, and still hosts the annual North Beach Festival (Wikipedia: 'North Beach, San Francisco')."
+    }
+  ]
 }
