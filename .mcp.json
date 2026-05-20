@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://app.routeburn.org/api/mcp",
       "headers": {
-        "Authorization": "Bearer <token>"
+        "Authorization": "Bearer ${STUDIO_AI_TOKEN}"
       }
     }
   }
