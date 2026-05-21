@@ -5,6 +5,9 @@
 CLAUDE.local.md
 bug-tracker.md
 
+# Studio AI MCP config — copied from .mcp.json.example, may contain a bearer token
+.mcp.json
+
 # OS
 .DS_Store
 Thumbs.db

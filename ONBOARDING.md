@@ -188,25 +188,23 @@ Skip if you've already done these. Otherwise:
 
 1. **Install Claude Code.** Follow the install guide at [claude.com/claude-code](https://claude.com/claude-code). Any other MCP-capable client works too.
 
-2. **Configure the Studio AI MCP server.** Create or edit `.mcp.json` at the root of your product worktree:
+2. **Configure the Studio AI MCP server.** Copy the committed template to a local, gitignored file:
 
-   ```json
-   {
-     "mcpServers": {
-       "studio-ai": {
-         "type": "http",
-         "url": "https://app.routeburn.org/api/mcp",
-         "headers": {
-           "Authorization": "Bearer <token>"
-         }
-       }
-     }
-   }
+   ```sh
+   cp .mcp.json.example .mcp.json
    ```
 
-   Replace `<token>` with the Bearer token Cassie sends you in Slack. The token is your personal credential.
+   The template references two environment variables:
 
-   **Do not commit this file.** Add `.mcp.json` to your `.gitignore` if it isn't already. Distributing bearer tokens by hand is a known foot-gun, so keep this one local until we ship a real auth flow.
+   ```json
+   "Authorization": "Bearer ${STUDIO_AI_TOKEN}",
+   "X-Agent-Name": "${AGENT_NAME}"
+   ```
+
+   - Export `STUDIO_AI_TOKEN` in `~/.zshenv` (or shell rc) using the Bearer token Cassie sends you in Slack. The token is your personal credential.
+   - Set `AGENT_NAME` in your worktree's `.claude/settings.local.json` `env` block (matches the agent name you registered).
+
+   `.mcp.json` is gitignored so accidental `git add .` won't stage your token. If you prefer, you can paste the literal token into `.mcp.json` instead of using the env var — just don't commit it.
 
 3. **Restart Claude Code** in your worktree directory to load the new server.
 
