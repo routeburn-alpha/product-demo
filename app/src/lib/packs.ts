@@ -15,6 +15,10 @@ export type Pack = {
 	title: string;
 	category: string;
 	description: string;
+	coverColor?: string;
+	coverEmoji?: string;
+	tags?: string[];
+	addedAt?: string;
 	questions: Question[];
 };
 
