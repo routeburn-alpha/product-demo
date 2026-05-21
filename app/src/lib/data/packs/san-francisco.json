@@ -3,6 +3,9 @@
   "title": "San Francisco",
   "category": "Places",
   "description": "Fog, hills, and Painted Ladies — how well do you know the City by the Bay?",
+  "coverColor": "#C0362C",
+  "coverEmoji": "🌉",
+  "addedAt": "2026-05-19",
   "questions": [
     {
       "id": "sf-nb-1",

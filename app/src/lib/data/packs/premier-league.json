@@ -3,6 +3,9 @@
   "title": "Premier League Trivia",
   "category": "Sports",
   "description": "From the 1992 inaugural season to today — how well do you know the EPL?",
+  "coverColor": "#37003C",
+  "coverEmoji": "⚽",
+  "addedAt": "2026-05-13",
   "questions": [
     {
       "id": "pl-1",
