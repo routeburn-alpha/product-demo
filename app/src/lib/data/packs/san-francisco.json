@@ -51,6 +51,22 @@
       "correctIndex": 1,
       "difficulty": 2,
       "explanation": "Cioppino was developed by Ligurian fishermen working out of Fisherman's Wharf, combining the day's catch with tomato and wine (Wikipedia: 'Cioppino')."
+    },
+    {
+      "id": "sf-tr-1",
+      "prompt": "How many hairpin turns does Lombard Street's famously 'crookedest' block between Hyde and Leavenworth contain?",
+      "choices": ["6", "8", "10", "12"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The one-block stretch of Lombard between Hyde and Leavenworth has eight tight switchback turns paved in red brick in 1922 to tame the block's 27% grade (Wikipedia: 'Lombard Street, San Francisco')."
+    },
+    {
+      "id": "sf-tr-2",
+      "prompt": "San Francisco's cable cars are pulled by an underground cable that moves at what constant speed?",
+      "choices": ["6.5 mph", "9.5 mph", "12 mph", "15 mph"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "All four cables run continuously beneath the streets at a constant 9.5 mph; cars start and stop when the gripman engages or releases a grip on the cable (SFMTA: 'Cable Car System'; Wikipedia: 'San Francisco cable car system')."
     }
   ]
 }
