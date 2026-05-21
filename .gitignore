@@ -1,6 +1,10 @@
 # Per-worktree scratch logs (npm install, build, dev-server output)
 /logs/
 
+# Per-worktree local files (agent identity, local bug log)
+CLAUDE.local.md
+bug-tracker.md
+
 # OS
 .DS_Store
 Thumbs.db
