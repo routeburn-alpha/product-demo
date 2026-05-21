@@ -41,7 +41,20 @@
 </script>
 
 <div class="container">
-	{#if !finished}
+	{#if pack.questions.length === 0}
+		<div class="progress-row">
+			<a class="back" href="{base}/">← All packs</a>
+		</div>
+		<div class="result-card">
+			<p class="result-label">Coming soon</p>
+			<p class="result-summary">
+				This pack is being assembled. Check back once its questions land.
+			</p>
+			<div class="result-actions">
+				<a class="secondary" href="{base}/">Pick another pack</a>
+			</div>
+		</div>
+	{:else if !finished}
 		<div class="progress-row">
 			<a class="back" href="{base}/">← All packs</a>
 			<span class="progress">Question {index + 1} of {pack.questions.length}</span>
