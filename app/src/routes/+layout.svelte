@@ -14,7 +14,9 @@
 	<a class="github" href="https://github.com/routeburn-alpha/product-demo-template" rel="noopener" target="_blank">View on GitHub</a>
 </nav>
 
-{@render children()}
+<main>
+	{@render children()}
+</main>
 
 <style>
 	/*
