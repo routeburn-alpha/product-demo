@@ -36,4 +36,47 @@ describe('listPacks()', () => {
 			expect(Number.isNaN(t)).toBe(false);
 		}
 	});
+
+	it.each(packs.flatMap((p) => p.questions.map((q) => ({ packId: p.id, q }))))(
+		'$packId/$q.id is a well-formed Question',
+		({ q }) => {
+			expect(q.id).toBeTruthy();
+			expect(q.prompt).toBeTruthy();
+			expect(q.choices).toHaveLength(4);
+			expect(q.correctIndex).toBeGreaterThanOrEqual(0);
+			expect(q.correctIndex).toBeLessThanOrEqual(3);
+			expect(q.difficulty).toBeGreaterThanOrEqual(1);
+			expect(q.difficulty).toBeLessThanOrEqual(3);
+			expect(q.explanation).toBeTruthy();
+		}
+	);
+
+	describe('san-francisco pack (Idea #2)', () => {
+		const sf = packs.find((p) => p.id === 'san-francisco');
+
+		it('exists', () => {
+			expect(sf).toBeDefined();
+		});
+
+		it('has exactly 10 questions', () => {
+			expect(sf!.questions).toHaveLength(10);
+		});
+
+		it('has the planned 4/4/2 difficulty distribution', () => {
+			const counts = sf!.questions.reduce<Record<number, number>>((acc, q) => {
+				acc[q.difficulty] = (acc[q.difficulty] ?? 0) + 1;
+				return acc;
+			}, {});
+			expect(counts).toEqual({ 1: 4, 2: 4, 3: 2 });
+		});
+
+		it('has 2 questions in each of the 5 planned topics', () => {
+			const topics = sf!.questions.reduce<Record<string, number>>((acc, q) => {
+				const topic = q.id.split('-')[1]!;
+				acc[topic] = (acc[topic] ?? 0) + 1;
+				return acc;
+			}, {});
+			expect(topics).toEqual({ nb: 2, lm: 2, food: 2, tr: 2, hist: 2 });
+		});
+	});
 });
