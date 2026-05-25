@@ -70,6 +70,27 @@
       "correctIndex": 1,
       "difficulty": 3,
       "explanation": "All four cables run continuously beneath the streets at a constant 9.5 mph; cars start and stop when the gripman engages or releases a grip on the cable (SFMTA: 'Cable Car System'; Wikipedia: 'San Francisco cable car system')."
+    },
+    {
+      "id": "sf-hist-1",
+      "prompt": "Harvey Milk made history in 1977 when he was elected to which San Francisco governing body, becoming the first openly gay person elected to public office in California?",
+      "choices": ["City Council", "Board of Supervisors", "Board of Education", "Mayor's Cabinet"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Milk won a seat on the San Francisco Board of Supervisors in November 1977 — San Francisco has no city council; the Board of Supervisors is its 11-member legislative body. He was assassinated alongside Mayor George Moscone the following year (Wikipedia: 'Harvey Milk')."
+    },
+    {
+      "id": "sf-hist-2",
+      "prompt": "After the 1906 earthquake destroyed San Francisco's Chinatown, community leaders fended off pressure to relocate residents to Hunters Point and instead rebuilt in place. What distinctive feature did the rebuilt architecture deliberately emphasize?",
+      "choices": [
+        "Traditional Chinese courtyard housing",
+        "\"Oriental\"-style pagoda roofs and ornamentation aimed at attracting tourists",
+        "Beaux-Arts facades that matched the surrounding city",
+        "Industrial warehouses for the import-export trade"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Businessman Look Tin Eli organized the rebuild and hired architects T. Paterson Ross and A.W. Burgren to design Chinatown with deliberately exoticized pagoda roofs, dragon motifs, and colored tiles — the strategy was to make the neighborhood a tourist draw, which helped keep it from being displaced. The look that still defines Grant Avenue today is the result (Wikipedia: 'Chinatown, San Francisco', '1906 earthquake' section)."
     }
   ]
 }
