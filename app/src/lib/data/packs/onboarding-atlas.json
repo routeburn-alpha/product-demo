@@ -1,0 +1,138 @@
+{
+  "id": "onboarding-atlas",
+  "title": "Squad Atlas Onboarding",
+  "category": "Onboarding",
+  "description": "New to Squad Atlas (Payments) at Meridian? Test yourself on the week-one essentials — on-call, compliance, releases, data handling, architecture, and ownership.",
+  "coverColor": "#0A2540",
+  "coverEmoji": "💳",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "atlas-oncall-tool",
+      "prompt": "Which tool does Squad Atlas use to run its on-call rotation and paging?",
+      "choices": ["PagerDuty", "Opsgenie", "Splunk On-Call", "VictorOps"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Atlas pages through Opsgenie; an alert routes to the primary on-call, escalating to the secondary and then the squad lead if unacknowledged. (PagerDuty is Borealis's tool, Splunk On-Call is Cypress's, and the org-wide VictorOps model was retired in 2024.) Source: Squad Atlas — On-Call Runbook."
+    },
+    {
+      "id": "atlas-ack-sla",
+      "prompt": "What is the acknowledgement SLA for an Atlas on-call page before it escalates?",
+      "choices": ["5 minutes", "10 minutes", "15 minutes", "30 minutes"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Atlas holds a 10-minute ack SLA — miss it and Opsgenie escalates to the secondary, then the squad lead. (Cypress holds a tighter 5-minute window; Borealis allows 15 minutes.) Source: Squad Atlas — On-Call Runbook."
+    },
+    {
+      "id": "atlas-incident-sev",
+      "prompt": "On Squad Atlas, how is a failed payment settlement classified?",
+      "choices": ["Sev1", "Sev2", "Sev3", "Sev4"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Atlas sets severity by impact to money movement: a failed settlement means money movement is impacted, so it is always Sev1 — never downgraded to Sev2 just because only a few payments failed. Sev2 is degraded-but-recovering (e.g., elevated Rail latency with retries succeeding). Source: Squad Atlas — On-Call Runbook."
+    },
+    {
+      "id": "atlas-compliance",
+      "prompt": "Which compliance regime governs Squad Atlas's work?",
+      "choices": ["SOC 2 Type II (org-wide)", "KYC / AML / BSA", "PCI-DSS Level 1", "SOX and fair-lending (ECOA)"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Because Atlas handles cardholder data directly, it operates under PCI-DSS Level 1 — the strictest tier — as Meridian's highest-volume card processor. (KYC/AML/BSA is Cypress, SOX/ECOA is Borealis, and the single org-wide SOC 2 model was superseded.) Source: Squad Atlas — Compliance & Data Handling."
+    },
+    {
+      "id": "atlas-data-tier",
+      "prompt": "How is card data classified under Atlas's data-handling rules?",
+      "choices": ["Tier 1 (Confidential)", "Tier 0 (Restricted)", "Sensitive", "Tier 2 (Internal)"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Card data is Tier 0 (Restricted) — Meridian's highest data tier — and may never be logged, appear in error messages, or leave the boundary of PCI-scope services. (Tier 1 is the identity/lending data other squads handle; 'Sensitive' belongs to the superseded two-tier scheme.) Source: Squad Atlas — Compliance & Data Handling."
+    },
+    {
+      "id": "atlas-deploy-policy",
+      "prompt": "What is Squad Atlas's production deploy-window policy?",
+      "choices": [
+        "Deploy any weekday; avoid Friday afternoons by convention",
+        "No deploys on Friday or over the weekend",
+        "Change freeze 9am–5pm ET; deploy only outside business hours",
+        "Deploy anytime at the engineer's own discretion"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Atlas does not deploy on Friday or over the weekend — the pipeline is gated to refuse production releases Friday through Sunday, because settlement runs continuously and a change must be staffable if it goes wrong. (Any-weekday is Borealis, the business-hours freeze is Cypress, and 'deploy anytime' is the superseded pre-2024 policy.) Source: Squad Atlas — Release & Change Policy."
+    },
+    {
+      "id": "atlas-premerge-check",
+      "prompt": "Which check must pass before any Atlas pull request can merge?",
+      "choices": ["Sanctions-list screening test", "Credit-model backtest", "Ledger-reconciliation contract test", "Load/performance smoke test"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Atlas's mandatory gate is the ledger-reconciliation contract test, which verifies that recorded entries still match settled balances; a red result blocks merge with no override. (Sanctions screening is Cypress's headline gate; the credit-model backtest is Borealis's.) Source: Squad Atlas — Release & Change Policy."
+    },
+    {
+      "id": "atlas-datastore",
+      "prompt": "What is the primary datastore behind Atlas's ledger?",
+      "choices": ["DynamoDB", "Neo4j", "Aurora PostgreSQL", "A single shared MySQL instance"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "The ledger runs on Aurora PostgreSQL and is modeled append-only — rows are never updated in place, so the full history of every payment is reconstructable for reconciliation and audit. (DynamoDB backs Borealis's loan state machine, Neo4j backs Cypress's identity graph, and the shared MySQL was the decommissioned legacy monolith.) Source: Squad Atlas — Architecture & Datastores."
+    },
+    {
+      "id": "atlas-service",
+      "prompt": "Which service is Squad Atlas's primary codebase — home to the ledger, settlement workers, and reconciliation logic?",
+      "choices": ["atlas-ledger-svc", "borealis-decision-svc", "cypress-kyc-svc", "payments-monolith"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "atlas-ledger-svc is Atlas's primary service and the repo new hires clone first. (borealis-decision-svc and cypress-kyc-svc belong to other squads; payments-monolith was the legacy system decommissioned in 2024.) Source: Squad Atlas — Charter & Ownership / Architecture & Datastores."
+    },
+    {
+      "id": "atlas-payment-api",
+      "prompt": "What is the internal codename for Atlas's payment-initiation API?",
+      "choices": ["Bridge", "Gateway", "Rail", "PayGT"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Rail is Atlas's payment-initiation entry point on atlas-ledger-svc — 'submit it to Rail' means hand the instruction to the ledger. (Bridge is Borealis's disbursement API, Gateway is Cypress's verification API, and PayGT was the decommissioned legacy API.) Source: Squad Atlas — Charter & Ownership / Architecture & Datastores."
+    },
+    {
+      "id": "atlas-lead",
+      "prompt": "Who is the squad lead and engineering manager of Squad Atlas?",
+      "choices": ["Dana Whitfield", "Marco Reyes", "Priya Nair", "Alex Tan"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Priya Nair leads Atlas and is the escalation point for ownership disputes and payment-path commitments; new hires should book a week-one 1:1 with her. (Dana Whitfield leads Cypress, Marco Reyes leads Borealis.) Source: Squad Atlas — Charter & Ownership."
+    },
+    {
+      "id": "atlas-secrets",
+      "prompt": "Where does Squad Atlas store its secrets?",
+      "choices": [
+        "AWS Secrets Manager",
+        "Vault, under the per-squad namespace atlas/",
+        "Vault, under the namespace cypress/",
+        "A .env file checked into each service's repo"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Atlas keeps every credential in Vault under its dedicated atlas/ namespace; services read from atlas/ at runtime and secrets are never copied into code, a .env, tickets, or chat. (AWS Secrets Manager is Borealis's choice; cypress/ is Cypress's namespace.) Source: Squad Atlas — Secrets & Access."
+    },
+    {
+      "id": "atlas-sla",
+      "prompt": "What customer-facing SLA does Atlas publish for payment-status availability?",
+      "choices": ["99.9% monthly", "99.95% monthly", "99.99% monthly", "99.5% monthly"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Atlas publishes a customer-facing SLA of 99.95% monthly for payment-status availability — customers must be able to see whether a payment is pending, settled, or failed within that target each calendar month, and a breach triggers a customer-comms review. Source: Squad Atlas — Charter & Ownership."
+    },
+    {
+      "id": "atlas-approval",
+      "prompt": "How many approvals does a production change to Atlas require before release?",
+      "choices": [
+        "One reviewer approval is sufficient",
+        "Dual approval — two engineers, one with context on the area changed",
+        "A security-reviewer sign-off in addition to normal code review",
+        "None — engineers may self-merge once CI is green"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Every Atlas production change needs dual approval — two engineers, and one must have real context on the area changed (a rubber-stamp does not count). (Single approval is Borealis's policy, a required security sign-off is Cypress's, and self-merge was the superseded pre-2024 policy.) Source: Squad Atlas — Release & Change Policy."
+    }
+  ]
+}
