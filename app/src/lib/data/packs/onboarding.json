@@ -1,0 +1,158 @@
+{
+  "id": "onboarding",
+  "title": "New-Hire Onboarding",
+  "category": "Onboarding",
+  "description": "The most important things to know in your first week — how Quiz Lab ships, how work flows, and how to add a pack.",
+  "coverColor": "#1D4ED8",
+  "coverEmoji": "🧭",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "onb-1",
+      "prompt": "Where do quiz pack JSON files live in the repo?",
+      "choices": ["static/quizzes/", "app/src/lib/data/packs/", "src/packs/", "public/data/"],
+      "correctIndex": 1,
+      "explanation": "Each pack is a single JSON file in app/src/lib/data/packs/, named for its id (Architecture Overview; Pack Authoring Guide).",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-2",
+      "prompt": "Which framework is Quiz Lab built with?",
+      "choices": ["Next.js", "SvelteKit 2", "Remix", "Astro"],
+      "correctIndex": 1,
+      "explanation": "Quiz Lab is a SvelteKit 2 app built with Vite and the static adapter (@sveltejs/adapter-static) (Architecture Overview).",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-3",
+      "prompt": "At which route does a pack with id \"onboarding\" play?",
+      "choices": ["/packs/onboarding", "/play/onboarding", "/quiz/onboarding", "/onboarding/play"],
+      "correctIndex": 1,
+      "explanation": "Each pack renders at the route /play/{packId}, so this pack plays at /play/onboarding (Architecture Overview).",
+      "difficulty": 2
+    },
+    {
+      "id": "onb-4",
+      "prompt": "What actually deploys Quiz Lab to production?",
+      "choices": [
+        "Running a manual deploy script",
+        "Pushing the build to a Vercel project",
+        "Merging a PR to main, which triggers a GitHub Actions build that publishes to GitHub Pages",
+        "A nightly cron job that rebuilds the site"
+      ],
+      "correctIndex": 2,
+      "explanation": "The entire pipeline is: merge to main → GitHub Actions build → GitHub Pages. There is no separate deploy step (Architecture Overview; Engineering Handbook).",
+      "difficulty": 2
+    },
+    {
+      "id": "onb-5",
+      "prompt": "Which statement about Quiz Lab's backend is correct?",
+      "choices": [
+        "It uses a Postgres database for leaderboards",
+        "It has no server runtime and no database — it's a fully prerendered static site",
+        "It runs a Node API server",
+        "Content is stored in a headless CMS"
+      ],
+      "correctIndex": 1,
+      "explanation": "Quiz Lab is fully prerendered with no server runtime and no database; all content ships in the build (Architecture Overview).",
+      "difficulty": 2
+    },
+    {
+      "id": "onb-6",
+      "prompt": "How many answer choices must each question have?",
+      "choices": ["Exactly 3", "Exactly 4", "Exactly 5", "Any number is fine"],
+      "correctIndex": 1,
+      "explanation": "The Pack Authoring Guide requires the choices array to have exactly 4 options.",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-7",
+      "prompt": "What does a question's correctIndex field hold?",
+      "choices": [
+        "The text of the correct answer",
+        "A zero-based index (0–3) pointing into the choices array",
+        "The difficulty level of the question",
+        "The id of the correct choice"
+      ],
+      "correctIndex": 1,
+      "explanation": "correctIndex is an integer 0–3 that indexes into choices — the answer is stored as a position, not as text (Pack Authoring Guide).",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-8",
+      "prompt": "What is the valid range for a question's difficulty field?",
+      "choices": ["0 to 2", "1 to 3", "1 to 5", "A label like Easy/Medium/Hard"],
+      "correctIndex": 1,
+      "explanation": "difficulty is the integer 1, 2, or 3, rendered as ★ to ★★★ (Pack Authoring Guide; Product Vision & Glossary).",
+      "difficulty": 2
+    },
+    {
+      "id": "onb-9",
+      "prompt": "In Studio AI, what is an \"idea\"?",
+      "choices": [
+        "A single quiz question",
+        "A hypothesis we want to validate, broken down into PR-sized tasks",
+        "A merged pull request",
+        "A deployment environment"
+      ],
+      "correctIndex": 1,
+      "explanation": "An idea is a hypothesis to validate; it is broken into tasks, each a discrete PR-sized piece of executing it (Engineering Handbook; Studio AI SDLC & MCP).",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-10",
+      "prompt": "Which sequence describes the Studio AI delivery loop?",
+      "choices": [
+        "idea → branch → task → merge → review",
+        "idea → tasks → pick up task → branch → PR → review → merge (ships)",
+        "task → idea → PR → deploy → review",
+        "PR → review → idea → task → merge"
+      ],
+      "correctIndex": 1,
+      "explanation": "Work flows idea → tasks → pick up task → branch → PR → review → merge, and merging ships to production and closes the task (Studio AI SDLC & MCP).",
+      "difficulty": 3
+    },
+    {
+      "id": "onb-11",
+      "prompt": "Which MCP tool do you call to pick up a task and start working on it?",
+      "choices": ["submit_for_review", "work_on_next_task", "attach_context", "search_context"],
+      "correctIndex": 1,
+      "explanation": "work_on_next_task picks up a task, moves it to inProgress, and returns the spec plus the task's injected curated context (Studio AI SDLC & MCP).",
+      "difficulty": 1
+    },
+    {
+      "id": "onb-12",
+      "prompt": "When an agent picks up a task, how does it receive the relevant documents?",
+      "choices": [
+        "It has to search the whole knowledge base itself",
+        "Studio AI injects the task's curated context (its \"neighborhood\") into the pickup response",
+        "The documents are emailed to the engineer",
+        "It clones a separate documentation repository"
+      ],
+      "correctIndex": 1,
+      "explanation": "At pickup, Studio AI injects the task's curated context — a small neighborhood of the most relevant documents delivered in one shot, instead of forcing the agent to go search (Studio AI SDLC & MCP).",
+      "difficulty": 2
+    },
+    {
+      "id": "onb-13",
+      "prompt": "About how many documents make up a well-curated context \"neighborhood\" for a task?",
+      "choices": ["Around 1", "Around 5", "Around 20", "Every document that exists"],
+      "correctIndex": 1,
+      "explanation": "A well-curated neighborhood is roughly 5 documents — the minimum the agent needs and nothing else (Studio AI SDLC & MCP).",
+      "difficulty": 3
+    },
+    {
+      "id": "onb-14",
+      "prompt": "Under the team's trunk-based workflow, what ships a change to production?",
+      "choices": [
+        "Committing directly to main",
+        "Merging a reviewed pull request to main",
+        "Tagging a release",
+        "Running npm run deploy"
+      ],
+      "correctIndex": 1,
+      "explanation": "You never commit directly to main; all work lands through a reviewed PR, and merging that PR to main is what ships to production (Engineering Handbook).",
+      "difficulty": 2
+    }
+  ]
+}
