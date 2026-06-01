@@ -1,0 +1,131 @@
+{
+  "id": "onboarding",
+  "title": "New-Hire Onboarding",
+  "category": "Onboarding",
+  "description": "The most important things to know in your first week: how Quiz Lab is built and shipped, the dev workflow, the pack schema, and how work flows through Studio AI.",
+  "coverColor": "#2563eb",
+  "coverEmoji": "🧭",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "onb-1",
+      "prompt": "Where does the live Quiz Lab app run?",
+      "choices": ["On Vercel with edge caching", "On GitHub Pages as a static site", "On an AWS server behind an API", "On Netlify Functions"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Quiz Lab is served from GitHub Pages under the base path /product-demo — a fully prerendered static site, not Vercel (Architecture Overview)."
+    },
+    {
+      "id": "onb-2",
+      "prompt": "Which framework and adapter is Quiz Lab built with?",
+      "choices": ["Next.js with server functions", "Vue/Nuxt with SSR", "SvelteKit 2 with the static adapter", "React + Express"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Quiz Lab is a SvelteKit 2 app built with Vite and @sveltejs/adapter-static, so it prerenders to a fully client-side static site (Architecture Overview)."
+    },
+    {
+      "id": "onb-3",
+      "prompt": "Which database stores Quiz Lab's content and leaderboards?",
+      "choices": ["Postgres", "SQLite", "There is no database — all content ships in the build", "A managed leaderboard service"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "There is no server runtime and no database; all quiz content ships inside the static build. Docs that mention Postgres or Vercel are out-of-date marketing, not the live architecture (Architecture Overview)."
+    },
+    {
+      "id": "onb-4",
+      "prompt": "What single action ships a change to production?",
+      "choices": ["Running npm run deploy locally", "Merging a pull request to main", "Clicking 'Deploy' in a dashboard", "Pushing to a release branch each Friday"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Merging a PR to main is what ships: a GitHub Actions workflow then builds the site and publishes it to Pages. There is no separate deploy step or manual release (Engineering Handbook; Architecture Overview)."
+    },
+    {
+      "id": "onb-5",
+      "prompt": "Where in the repo do quiz pack JSON files live?",
+      "choices": ["static/quizzes/", "public/data/", "src/packs/", "app/src/lib/data/packs/"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "Packs are one JSON file each in app/src/lib/data/packs/. The old static/quizzes/ location belongs to the deprecated v0 format and must not be used (Pack Authoring Guide; Architecture Overview)."
+    },
+    {
+      "id": "onb-6",
+      "prompt": "How does a new pack get added to the app?",
+      "choices": ["Run a database migration", "Drop a JSON file in the packs directory and open a PR", "Call an admin API endpoint", "Edit the leaderboard config"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "You add a pack by dropping a JSON file in app/src/lib/data/packs/ and opening a PR — no backend changes or migrations, because there is no backend. It appears on the next merge to main (Architecture Overview; Product Vision & Glossary)."
+    },
+    {
+      "id": "onb-7",
+      "prompt": "How many answer choices must each question have?",
+      "choices": ["Exactly 4", "At least 3", "Any number", "Between 2 and 6"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Every question's choices array must have exactly 4 options (Pack Authoring Guide). The old v0 format allowed any length, but it is superseded."
+    },
+    {
+      "id": "onb-8",
+      "prompt": "How is the correct answer recorded on a question?",
+      "choices": ["A `correct` string holding the answer text", "A `correctIndex` integer from 0 to 3 into choices", "A boolean flag on the right choice", "It is always the first item in choices"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The current schema uses correctIndex, an integer 0–3 that indexes into choices. Storing the answer as a `correct` string is the deprecated v0 shape and is invalid (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-9",
+      "prompt": "What are the valid values for a question's `difficulty` field?",
+      "choices": ["1, 2, or 3", "0 through 10", "'easy', 'medium', or 'hard'", "1 through 5"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "difficulty is an integer of 1, 2, or 3, rendered as ★ to ★★★. Packs should also mix difficulties rather than make every question level 1 (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-10",
+      "prompt": "How many questions should a pack contain?",
+      "choices": ["Exactly 10", "10 to 15", "20 to 30", "No limit"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The style rules call for 10–15 questions per pack, with mixed difficulty (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-11",
+      "prompt": "What must every question's `explanation` be?",
+      "choices": ["A link to the leaderboard", "Optional and often left blank", "Factual and grounded in a source document", "A hint shown before answering"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Explanations are required, non-empty, and must be factual and grounded in a source — for harder questions you cite the source. Inventing facts is not allowed (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-12",
+      "prompt": "In Studio AI, what is an 'idea'?",
+      "choices": ["A merged feature awaiting release", "A hypothesis to validate, broken into PR-sized tasks", "A single bug report", "A deployed feature flag"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "An idea is a hypothesis with a technical design; it is broken into discrete, PR-sized tasks linked to it as ideaSubtasks (Engineering Handbook; Studio AI SDLC & MCP)."
+    },
+    {
+      "id": "onb-13",
+      "prompt": "What is the branching and merge policy for the repo?",
+      "choices": ["Commit directly to main, revert if broken", "Gitflow with a long-lived develop branch", "Trunk-based: land work via a reviewed, squash-merged PR; never commit directly to main", "Merge a release branch once a quarter"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "We practice trunk-based development: main is always releasable, and every change lands through a short-lived branch and a reviewed, squash-merged PR (Engineering Handbook)."
+    },
+    {
+      "id": "onb-14",
+      "prompt": "When an agent picks up a task with work_on_next_task, what does it receive in addition to the task spec?",
+      "choices": ["The full repository git history", "Nothing — it must search for everything", "The task's curated context 'neighborhood'", "A list of every document in the knowledge base"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "At pickup, Studio AI injects the task's curated context — the small 'neighborhood' of relevant documents attached to the task or inherited from its parent idea — so the agent doesn't have to go discover it (Studio AI SDLC & MCP; Engineering Handbook)."
+    },
+    {
+      "id": "onb-15",
+      "prompt": "Roughly how many documents make up a well-curated context 'neighborhood' for a task?",
+      "choices": ["About 5 — the minimum needed and nothing else", "Every document in the product", "Exactly 1", "At least 50"],
+      "correctIndex": 0,
+      "difficulty": 3,
+      "explanation": "A good neighborhood is about 5 documents — the smallest set the agent needs and nothing else. Curating it up front is the biggest lever on output quality (Studio AI SDLC & MCP; Engineering Handbook)."
+    }
+  ]
+}
