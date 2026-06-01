@@ -1,0 +1,155 @@
+{
+  "id": "onboarding",
+  "title": "New-Hire Onboarding",
+  "category": "Onboarding",
+  "description": "The most important things to know in your first week — how Quiz Lab is built, shipped, and how work flows through Studio AI.",
+  "coverColor": "#1d4ed8",
+  "coverEmoji": "🧭",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "onb-1",
+      "prompt": "Where do quiz pack JSON files live in the repo?",
+      "choices": ["static/quizzes/", "src/packs/", "app/src/lib/data/packs/", "public/data/"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Pack files live in app/src/lib/data/packs/ — one JSON file per pack, picked up by the packs index (Architecture Overview; Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-2",
+      "prompt": "What is the entire production deploy pipeline for Quiz Lab?",
+      "choices": [
+        "Merge to main → GitHub Actions build → GitHub Pages",
+        "A manual release step run by the on-call engineer",
+        "Pushing a Docker image to a Vercel project",
+        "A nightly cron job that redeploys the database"
+      ],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Merging to main triggers a GitHub Actions workflow that builds the static site and publishes it to GitHub Pages — there is no separate deploy or release step (Architecture Overview; Engineering Handbook)."
+    },
+    {
+      "id": "onb-3",
+      "prompt": "Which stack is Quiz Lab actually built on?",
+      "choices": [
+        "Next.js on Vercel with a Postgres database",
+        "A React SPA backed by a REST API server",
+        "Plain HTML served from an Express backend",
+        "SvelteKit 2 + Vite with the static adapter — no server or database"
+      ],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "Quiz Lab is a SvelteKit 2 app built with Vite and @sveltejs/adapter-static — fully prerendered, with no server runtime and no database; all content ships in the build (Architecture Overview)."
+    },
+    {
+      "id": "onb-4",
+      "prompt": "Under what base path is the app served on GitHub Pages?",
+      "choices": ["/", "/quiz-lab", "/product-demo", "/app"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "The site is served from GitHub Pages under the base path /product-demo (Architecture Overview)."
+    },
+    {
+      "id": "onb-5",
+      "prompt": "How does a change land on the main branch?",
+      "choices": [
+        "Commit directly to main once the tests pass",
+        "Through a reviewed pull request that is squash-merged",
+        "By tagging a release and pushing the tag",
+        "Via a long-lived develop branch merged each month"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The team practices trunk-based development: you never commit directly to main — all work lands through a reviewed, squash-merged pull request (Engineering Handbook)."
+    },
+    {
+      "id": "onb-6",
+      "prompt": "How many reviewer approvals does a PR need before it can merge?",
+      "choices": ["One", "Zero — self-merge is fine", "Two", "Approval from every team member"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Every PR needs one reviewer approval before merge (Engineering Handbook)."
+    },
+    {
+      "id": "onb-7",
+      "prompt": "What is the standard for new user-facing content such as a quiz pack?",
+      "choices": [
+        "It can be AI-generated from any convenient source",
+        "It should match the claims in the marketing one-pager",
+        "It only needs to make the build pass",
+        "It must be grounded in a cited source document"
+      ],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "New user-facing content must be grounded in a cited source; explanations should be factual and reference the source, never invented (Engineering Handbook; Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-8",
+      "prompt": "How many answer choices must each quiz question have?",
+      "choices": ["3", "Exactly 4", "Between 2 and 5", "Any number"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Pack Authoring Guide requires each question's choices array to contain exactly 4 options (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-9",
+      "prompt": "What does a question's correctIndex field hold?",
+      "choices": [
+        "The correct answer stored as a string",
+        "The 1-based position of the answer",
+        "An integer 0–3 that indexes into the choices array",
+        "A boolean marking whether the question is graded"
+      ],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "correctIndex is an integer from 0 to 3 that indexes into the four-element choices array (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-10",
+      "prompt": "How many questions should a pack contain?",
+      "choices": ["Exactly 10", "10–15", "At least 20", "No limit"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The style rules call for 10–15 questions per pack, with mixed difficulty (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-11",
+      "prompt": "In Studio AI, what is the difference between an idea and a task?",
+      "choices": [
+        "An idea is a hypothesis to validate; a task is one PR-sized piece of executing it",
+        "An idea is a bug report; a task is a feature request",
+        "They are two names for the same thing",
+        "An idea is the code; a task is the documentation"
+      ],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "An idea is a hypothesis you want to validate; a task is one discrete, PR-sized piece of executing it, linked to the idea (Engineering Handbook; Studio AI SDLC & MCP)."
+    },
+    {
+      "id": "onb-12",
+      "prompt": "What happens when an agent picks up a task with work_on_next_task?",
+      "choices": [
+        "It opens a pull request automatically",
+        "It deploys the current build to production",
+        "It merges the task's branch into main",
+        "It moves the task to inProgress and injects the task's curated context"
+      ],
+      "correctIndex": 3,
+      "difficulty": 3,
+      "explanation": "work_on_next_task moves the task to inProgress and injects its curated context — the attached documents — into the pickup response (Studio AI SDLC & MCP)."
+    },
+    {
+      "id": "onb-13",
+      "prompt": "What makes a well-curated context 'neighborhood' for a task?",
+      "choices": [
+        "Every document in the product's knowledge base",
+        "About 5 of the most relevant documents — the minimum the agent needs",
+        "Only the task specification, with no documents",
+        "A folder of source-code files from the repo"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "A well-curated neighborhood is ~5 documents — the smallest set of the most relevant docs the agent needs and nothing else — delivered in one shot at pickup (Studio AI SDLC & MCP)."
+    }
+  ]
+}
