@@ -1,0 +1,163 @@
+{
+  "id": "onboarding",
+  "title": "New-Hire Onboarding",
+  "category": "Onboarding",
+  "description": "The most important things to know in your first week shipping Quiz Lab.",
+  "coverColor": "#2563EB",
+  "coverEmoji": "🎓",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "onb-1",
+      "prompt": "Where do quiz pack JSON files live in the repo?",
+      "choices": ["static/quizzes/", "app/src/lib/data/packs/", "src/packs/", "public/data/"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Packs are single JSON files in app/src/lib/data/packs/, one file per pack; the packs index picks them up automatically (Pack Authoring Guide; Architecture Overview)."
+    },
+    {
+      "id": "onb-2",
+      "prompt": "Where is the live Quiz Lab app hosted?",
+      "choices": ["Vercel", "GitHub Pages", "AWS Amplify", "Netlify"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The app is a static site served from GitHub Pages under the base path /product-demo. There is no Vercel deployment — that claim only appears in aspirational marketing copy (Architecture Overview)."
+    },
+    {
+      "id": "onb-3",
+      "prompt": "What actually triggers a production deploy of Quiz Lab?",
+      "choices": [
+        "Running a manual `npm run deploy` command",
+        "Merging a PR to `main`, which a GitHub Actions workflow builds and publishes",
+        "Clicking 'Promote to Production' in a hosting dashboard",
+        "A nightly scheduled release job"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The entire pipeline is: merge to main → GitHub Actions builds the static site → it publishes to GitHub Pages. There is no separate deploy step or manual release (Engineering Handbook; Architecture Overview)."
+    },
+    {
+      "id": "onb-4",
+      "prompt": "What database does Quiz Lab use to store packs and leaderboards?",
+      "choices": [
+        "Postgres",
+        "DynamoDB",
+        "None — it is a fully prerendered static app with no backend",
+        "SQLite bundled at the edge"
+      ],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Quiz Lab has no server runtime and no database; all content ships in the build as static files. Any mention of Postgres or a backend is outdated or marketing material (Architecture Overview)."
+    },
+    {
+      "id": "onb-5",
+      "prompt": "Which framework and build setup does Quiz Lab use?",
+      "choices": [
+        "Next.js with server-side rendering",
+        "SvelteKit with @sveltejs/adapter-static (fully prerendered)",
+        "Plain React with a custom Express server",
+        "Astro with serverless functions"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Quiz Lab is a SvelteKit app built with Vite and the static adapter; everything is prerendered at build time, so there is no server runtime (Architecture Overview)."
+    },
+    {
+      "id": "onb-6",
+      "prompt": "How does new code reach the `main` branch?",
+      "choices": [
+        "Committed directly to main",
+        "Through a reviewed pull request that is squash-merged",
+        "Pushed to a release branch and cherry-picked",
+        "Emailed to a maintainer who applies the patch"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The team practices trunk-based development: you never commit directly to main — all work lands through a reviewed, squash-merged pull request (Engineering Handbook)."
+    },
+    {
+      "id": "onb-7",
+      "prompt": "How many reviewer approvals does a PR need before it can merge?",
+      "choices": ["Zero — self-merge is fine", "One", "Two", "Approval from every studio member"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Every PR needs one reviewer approval before merge (Engineering Handbook, Review standards)."
+    },
+    {
+      "id": "onb-8",
+      "prompt": "What must pass in `app/` before a pack PR can merge, since a failure blocks the Pages deploy?",
+      "choices": ["`npm run lint`", "`npm run build`", "`npm run deploy`", "`npm run migrate`"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "`npm run build` (in app/) must succeed with the new pack registered; a broken build blocks the GitHub Pages deploy (Architecture Overview; Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-9",
+      "prompt": "Which development model best describes how the team works?",
+      "choices": [
+        "Gitflow with long-lived develop and release branches",
+        "Trunk-based development with short-lived branches",
+        "Feature freeze with quarterly releases",
+        "Fork-and-pull from personal mirrors"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "The team practices trunk-based development: main is always releasable and branches are short-lived, opened as small PRs and reviewed within a day (Engineering Handbook)."
+    },
+    {
+      "id": "onb-10",
+      "prompt": "How many choices must each quiz question have?",
+      "choices": ["Exactly 3", "Exactly 4", "Between 2 and 5", "As many as you like"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Pack Authoring Guide requires exactly 4 options in each question's `choices` array."
+    },
+    {
+      "id": "onb-11",
+      "prompt": "How is the correct answer for a question stored in a pack?",
+      "choices": [
+        "As a `correct` string holding the answer text",
+        "As a `correctIndex` integer from 0 to 3 indexing into `choices`",
+        "By marking the choice object with `isCorrect: true`",
+        "As the first item in the `answers` array"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Each question stores `correctIndex`, an integer 0–3 that indexes into the four `choices`. Storing the answer as a string is the deprecated v0 format and is no longer valid (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-12",
+      "prompt": "How many questions should a pack contain?",
+      "choices": ["Exactly 10", "10–15", "At least 20", "Any number"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Pack Authoring Guide specifies 10–15 questions per pack, with mixed difficulty (1–3)."
+    },
+    {
+      "id": "onb-13",
+      "prompt": "Which sequence describes how work flows through Studio AI from start to ship?",
+      "choices": [
+        "task → branch → idea → merge → review",
+        "idea → tasks → pick up task → branch → PR → review → merge → done",
+        "PR → idea → task → deploy → review",
+        "idea → deploy → task → PR → review"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Work flows idea → tasks → pick up task → branch → PR → review → merge (ships) → task done. Merging auto-transitions the task to done and ships to GitHub Pages (Studio AI SDLC & MCP Workflow)."
+    },
+    {
+      "id": "onb-14",
+      "prompt": "What is the single highest-leverage thing you can do for a coding agent's output quality?",
+      "choices": [
+        "Give it the largest possible context dump of every document",
+        "Curate a small neighborhood (~5 docs) of the most relevant context at task pickup",
+        "Let it search the whole knowledge base on its own each time",
+        "Run it with no context so it stays unbiased"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Giving an agent a small, curated neighborhood (~5 docs) of the most relevant context up front is the cheapest, highest-leverage lever on quality; agents left to search wander, burn tokens, and drift off scope (Engineering Handbook; Studio AI SDLC & MCP Workflow)."
+    }
+  ]
+}
