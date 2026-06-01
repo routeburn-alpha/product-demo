@@ -1,0 +1,157 @@
+{
+  "id": "onboarding-atlas",
+  "title": "Squad Atlas (Payments) Onboarding",
+  "category": "Onboarding",
+  "description": "Week-one essentials for new engineers joining Squad Atlas, the team that owns Meridian's money-movement core.",
+  "coverColor": "#1F6F5C",
+  "coverEmoji": "💳",
+  "addedAt": "2026-06-01",
+  "tags": ["onboarding", "meridian", "atlas", "payments"],
+  "questions": [
+    {
+      "id": "atlas-oncall-tool",
+      "prompt": "Which tool does Squad Atlas use to run its on-call rotation and page the primary engineer?",
+      "choices": ["PagerDuty", "Opsgenie", "VictorOps", "Splunk On-Call"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Atlas runs its on-call rotation through Opsgenie; keep the app installed on your phone before your first shift (Squad Atlas — On-Call Runbook)."
+    },
+    {
+      "id": "atlas-ack-sla",
+      "prompt": "What is the acknowledgement SLA for the Atlas primary on-call before an alert escalates?",
+      "choices": ["5 minutes", "10 minutes", "15 minutes", "30 minutes"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Alerts route to the primary with a 10-minute ack SLA; miss it and Opsgenie escalates to the secondary, then to the squad lead (Squad Atlas — On-Call Runbook)."
+    },
+    {
+      "id": "atlas-sev1",
+      "prompt": "A scheduled payment settlement fails. What incident severity does Atlas assign it?",
+      "choices": ["Sev1", "Sev2", "Sev3", "Sev4"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Severity is set by impact to money movement, not alert volume. A failed settlement impacts money movement, so it is always Sev1 — never downgraded to Sev2 because 'only a few payments' failed (Squad Atlas — On-Call Runbook)."
+    },
+    {
+      "id": "atlas-compliance",
+      "prompt": "Because Atlas handles cardholder data directly, which compliance regime does the squad operate under?",
+      "choices": ["SOC 2 Type II", "ISO 27001", "PCI-DSS Level 1", "PCI-DSS Level 2"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Atlas operates under PCI-DSS Level 1 — the strictest tier — as Meridian's highest-volume card processor; every engineer completes PCI awareness training before production access (Squad Atlas — Compliance & Data Handling)."
+    },
+    {
+      "id": "atlas-data-tier",
+      "prompt": "How is card data classified in Atlas's data-handling policy?",
+      "choices": ["Tier 0 (Restricted)", "Tier 1 (Confidential)", "Tier 2 (Internal)", "Tier 3 (Public)"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Card data is classified Tier 0 (Restricted), Meridian's highest data tier: it may never be logged, never appear in error messages, and never leave the boundary of services in PCI scope (Squad Atlas — Compliance & Data Handling)."
+    },
+    {
+      "id": "atlas-pan",
+      "prompt": "How does Atlas store the Primary Account Number (PAN) in its datastores?",
+      "choices": [
+        "Encrypted at rest with a rotating key",
+        "Tokenized at rest — only the token is persisted",
+        "Hashed with a per-record salt",
+        "Stored raw but access-audited"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "The PAN is tokenized at rest: the tokenization service exchanges it for a token at the edge, and only the token flows through Rail into Atlas storage. A raw PAN found in a log, column, or trace is a Tier 0 incident — page on-call immediately (Squad Atlas — Compliance & Data Handling)."
+    },
+    {
+      "id": "atlas-deploy-policy",
+      "prompt": "When does Atlas's deploy pipeline refuse normal production releases?",
+      "choices": [
+        "After 5pm on any day",
+        "Fridays and over the weekend",
+        "Only during the monthly audit window",
+        "Weekends only"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The pipeline is gated to refuse production releases Friday through Sunday — no Friday or weekend deploys. A fix that genuinely can't wait goes through the incident-change path with on-call lead plus Priya sign-off (Squad Atlas — Release & Change Policy)."
+    },
+    {
+      "id": "atlas-premerge-check",
+      "prompt": "Which check must pass before any Atlas pull request can merge?",
+      "choices": [
+        "An end-to-end browser smoke test",
+        "A load/performance benchmark",
+        "The ledger-reconciliation contract test",
+        "A security dependency scan"
+      ],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "The ledger-reconciliation contract test must be green before merge — it verifies that recorded entries match settled balances. A red result blocks merge with no exceptions and no override (Squad Atlas — Release & Change Policy)."
+    },
+    {
+      "id": "atlas-datastore",
+      "prompt": "What is Atlas's primary datastore for the ledger?",
+      "choices": ["DynamoDB", "MongoDB", "Cassandra", "Aurora PostgreSQL"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "The primary datastore is Aurora PostgreSQL, chosen for strong consistency on balance reads and the durability money movement demands (Squad Atlas — Architecture & Datastores)."
+    },
+    {
+      "id": "atlas-append-only",
+      "prompt": "How does atlas-ledger-svc apply a correction to a previously recorded ledger entry?",
+      "choices": [
+        "Updates the existing row in place",
+        "Soft-deletes the row and re-inserts it",
+        "Appends a new entry that offsets the prior one",
+        "Edits the row and writes an audit log line"
+      ],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "The ledger is append-only: rows are never updated or deleted in place. Corrections are new entries that offset prior ones, so the full history is reconstructable from the table — which is what makes reconciliation and audit possible (Squad Atlas — Architecture & Datastores)."
+    },
+    {
+      "id": "atlas-service-name",
+      "prompt": "What is the name of Atlas's primary service and repository, where the ledger and settlement workers live?",
+      "choices": ["atlas-payments-api", "atlas-ledger-svc", "meridian-pay-core", "rail-gateway"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "atlas-ledger-svc is the primary service and repo housing the ledger, settlement workers, and reconciliation logic — new hires should clone it first (Squad Atlas — Charter & Ownership / Architecture & Datastores)."
+    },
+    {
+      "id": "atlas-rail-api",
+      "prompt": "What is the internal codename for Atlas's payment-initiation API?",
+      "choices": ["Rail", "Conduit", "Express", "Gateway"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Rail is the internal name for the payment-initiation API exposed by atlas-ledger-svc. 'Submit it to Rail' means the entry point that accepts a payment instruction and hands it to the ledger (Squad Atlas — Charter & Ownership / Architecture & Datastores)."
+    },
+    {
+      "id": "atlas-squad-lead",
+      "prompt": "Who is the squad lead and engineering manager for Squad Atlas?",
+      "choices": ["Maya Chen", "David Okafor", "Priya Nair", "Sam Rivera"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Priya Nair is the squad lead and EM, and the escalation point for ownership disputes, hiring, and cross-squad commitments touching the payment path. New hires should book a week-one 1:1 with her (Squad Atlas — Charter & Ownership)."
+    },
+    {
+      "id": "atlas-secrets",
+      "prompt": "Where does Atlas store its secrets (database passwords, partner-rail keys, tokenization tokens)?",
+      "choices": [
+        "AWS Secrets Manager, tagged by service",
+        "Encrypted .env files in each repo",
+        "A shared Meridian-wide secrets bucket",
+        "Vault, under the per-squad namespace atlas/"
+      ],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "All Atlas secrets live in Vault under the dedicated per-squad namespace atlas/. Nothing belonging to Atlas is stored outside that namespace, and secrets are read at runtime — never copied into code, a checked-in .env, a ticket, or chat (Squad Atlas — Secrets & Access)."
+    },
+    {
+      "id": "atlas-customer-sla",
+      "prompt": "What customer-facing SLA does Atlas publish for payment-status availability?",
+      "choices": ["99.5% monthly", "99.95% monthly", "99.99% monthly", "99.9% monthly"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Atlas publishes a customer-facing SLA of 99.95% monthly for payment-status availability — customers must be able to see a payment's state (pending, settled, failed) within that target every calendar month, and a breach triggers a customer comms review (Squad Atlas — Charter & Ownership)."
+    }
+  ]
+}
