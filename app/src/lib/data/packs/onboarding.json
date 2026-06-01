@@ -1,0 +1,165 @@
+{
+  "id": "onboarding",
+  "title": "New-Hire Onboarding",
+  "category": "Onboarding",
+  "description": "The most important things to know in your first week — how Quiz Lab ships, the dev workflow, the pack schema, and how work flows through Studio AI.",
+  "coverColor": "#1D4ED8",
+  "coverEmoji": "🎓",
+  "addedAt": "2026-06-01",
+  "questions": [
+    {
+      "id": "onb-1",
+      "prompt": "Where do quiz pack JSON files live in the repo?",
+      "choices": ["static/quizzes/", "app/src/lib/data/packs/", "src/packs/", "public/data/"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Packs are one JSON file each in app/src/lib/data/packs/, picked up by the packs index (Pack Authoring Guide; Architecture Overview). 'static/quizzes/' is the deprecated v0 location and must not be used."
+    },
+    {
+      "id": "onb-2",
+      "prompt": "What is the entire deploy pipeline for Quiz Lab?",
+      "choices": [
+        "Push to a Vercel project with edge caching worldwide",
+        "Merge to main → a GitHub Actions workflow builds the site → GitHub Pages",
+        "Run a manual release script that uploads the build to S3",
+        "A nightly cron job redeploys the production server"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "On every push to main, GitHub Actions builds the static site and publishes it to GitHub Pages under the base path /product-demo — merge to main → Actions build → Pages, with no separate deploy step (Architecture Overview). There is no Vercel deployment."
+    },
+    {
+      "id": "onb-3",
+      "prompt": "What database backs Quiz Lab in production?",
+      "choices": [
+        "Postgres for real-time leaderboards and analytics",
+        "DynamoDB via the agent-api stack",
+        "None — it is a fully prerendered static site with no server or database",
+        "SQLite shipped alongside the build"
+      ],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Quiz Lab is a fully prerendered, client-side app with no server runtime and no database — all content ships in the build (Architecture Overview). Claims of Postgres are out-of-date marketing copy."
+    },
+    {
+      "id": "onb-4",
+      "prompt": "Which framework and build setup is Quiz Lab built on?",
+      "choices": [
+        "Next.js with server-side rendering",
+        "SvelteKit 2 with Vite and the static adapter (@sveltejs/adapter-static)",
+        "Plain React with Create React App",
+        "Astro with server islands"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Quiz Lab is a SvelteKit 2 app built with Vite and @sveltejs/adapter-static, fully prerendered and client-side (Architecture Overview / ARCHITECTURE.md)."
+    },
+    {
+      "id": "onb-5",
+      "prompt": "What single action ships a change to production?",
+      "choices": [
+        "Committing directly to main",
+        "Merging a reviewed pull request to main",
+        "Tagging a release in GitHub",
+        "Running npm run deploy locally"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Merging a PR to main is what ships to production: GitHub Actions builds and publishes automatically, with no separate deploy step (Engineering Handbook)."
+    },
+    {
+      "id": "onb-6",
+      "prompt": "Which statement describes the team's branching and merge model?",
+      "choices": [
+        "Long-lived feature branches merged quarterly",
+        "Trunk-based development — main is always releasable and you never commit directly to it; work lands through reviewed, squash-merged PRs",
+        "Git-flow with develop and release branches",
+        "Everyone pushes straight to main and reverts if it breaks"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The team practices trunk-based development: main is always releasable, you never commit directly to main, and all work lands through a reviewed, squash-merged pull request (Engineering Handbook)."
+    },
+    {
+      "id": "onb-7",
+      "prompt": "What must pass before a pull request can merge?",
+      "choices": [
+        "npm run deploy",
+        "A manual QA sign-off in the deploy channel",
+        "npm run build (in app/)",
+        "A Postgres migration check"
+      ],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "npm run build (in app/) must succeed with the new pack registered before a PR can merge; a broken build blocks the Pages deploy (Architecture Overview / Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-8",
+      "prompt": "Exactly how many choices must every quiz question have?",
+      "choices": ["3", "Exactly 4", "Between 2 and 5", "As many as you like"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Each question's choices array must contain exactly 4 options (Pack Authoring Guide). The old v0 format allowed any number of answers and is superseded."
+    },
+    {
+      "id": "onb-9",
+      "prompt": "How is the correct answer stored on a question?",
+      "choices": [
+        "As a string holding the answer text in a 'correct' field",
+        "As correctIndex, an integer 0–3 that indexes into choices",
+        "By putting the right answer first in the list",
+        "As a boolean flag on each choice"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The correct answer is correctIndex, an integer 0–3 indexing into the four choices (Pack Authoring Guide). Storing the answer as a string was the deprecated v0 behavior."
+    },
+    {
+      "id": "onb-10",
+      "prompt": "How many questions should a pack contain, and how should difficulty vary?",
+      "choices": [
+        "Exactly 10, all at difficulty 1",
+        "10–15 questions with mixed difficulty (levels 1–3)",
+        "At least 50 questions, difficulty optional",
+        "Any number, as long as they are all hard"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "A pack should have 10–15 questions with mixed difficulty, where each question's difficulty is 1, 2, or 3 (rendered as ★ to ★★★) (Pack Authoring Guide)."
+    },
+    {
+      "id": "onb-11",
+      "prompt": "Which Studio AI MCP tool does an agent call to pick up a task?",
+      "choices": ["attach_context", "submit_for_review", "work_on_next_task", "create_idea"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "work_on_next_task picks up a task (by number or the oldest backlog), moves it to inProgress, and returns the spec plus injected curated context (Studio AI SDLC & MCP Workflow)."
+    },
+    {
+      "id": "onb-12",
+      "prompt": "What is the end-to-end Studio AI SDLC loop, in order?",
+      "choices": [
+        "task → idea → merge → branch → review → PR → done",
+        "idea → tasks → pick up task → branch → PR → review → merge (ships) → task done",
+        "PR → idea → task → review → merge → done",
+        "idea → branch → merge → task → review → done"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Work flows idea → tasks → pick up task → branch → PR → review → merge (ships) → task done; merging auto-transitions the task to done and ships to Pages (Studio AI SDLC & MCP Workflow)."
+    },
+    {
+      "id": "onb-13",
+      "prompt": "What is the curated context 'neighborhood' that Studio AI injects when an agent picks up a task?",
+      "choices": [
+        "Every document in the studio knowledge base, loaded in full",
+        "A small set (~5) of the most relevant documents attached to the task or its parent idea, delivered in one shot",
+        "Only the task title and status",
+        "A random sample of recent PRs"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "The neighborhood is a small, curated set (~5 documents) of the most relevant context attached via attach_context to the task or its parent idea and injected at pickup — so the agent fetches once and builds instead of searching repeatedly (Studio AI SDLC & MCP Workflow)."
+    }
+  ]
+}
