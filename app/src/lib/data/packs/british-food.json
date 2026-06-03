@@ -1,0 +1,91 @@
+{
+  "id": "british-food",
+  "title": "British Food: God Save the Cuisine",
+  "category": "Food",
+  "description": "A celebration of the United Kingdom's proudest culinary achievements — from chip butties to spotted dick.",
+  "coverColor": "#00247D",
+  "coverEmoji": "🫖",
+  "addedAt": "2026-06-03",
+  "questions": [
+    {
+      "id": "bf-1",
+      "prompt": "The cooked breakfast featuring eggs, bacon, sausage, beans, and black pudding:",
+      "choices": ["The Full Monty", "The Full English", "The Artery Opener", "The Ulster Glory"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Full English is also known as a 'fry-up' — because everything, somehow, ends up in the frying pan."
+    },
+    {
+      "id": "bf-2",
+      "prompt": "A 'chip butty' is a British sandwich filled with:",
+      "choices": ["Crisps and butter", "Chips inside white bread", "Fried fish on a roll", "Mushy peas on toast"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "A chip butty is exactly what it sounds like: chips (fries) crammed into soft white bread, with optional ketchup."
+    },
+    {
+      "id": "bf-3",
+      "prompt": "The British pudding with a name that has made foreign menus awkward since 1850:",
+      "choices": ["Jam roly-poly", "Spotted Dick", "Treacle sponge", "Bread and butter pudding"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Spotted Dick is a steamed suet pudding with raisins — 'spotted' refers to the fruit and 'dick' likely derives from 'dough.'"
+    },
+    {
+      "id": "bf-4",
+      "prompt": "Marmite, the British spread applied to toast that divides families, is made from:",
+      "choices": ["Beef dripping", "Yeast extract from beer brewing", "Molasses and anchovies", "Burnt porridge"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Marmite is yeast extract and is famously polarising — its slogan 'Love it or hate it' is the most honest food advertising in history."
+    },
+    {
+      "id": "bf-5",
+      "prompt": "The dark, murky condiment called brown sauce slathered on bacon sandwiches contains:",
+      "choices": ["Worcestershire sauce", "Malt vinegar reduction", "Tamarind-and-tomato blend", "Ketchup mixed with gravy"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Brown sauce like HP Sauce blends tamarind, tomatoes, and spices — best described as 'ketchup that gave up.'"
+    },
+    {
+      "id": "bf-6",
+      "prompt": "The British 'meal' of canned baked beans poured over sliced white toast:",
+      "choices": ["Beans on toast", "Scrambled eggs on rye", "Welsh rarebit", "Heinz surprise"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Beans on toast has been a perfectly acceptable British dinner since the 1920s, no shame required."
+    },
+    {
+      "id": "bf-7",
+      "prompt": "The lurid green side dish served alongside fish and chips at British chippies:",
+      "choices": ["Guacamole", "Mint jelly", "Mushy peas", "Pea soup"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Mushy peas are dried marrowfat peas soaked and boiled into a vibrant green mush — the colour of ambition, the texture of regret."
+    },
+    {
+      "id": "bf-8",
+      "prompt": "Haggis, Scotland's beloved national dish, is traditionally cooked inside:",
+      "choices": ["A clay pot", "A cast-iron skillet", "A sheep's stomach", "A hollowed-out turnip"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Haggis is oatmeal, onions, and sheep offal stuffed into a sheep's stomach and boiled — Scotland is very proud of this."
+    },
+    {
+      "id": "bf-9",
+      "prompt": "Coronation chicken, created in 1953 for Queen Elizabeth II, is cold chicken in:",
+      "choices": ["Cream and horseradish sauce", "Curried mayonnaise with apricots", "Gravy and cheddar", "Brown sauce and parsley"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Coronation chicken blends cold chicken with curried mayo and dried fruit — a royal invention that became a supermarket sandwich filling."
+    },
+    {
+      "id": "bf-10",
+      "prompt": "The British instant snack that once used 'the slag of all snacks' as its actual slogan:",
+      "choices": ["Super Noodles", "Pot Noodle", "Rustlers burger", "Cup-a-Soup"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Pot Noodle is a just-add-boiling-water instant noodle pot that embraced its trashy reputation in its own advertising."
+    }
+  ]
+}
