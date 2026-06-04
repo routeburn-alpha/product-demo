@@ -3,5 +3,30 @@
   "title": "Best Restaurants & Cuisines",
   "category": "Food",
   "description": "World cuisines, famous restaurants, and the techniques behind them.",
-  "questions": []
+  "questions": [
+    {
+      "id": "cuisine-1",
+      "prompt": "Which Hollywood actor co-founded the Nobu restaurant empire with chef Nobuyuki Matsuhisa when the flagship New York location opened in 1994?",
+      "choices": ["Al Pacino", "Robert De Niro", "Jack Nicholson", "Morgan Freeman"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Robert De Niro partnered with chef Nobuyuki 'Nobu' Matsuhisa and producer Meir Teper to open Nobu New York in 1994, launching what became a global empire of over 50 restaurants (noburestaurants.com; Wikipedia: 'Nobu Matsuhisa')."
+    },
+    {
+      "id": "cuisine-2",
+      "prompt": "Ferran Adrià's avant-garde restaurant El Bulli was named World's Best Restaurant by Restaurant magazine a record five times. In which year did it permanently close?",
+      "choices": ["2008", "2009", "2011", "2013"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "El Bulli closed permanently in July 2011; Adrià transformed it into the elBulli Foundation, a creativity and innovation center based in Roses, Catalonia (elbullifoundation.com; Wikipedia: 'El Bulli')."
+    },
+    {
+      "id": "cuisine-3",
+      "prompt": "Paul Bocuse held three Michelin stars for over 50 consecutive years. Which French president made the unconventional gesture of traveling to Bocuse's restaurant outside Lyon in 1975 to personally award him the Legion of Honour?",
+      "choices": ["Georges Pompidou", "Valéry Giscard d'Estaing", "François Mitterrand", "Jacques Chirac"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "In February 1975, President Valéry Giscard d'Estaing dined at L'Auberge du Pont de Collonges to present Bocuse with the Legion of Honour — an unprecedented act that elevated the chef to a symbol of French national identity (Wikipedia: 'Paul Bocuse'; James Beard Foundation)."
+    }
+  ]
 }
