@@ -17,11 +17,16 @@
     },
     {
       "id": "ne-2",
-      "prompt": "Largest planet in our solar system:",
-      "choices": ["Saturn", "Neptune", "Earth", "Jupiter"],
-      "correctIndex": 3,
-      "difficulty": 1,
-      "explanation": "Jupiter is the largest, with a mass greater than all other planets combined."
+      "prompt": "In the Navier–Stokes equations for incompressible viscous flow, the Reynolds-averaged closure problem arises because the momentum equations contain an unclosed term. Which tensor represents this term, and what physical phenomenon does it capture?",
+      "choices": [
+        "The viscous stress tensor τᵢⱼ = μ(∂uᵢ/∂xⱼ + ∂uⱼ/∂xᵢ), capturing molecular diffusion of momentum",
+        "The Reynolds stress tensor −ρ⟨u′ᵢu′ⱼ⟩, capturing momentum transport by turbulent velocity fluctuations",
+        "The strain-rate tensor Sᵢⱼ = ½(∂uᵢ/∂xⱼ + ∂uⱼ/∂xᵢ), capturing mean-flow deformation",
+        "The pressure-strain correlation Πᵢⱼ = p′(∂u′ᵢ/∂xⱼ + ∂u′ⱼ/∂xᵢ), capturing inter-component energy redistribution"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Reynolds-averaging the Navier–Stokes equations introduces the Reynolds stress tensor −ρ⟨u′ᵢu′ⱼ⟩, a second-order symmetric tensor formed from the time-averaged product of turbulent velocity fluctuations u′ᵢ and u′ⱼ. It represents the rate of momentum transfer driven by turbulent eddies — analogous to viscous stress but arising from inertial, not molecular, mechanisms. Because this tensor introduces six new unknowns without additional equations, the system is unclosed; turbulence models (e.g., k–ε, k–ω, Reynolds-stress transport) exist specifically to approximate it."
     },
     {
       "id": "ne-3",
