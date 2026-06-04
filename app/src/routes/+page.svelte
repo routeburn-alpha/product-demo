@@ -93,7 +93,7 @@
 		max-width: 880px;
 		margin: 0 auto;
 		padding: 2.5rem 2rem;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-family: Calibri, sans-serif;
 	}
 
 	header {

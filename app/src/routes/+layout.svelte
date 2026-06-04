@@ -53,7 +53,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-family: Calibri, sans-serif;
 	}
 
 	.brand {
