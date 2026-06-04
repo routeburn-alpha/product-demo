@@ -30,11 +30,11 @@
     },
     {
       "id": "ne-3",
-      "prompt": "Capital of France:",
-      "choices": ["Lyon", "Marseille", "Paris", "Nice"],
+      "prompt": "Under France's Fifth Republic, which constitutional mechanism allows the President to bypass Parliament and submit legislation directly to a popular vote, and was used controversially by de Gaulle in 1962 to elect the President by direct universal suffrage — triggering a motion of censure that brought down the Pompidou government?",
+      "choices": ["Article 16 emergency powers", "Article 49-3 confidence procedure", "Article 11 referendum", "Article 89 constitutional revision"],
       "correctIndex": 2,
-      "difficulty": 1,
-      "explanation": "Paris."
+      "difficulty": 3,
+      "explanation": "Article 11 of the 1958 Constitution allows the President to submit certain bills directly to referendum without parliamentary approval. De Gaulle's use of it in October 1962 to introduce direct election of the President was legally contested — critics argued Article 89 (the standard revision procedure) was required — but the referendum passed. The National Assembly responded by passing a motion of censure under Article 49-1, toppling Prime Minister Pompidou's government, though de Gaulle then dissolved the Assembly and won the subsequent elections."
     },
     {
       "id": "ne-4",
