@@ -41,11 +41,16 @@
     },
     {
       "id": "ne-5",
-      "prompt": "Which of these is a primary color?",
-      "choices": ["Green", "Orange", "Yellow", "Purple"],
-      "correctIndex": 2,
-      "difficulty": 1,
-      "explanation": "The three primary colors of light are red, green, and blue; in paint they are red, yellow, and blue. Yellow is the only primary in this list."
+      "prompt": "In commutative algebra, a Noetherian ring is defined by which of the following conditions?",
+      "choices": [
+        "Every ideal is principal",
+        "Every ascending chain of ideals eventually stabilizes",
+        "Every non-zero element has a unique factorization into irreducibles",
+        "The ring contains no zero divisors"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "A Noetherian ring satisfies the ascending chain condition (ACC) on ideals: every chain I₁ ⊆ I₂ ⊆ I₃ ⊆ … eventually stabilizes. The other options describe PIDs (every ideal principal), UFDs (unique factorization), and integral domains (no zero divisors) — all distinct classes."
     },
     {
       "id": "ne-6",
