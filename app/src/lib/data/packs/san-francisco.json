@@ -81,16 +81,16 @@
     },
     {
       "id": "sf-hist-2",
-      "prompt": "After the 1906 earthquake destroyed San Francisco's Chinatown, community leaders fended off pressure to relocate residents to Hunters Point and instead rebuilt in place. What distinctive feature did the rebuilt architecture deliberately emphasize?",
+      "prompt": "In the aftermath of the 1906 San Francisco earthquake, Look Tin Eli and architects T. Paterson Ross and A.W. Burgren's deliberate exoticization of Chinatown's rebuilt streetscape (including pagoda roofs, dragon motifs, and ornamental tilework) served which historiographical phenomenon, later analyzed by scholars as both an act of community agency and a manifestation of broader American imperialism?",
       "choices": [
-        "Traditional Chinese courtyard housing",
-        "\"Oriental\"-style pagoda roofs and ornamentation aimed at attracting tourists",
-        "Beaux-Arts facades that matched the surrounding city",
-        "Industrial warehouses for the import-export trade"
+        "Urban renewal and the preservation of vernacular Chinese architectural traditions",
+        "Strategic commodification of ethnic difference through 'Oriental' aestheticization for tourism and capital accumulation",
+        "Intentional erasure of Chinese cultural memory through imitation of Beaux-Arts municipal design standards",
+        "Deliberate enforcement of segregation policies aligned with contemporary Progressive Era zoning theories"
       ],
       "correctIndex": 1,
       "difficulty": 3,
-      "explanation": "Businessman Look Tin Eli organized the rebuild and hired architects T. Paterson Ross and A.W. Burgren to design Chinatown with deliberately exoticized pagoda roofs, dragon motifs, and colored tiles — the strategy was to make the neighborhood a tourist draw, which helped keep it from being displaced. The look that still defines Grant Avenue today is the result (Wikipedia: 'Chinatown, San Francisco', '1906 earthquake' section)."
+      "explanation": "Scholars in ethnic history and urban studies (including works on the cultural politics of Chinatown reconstruction post-1906) have examined how Look Tin Eli's strategy of marketing Chinatown as an exotic tourist destination through deliberate architectural exoticization was simultaneously a pragmatic economic survival strategy against displacement and an internalization of Orientalist frameworks. This phenomenon—turning ethnic identity into commodified spectacle—reflects the complex tensions between self-determination and the dominant power structures of early-twentieth-century capitalism. The 'Oriental' aesthetic (pagoda roofs, dragon imagery, decorative tiles) was thus neither purely 'authentic' Chinese architecture nor purely imposed American design, but rather a negotiated, hybrid response to material constraints and cultural domination (studies on cultural commodification and ethnic heritage preservation)."
     }
   ]
 }
