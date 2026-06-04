@@ -79,4 +79,29 @@ describe('listPacks()', () => {
 			expect(topics).toEqual({ nb: 2, lm: 2, food: 2, tr: 2, hist: 2 });
 		});
 	});
+
+	describe('cuisines pack (Idea #3)', () => {
+		const cuisines = packs.find((p) => p.id === 'cuisines');
+
+		it('exists', () => {
+			expect(cuisines).toBeDefined();
+		});
+
+		it('has exactly 4 questions', () => {
+			expect(cuisines!.questions).toHaveLength(4);
+		});
+
+		it('has the planned 2/1/1 (easy/medium/hard) difficulty distribution', () => {
+			const counts = cuisines!.questions.reduce<Record<number, number>>((acc, q) => {
+				acc[q.difficulty] = (acc[q.difficulty] ?? 0) + 1;
+				return acc;
+			}, {});
+			expect(counts).toEqual({ 1: 2, 2: 1, 3: 1 });
+		});
+
+		it('covers Italian, Japanese, Mexican, and Thai cuisines', () => {
+			const covered = cuisines!.questions.map((q) => q.id.split('-')[1]);
+			expect(new Set(covered)).toEqual(new Set(['italian', 'japanese', 'mexican', 'thai']));
+		});
+	});
 });

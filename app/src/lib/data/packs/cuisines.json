@@ -3,5 +3,38 @@
   "title": "Best Restaurants & Cuisines",
   "category": "Food",
   "description": "World cuisines, famous restaurants, and the techniques behind them.",
-  "questions": []
+  "questions": [
+    {
+      "id": "cuisine-italian-1",
+      "prompt": "A classic Neapolitan pizza Margherita is topped with tomato, fresh basil, and which cheese — together echoing the colors of the Italian flag?",
+      "choices": ["Cheddar", "Mozzarella", "Parmesan", "Gorgonzola"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Pizza Margherita pairs tomato (red), mozzarella (white), and basil (green) to evoke the Italian flag; by popular legend it was named in 1889 for Queen Margherita of Savoy during her visit to Naples (Wikipedia: 'Pizza Margherita')."
+    },
+    {
+      "id": "cuisine-japanese-1",
+      "prompt": "Which Japanese dish is built around vinegared rice combined with ingredients such as raw fish, egg, or vegetables?",
+      "choices": ["Ramen", "Sushi", "Tempura", "Yakitori"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Sushi is defined by its seasoned, vinegared rice (shari) rather than by raw fish — seafood served on its own without the rice is sashimi, not sushi (Wikipedia: 'Sushi')."
+    },
+    {
+      "id": "cuisine-mexican-1",
+      "prompt": "Mole poblano, the celebrated sauce from the Mexican state of Puebla, gets its dark color and depth from dried chiles blended with which ingredient?",
+      "choices": ["Coffee beans", "Chocolate", "Black beans", "Tamarind"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Mole poblano is a dark red-brown sauce from Puebla made by blending dried chiles (such as ancho) with chocolate, plus nuts, seeds, and spices (MasterClass: 'How to Make Mexican Mole Poblano')."
+    },
+    {
+      "id": "cuisine-thai-1",
+      "prompt": "Pad thai was promoted as a national dish during a late-1930s nationalist campaign led by which Thai prime minister, in part to curb the country's rice consumption?",
+      "choices": ["Pridi Banomyong", "Plaek Phibunsongkhram", "Thaksin Shinawatra", "Sarit Thanarat"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "To reduce wartime rice consumption and forge a modern Thai identity, the government of Prime Minister Plaek Phibunsongkhram promoted rice-noodle dishes in the late 1930s and 1940s, helping establish pad thai as one of Thailand's national dishes (Wikipedia: 'Pad thai')."
+    }
+  ]
 }
