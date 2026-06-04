@@ -46,11 +46,16 @@
     },
     {
       "id": "ne-5",
-      "prompt": "Which of these is a primary color?",
-      "choices": ["Green", "Orange", "Yellow", "Purple"],
-      "correctIndex": 2,
-      "difficulty": 1,
-      "explanation": "The three primary colors of light are red, green, and blue; in paint they are red, yellow, and blue. Yellow is the only primary in this list."
+      "prompt": "The Birch and Swinnerton-Dyer conjecture — one of the Millennium Prize Problems — asserts which relationship for an elliptic curve E over ℚ?",
+      "choices": [
+        "Every elliptic curve over ℚ is modular, i.e., arises from a weight-2 newform",
+        "The algebraic rank of E(ℚ) equals the order of vanishing of its L-function L(E, s) at s = 1",
+        "The group E(ℚ) is always finitely generated with torsion subgroup of order at most 12",
+        "For all primes p of good reduction, |E(𝔽ₚ)| = p + 1 − aₚ where |aₚ| ≤ 2√p"
+      ],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "The BSD conjecture predicts that rank(E(ℚ)) = ord_{s=1} L(E, s). Choice A is the Modularity Theorem (proved by Wiles et al.). Choice C is the Mazur torsion theorem (proved). Choice D is the Hasse bound (proved) — it defines the trace of Frobenius aₚ but says nothing about the rank."
     },
     {
       "id": "ne-6",
