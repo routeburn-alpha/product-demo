@@ -79,4 +79,14 @@ describe('listPacks()', () => {
 			expect(topics).toEqual({ nb: 2, lm: 2, food: 2, tr: 2, hist: 2 });
 		});
 	});
+
+	describe('british-food pack', () => {
+		const bf = packs.find((p) => p.id === 'british-food');
+
+		it('has a question about british candy', () => {
+			expect(bf).toBeDefined();
+			const candyQuestion = bf!.questions.find((q) => q.id === 'bf-11');
+			expect(candyQuestion).toBeDefined();
+		});
+	});
 });
