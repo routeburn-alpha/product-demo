@@ -79,4 +79,23 @@ describe('listPacks()', () => {
 			expect(topics).toEqual({ nb: 2, lm: 2, food: 2, tr: 2, hist: 2 });
 		});
 	});
+
+	describe('60s-music pack', () => {
+		const sixties = packs.find((p) => p.id === '60s-music');
+
+		it('exists', () => {
+			expect(sixties).toBeDefined();
+		});
+
+		it('has at least one question', () => {
+			expect(sixties!.questions.length).toBeGreaterThan(0);
+		});
+
+		it('contains a question about british music in the 60s', () => {
+			const britishMusicQuestion = sixties!.questions.find(
+				(q) => q.prompt.toLowerCase().includes('british') || q.prompt.toLowerCase().includes('beatles') || q.prompt.toLowerCase().includes('rolling stones')
+			);
+			expect(britishMusicQuestion).toBeDefined();
+		});
+	});
 });
