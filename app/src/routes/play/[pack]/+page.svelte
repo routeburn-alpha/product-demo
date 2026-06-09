@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import type { Pack } from '$lib/packs';
 	import Scorecard from '$lib/components/Scorecard.svelte';
 	import { type AnswerRecord, summarize } from '$lib/scoring';
+	import { applyAnswer, applyCompletion, initPlayer, levelFor, player, todayISO } from '$lib/player';
 
 	let { data } = $props();
 	const pack = $derived<Pack>(data.pack);
@@ -16,12 +18,31 @@
 	let questionStart = now();
 	let lastMs = 0;
 
+	// XP baseline captured at the start of the round, so the scorecard can show
+	// this round's gains and any level-up.
+	let startXp = $state(0);
+	let startLevel = $state(0);
+
+	onMount(() => {
+		initPlayer();
+		resetProgressBaseline();
+	});
+
 	const question = $derived(pack.questions[index]);
 	const isCorrect = $derived(selected !== null && selected === question.correctIndex);
 	const summary = $derived(summarize(answers, pack.questions));
+	const xpEarned = $derived($player.xp - startXp);
+	const leveledUpTo = $derived(
+		levelFor($player.xp).level > startLevel ? levelFor($player.xp).level : null
+	);
 
 	function now(): number {
 		return typeof performance !== 'undefined' ? performance.now() : 0;
+	}
+
+	function resetProgressBaseline() {
+		startXp = $player.xp;
+		startLevel = levelFor($player.xp).level;
 	}
 
 	function choose(i: number) {
@@ -32,16 +53,11 @@
 
 	function next() {
 		if (selected === null) return;
-		answers = [
-			...answers,
-			{
-				qId: question.id,
-				chosen: selected,
-				correct: selected === question.correctIndex,
-				msToAnswer: lastMs
-			}
-		];
+		const correct = selected === question.correctIndex;
+		answers = [...answers, { qId: question.id, chosen: selected, correct, msToAnswer: lastMs }];
+		applyAnswer(correct, question.difficulty);
 		if (index + 1 >= pack.questions.length) {
+			applyCompletion(pack.id, todayISO());
 			finished = true;
 		} else {
 			index = index + 1;
@@ -56,6 +72,7 @@
 		answers = [];
 		finished = false;
 		questionStart = now();
+		resetProgressBaseline();
 	}
 </script>
 
@@ -117,7 +134,7 @@
 		<div class="progress-row">
 			<a class="back" href="{base}/">← All packs</a>
 		</div>
-		<Scorecard packTitle={pack.title} {summary} onPlayAgain={restart} />
+		<Scorecard packTitle={pack.title} {summary} {xpEarned} {leveledUpTo} onPlayAgain={restart} />
 	{/if}
 </div>
 
