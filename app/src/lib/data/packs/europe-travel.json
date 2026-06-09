@@ -1,0 +1,91 @@
+{
+  "id": "europe-travel",
+  "title": "Travel in Europe",
+  "category": "Travel",
+  "description": "An easy on-ramp through Europe's cities, landmarks, railways, and quirks.",
+  "coverColor": "#047857",
+  "coverEmoji": "🚆",
+  "addedAt": "2026-06-09",
+  "questions": [
+    {
+      "id": "eu-cap-1",
+      "prompt": "What is the capital of France?",
+      "choices": ["Lyon", "Marseille", "Paris", "Nice"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Paris has been the capital of France since the 12th century and is the country's largest city (Wikipedia: 'Paris')."
+    },
+    {
+      "id": "eu-cap-2",
+      "prompt": "Madrid is the capital of which country?",
+      "choices": ["Portugal", "Spain", "Italy", "Greece"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Madrid is the capital and most populous city of Spain, sitting almost exactly in the centre of the Iberian Peninsula (Wikipedia: 'Madrid')."
+    },
+    {
+      "id": "eu-geo-1",
+      "prompt": "The Danube, Europe's second-longest river, flows through which of these capital cities?",
+      "choices": ["Budapest", "Prague", "Warsaw", "Madrid"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "The Danube runs through Budapest, dividing the historic halves of Buda and Pest. Prague sits on the Vltava, Warsaw on the Vistula, and Madrid on the Manzanares (Wikipedia: 'Danube')."
+    },
+    {
+      "id": "eu-lm-1",
+      "prompt": "The ancient Colosseum amphitheatre is a famous landmark in which city?",
+      "choices": ["Athens", "Lisbon", "Madrid", "Rome"],
+      "correctIndex": 3,
+      "difficulty": 1,
+      "explanation": "The Colosseum, completed around AD 80, stands in the centre of Rome and is the largest ancient amphitheatre ever built (Wikipedia: 'Colosseum')."
+    },
+    {
+      "id": "eu-lm-2",
+      "prompt": "The still-unfinished Sagrada Família basilica in Barcelona was designed by which architect?",
+      "choices": ["Le Corbusier", "Santiago Calatrava", "Antoni Gaudí", "Norman Foster"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Antoni Gaudí took over the Sagrada Família in 1883 and worked on it until his death in 1926; construction continues today (Wikipedia: 'Sagrada Família')."
+    },
+    {
+      "id": "eu-rail-1",
+      "prompt": "The Channel Tunnel, used by Eurostar trains, runs beneath the sea to connect which two countries?",
+      "choices": ["Italy and Greece", "England and France", "Spain and Morocco", "Germany and Denmark"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The 50 km Channel Tunnel links Folkestone in England with Coquelles in France beneath the English Channel; Eurostar has run through it since 1994 (Wikipedia: 'Channel Tunnel')."
+    },
+    {
+      "id": "eu-rail-2",
+      "prompt": "\"ICE\" (InterCity Express) is the high-speed train brand of which country's national railway?",
+      "choices": ["France", "Spain", "Italy", "Germany"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "ICE trains are operated by Deutsche Bahn in Germany; France's equivalent is the TGV and Spain's is the AVE (Wikipedia: 'Intercity-Express')."
+    },
+    {
+      "id": "eu-lang-1",
+      "prompt": "Which of these countries uses the euro as its official currency?",
+      "choices": ["Sweden", "Switzerland", "Germany", "Norway"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Germany adopted the euro in 1999/2002. Sweden uses the krona, Switzerland the franc, and Norway the krone — none of those three use the euro (Wikipedia: 'Eurozone')."
+    },
+    {
+      "id": "eu-lang-2",
+      "prompt": "Basque (Euskara), a language with no known relation to any other in Europe, is spoken in parts of which two neighbouring countries?",
+      "choices": ["Finland and Estonia", "Italy and Austria", "Spain and France", "Romania and Moldova"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "Basque is spoken in the Basque Country straddling the western Pyrenees in northern Spain and south-western France. It is a language isolate, unrelated to the Indo-European languages around it (Wikipedia: 'Basque language')."
+    },
+    {
+      "id": "eu-food-1",
+      "prompt": "Surströmming — fermented Baltic herring famous for its pungent smell — is a traditional delicacy of which country?",
+      "choices": ["Sweden", "Iceland", "Portugal", "Croatia"],
+      "correctIndex": 0,
+      "difficulty": 3,
+      "explanation": "Surströmming is a Swedish speciality of lightly salted herring fermented for months, so notoriously smelly that it is usually opened outdoors (Wikipedia: 'Surströmming')."
+    }
+  ]
+}
