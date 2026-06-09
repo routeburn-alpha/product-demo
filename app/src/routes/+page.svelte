@@ -101,7 +101,8 @@
 <div class="container">
 	<HeroSection {packs} scrollTargetId="pack-grid" />
 
-	<section class="browse" aria-label="Browse packs">
+	<section class="browse" aria-labelledby="browse-heading">
+		<h2 id="browse-heading" class="sr-only">Browse packs</h2>
 		<div class="sidebar">
 			<SearchBar bind:value={query} />
 			<CategoryFilter {categories} bind:selected={category} bind:sort />

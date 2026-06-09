@@ -75,9 +75,32 @@
 	}
 
 	$effect(() => () => cleanup?.());
+
+	// Arrow-key navigation across the grid (roving focus over the card links).
+	let gridEl = $state<HTMLDivElement>();
+
+	function onGridKeydown(e: KeyboardEvent) {
+		const nav = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'];
+		if (!nav.includes(e.key) || !gridEl) return;
+		const cards = Array.from(gridEl.querySelectorAll<HTMLAnchorElement>('.pack-card'));
+		const idx = cards.indexOf(document.activeElement as HTMLAnchorElement);
+		if (idx === -1) return;
+		e.preventDefault();
+		let next = idx;
+		if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = Math.min(idx + 1, cards.length - 1);
+		else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = Math.max(idx - 1, 0);
+		else if (e.key === 'Home') next = 0;
+		else if (e.key === 'End') next = cards.length - 1;
+		cards[next]?.focus();
+	}
+
+	$effect(() => {
+		gridEl?.addEventListener('keydown', onGridKeydown);
+		return () => gridEl?.removeEventListener('keydown', onGridKeydown);
+	});
 </script>
 
-<div class="pack-grid" id={gridId}>
+<div class="pack-grid" id={gridId} bind:this={gridEl}>
 	{#each packs as pack (pack.id)}
 		{@const range = difficultyRange(pack.questions)}
 		{@const showNew = isNew(pack.addedAt)}
