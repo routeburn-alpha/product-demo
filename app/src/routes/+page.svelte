@@ -103,13 +103,13 @@
 	h1 {
 		font-size: 2.25rem;
 		font-weight: 800;
-		color: #111;
+		color: var(--text-strong);
 		margin: 0;
 		letter-spacing: -0.02em;
 	}
 
 	.subtitle {
-		color: #555;
+		color: var(--text-muted);
 		margin: 0.5rem 0 0;
 		font-size: 1rem;
 		max-width: 60ch;
@@ -124,22 +124,22 @@
 	.pack-card {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid #e2e2e2;
+		border: 1px solid var(--quiz-border);
 		border-radius: 12px;
 		overflow: hidden;
-		background: #fff;
+		background: var(--white);
 		text-decoration: none;
 		color: inherit;
-		transition: border-color 120ms ease, box-shadow 200ms ease, transform 200ms ease;
+		transition: border-color var(--transition-fast), box-shadow var(--transition-medium), transform var(--transition-medium);
 	}
 
 	.pack-card:hover {
-		border-color: #cbd5e1;
-		box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+		border-color: var(--quiz-hover);
+		box-shadow: 0 8px 24px var(--quiz-shadow);
 	}
 
 	.pack-card:focus-visible {
-		outline: 3px solid #1d4ed8;
+		outline: 3px solid var(--quiz-focus);
 		outline-offset: 3px;
 	}
 
@@ -201,7 +201,7 @@
 	h2 {
 		font-size: 1.05rem;
 		font-weight: 700;
-		color: #111;
+		color: var(--text-strong);
 		margin: 0;
 		line-height: 1.3;
 	}
@@ -213,13 +213,13 @@
 		border-radius: 4px;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
-		background: #f0f9ff;
-		color: #1d4ed8;
+		background: var(--green-50);
+		color: var(--quiz-link);
 		align-self: flex-start;
 	}
 
 	.description {
-		color: #555;
+		color: var(--text-muted);
 		font-size: 0.875rem;
 		line-height: 1.5;
 		margin: 0.15rem 0 0;
@@ -233,17 +233,17 @@
 		font-size: 0.8rem;
 		color: var(--text-muted);
 		padding: 0.75rem 1.25rem 1rem;
-		border-top: 1px solid #f1f5f9;
+		border-top: 1px solid var(--quiz-border);
 	}
 
 	.difficulty {
-		color: #f59e0b;
+		color: var(--quiz-secondary);
 		letter-spacing: 0.1em;
 		white-space: nowrap;
 	}
 
 	.range-dash {
-		color: #94a3b8;
+		color: var(--text-muted);
 		margin: 0 0.25rem;
 		letter-spacing: 0;
 	}
@@ -251,15 +251,15 @@
 	footer {
 		margin-top: 3rem;
 		padding-top: 1.5rem;
-		border-top: 1px solid #e2e2e2;
-		color: #666;
+		border-top: 1px solid var(--quiz-border);
+		color: var(--text-muted);
 		font-size: 0.875rem;
 		line-height: 1.6;
 	}
 
 	code {
 		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-		background: #f5f5f5;
+		background: var(--quiz-surface);
 		padding: 0.1rem 0.35rem;
 		border-radius: 4px;
 		font-size: 0.85em;
