@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { Pack } from '$lib/packs';
+	import HeroSection from '$lib/components/HeroSection.svelte';
 
 	let { data } = $props();
 	const packs = $derived<Pack[]>(data.packs);
@@ -28,13 +29,10 @@
 </script>
 
 <div class="container">
-	<header>
-		<h1>Quiz Lab</h1>
-		<p class="subtitle">Pick a pack. Race the clock. Rate the questions. Watch packs ship while you play.</p>
-	</header>
+	<HeroSection {packs} scrollTargetId="pack-grid" />
 
 	<section>
-		<div class="pack-grid">
+		<div class="pack-grid" id="pack-grid">
 			{#each packs as pack (pack.id)}
 				{@const range = difficultyRange(pack.questions)}
 				{@const showNew = isNew(pack.addedAt)}
@@ -94,25 +92,6 @@
 		margin: 0 auto;
 		padding: 2.5rem 2rem;
 		font-family: Calibri, sans-serif;
-	}
-
-	header {
-		margin-bottom: 2.5rem;
-	}
-
-	h1 {
-		font-size: 2.25rem;
-		font-weight: 800;
-		color: var(--text-strong);
-		margin: 0;
-		letter-spacing: -0.02em;
-	}
-
-	.subtitle {
-		color: var(--text-muted);
-		margin: 0.5rem 0 0;
-		font-size: 1rem;
-		max-width: 60ch;
 	}
 
 	.pack-grid {
