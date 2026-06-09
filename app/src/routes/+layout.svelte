@@ -14,10 +14,12 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<link rel="manifest" href="{base}/manifest.webmanifest" />
+	<meta name="theme-color" content="#15803d" />
 </svelte:head>
 
 <nav class="top-nav">
-	<a class="brand" href="{base}/">Quiz Lab</a>
+	<a class="brand" href="{base}/">Quiz Arena</a>
 	<div class="nav-right">
 		{#if showBadge}
 			<span

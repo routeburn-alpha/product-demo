@@ -41,7 +41,8 @@
 		margin-top: 1rem;
 	}
 
-	/* Horizontal scrollable category selector. */
+	/* Horizontal scrollable category selector — native swipe on touch,
+	   with scroll-snap for a tactile feel. */
 	.pills {
 		display: flex;
 		gap: 0.5rem;
@@ -49,11 +50,13 @@
 		flex: 1;
 		padding-bottom: 0.25rem;
 		scrollbar-width: thin;
+		scroll-snap-type: x proximity;
 		-webkit-overflow-scrolling: touch;
 	}
 
 	.pill {
 		flex: 0 0 auto;
+		scroll-snap-align: start;
 		min-height: 36px;
 		padding: 0.4rem 0.9rem;
 		border: 1.5px solid var(--quiz-border);
@@ -85,6 +88,13 @@
 	@media (prefers-reduced-motion: no-preference) {
 		.pill:active {
 			transform: scale(0.95);
+		}
+	}
+
+	/* Larger touch targets on coarse pointers. */
+	@media (pointer: coarse) {
+		.pill {
+			min-height: 44px;
 		}
 	}
 

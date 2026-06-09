@@ -151,10 +151,19 @@
 
 <style>
 	/* Masonry-style layout via CSS multi-column: cards keep their natural
-	   (varying) heights and flow into balanced columns. */
+	   (varying) heights and flow into balanced columns. The column-width
+	   yields the responsive breakpoints — 1 column on mobile, 2–3 on tablet,
+	   4+ in the wide desktop grid area. */
 	.pack-grid {
-		columns: 260px;
+		columns: 240px;
 		column-gap: 1rem;
+	}
+
+	/* Guarantee a single column on the smallest screens. */
+	@media (max-width: 480px) {
+		.pack-grid {
+			columns: 1;
+		}
 	}
 
 	.pack-card {
