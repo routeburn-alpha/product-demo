@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { computePosition, offset, flip, shift, autoUpdate } from '@floating-ui/dom';
 	import type { Pack } from '$lib/packs';
 
 	let { packs, gridId = 'pack-grid' }: { packs: Pack[]; gridId?: string } = $props();
@@ -38,6 +39,42 @@
 		for (const ch of category) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
 		return CATEGORY_GREENS[h % CATEGORY_GREENS.length];
 	}
+
+	function cardLabel(pack: Pack): string {
+		const n = pack.questions.length;
+		return `${pack.title} — ${pack.category}, ${n} ${n === 1 ? 'question' : 'questions'}`;
+	}
+
+	// ── Hover/focus preview popover (floating-ui positioned) ──
+	let popoverEl = $state<HTMLDivElement>();
+	let activePack = $state<Pack | null>(null);
+	let cleanup: (() => void) | undefined;
+
+	function openPreview(node: HTMLElement, pack: Pack) {
+		if (!popoverEl) return;
+		activePack = pack;
+		cleanup?.();
+		cleanup = autoUpdate(node, popoverEl, () => {
+			if (!popoverEl) return;
+			computePosition(node, popoverEl, {
+				placement: 'top',
+				strategy: 'fixed',
+				middleware: [offset(10), flip(), shift({ padding: 8 })]
+			}).then(({ x, y }) => {
+				if (!popoverEl) return;
+				popoverEl.style.left = `${x}px`;
+				popoverEl.style.top = `${y}px`;
+			});
+		});
+	}
+
+	function closePreview() {
+		activePack = null;
+		cleanup?.();
+		cleanup = undefined;
+	}
+
+	$effect(() => () => cleanup?.());
 </script>
 
 <div class="pack-grid" id={gridId}>
@@ -45,7 +82,16 @@
 		{@const range = difficultyRange(pack.questions)}
 		{@const showNew = isNew(pack.addedAt)}
 		{@const accent = categoryAccent(pack.category)}
-		<a class="pack-card" href="{base}/play/{pack.id}" style="--card-accent: {accent}">
+		<a
+			class="pack-card"
+			href="{base}/play/{pack.id}"
+			style="--card-accent: {accent}"
+			aria-label={cardLabel(pack)}
+			onmouseenter={(e) => openPreview(e.currentTarget, pack)}
+			onmouseleave={closePreview}
+			onfocus={(e) => openPreview(e.currentTarget, pack)}
+			onblur={closePreview}
+		>
 			<div
 				class="cover"
 				class:cover-fallback={!pack.coverColor}
@@ -86,6 +132,21 @@
 			</div>
 		</a>
 	{/each}
+</div>
+
+<!-- Single shared preview popover — decorative (aria-hidden); the card's
+     aria-label already conveys its metadata to assistive tech. -->
+<div
+	class="preview"
+	class:visible={activePack !== null}
+	bind:this={popoverEl}
+	aria-hidden="true"
+>
+	{#if activePack}
+		{@const sample = activePack.questions[0]}
+		<p class="preview-label">Sample question</p>
+		<p class="preview-q">{sample?.prompt ?? 'No questions yet.'}</p>
+	{/if}
 </div>
 
 <style>
@@ -259,5 +320,51 @@
 		color: var(--text-muted);
 		margin: 0 0.25rem;
 		letter-spacing: 0;
+	}
+
+	/* Floating preview popover. */
+	.preview {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 50;
+		max-width: 260px;
+		padding: 0.7rem 0.85rem;
+		border: 1.5px solid var(--quiz-primary);
+		border-radius: 10px;
+		background: var(--white);
+		box-shadow: 0 10px 28px var(--quiz-shadow);
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity var(--transition-fast),
+			visibility var(--transition-fast);
+	}
+
+	.preview.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.preview-label {
+		margin: 0 0 0.25rem;
+		font-size: 0.62rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--quiz-link);
+	}
+
+	.preview-q {
+		margin: 0;
+		font-size: 0.85rem;
+		line-height: 1.4;
+		color: var(--text-strong);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 </style>

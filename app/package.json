@@ -25,6 +25,7 @@
 		"vitest": "^4.1.4"
 	},
 	"dependencies": {
+		"@floating-ui/dom": "^1.7.6",
 		"fuse.js": "^7.4.2"
 	}
 }
