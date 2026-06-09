@@ -13,6 +13,30 @@
       "explanation": "Robert De Niro partnered with chef Nobuyuki 'Nobu' Matsuhisa and producer Meir Teper to open Nobu New York in 1994, launching what became a global empire of over 50 restaurants (noburestaurants.com; Wikipedia: 'Nobu Matsuhisa')."
     },
     {
+      "id": "cuisine-4",
+      "prompt": "Which Italian city is widely regarded as the birthplace of pizza, including the classic Margherita?",
+      "choices": ["Rome", "Naples", "Milan", "Florence"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Modern pizza was born in Naples in the 1700s–1800s; the Margherita is traditionally said to have been created there in 1889 in honor of Queen Margherita of Savoy. Neapolitan 'pizzaiuolo' craft now holds UNESCO intangible cultural heritage status (Wikipedia: 'Neapolitan pizza'; UNESCO)."
+    },
+    {
+      "id": "cuisine-5",
+      "prompt": "What name did Japanese chemist Kikunae Ikeda give in 1908 to the savory 'fifth taste' he identified in kombu seaweed broth?",
+      "choices": ["Umami", "Dashi", "Teriyaki", "Ponzu"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "In 1908 Kikunae Ikeda isolated glutamate from kombu and named the savory taste 'umami' ('pleasant savory taste'), now recognized as one of the five basic tastes (Wikipedia: 'Umami'; 'Kikunae Ikeda')."
+    },
+    {
+      "id": "technique-1",
+      "prompt": "Which cooking technique involves briefly boiling food, then plunging it into ice water to halt the cooking?",
+      "choices": ["Blanching", "Braising", "Poaching", "Searing"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Blanching scalds food in boiling water and then 'shocks' it in ice water to stop cooking, set color, and loosen skins — a standard prep step for vegetables (The Culinary Institute of America, 'The Professional Chef'; Wikipedia: 'Blanching (cooking)')."
+    },
+    {
       "id": "cuisine-2",
       "prompt": "Ferran Adrià's avant-garde restaurant El Bulli was named World's Best Restaurant by Restaurant magazine a record five times. In which year did it permanently close?",
       "choices": ["2008", "2009", "2011", "2013"],
@@ -21,12 +45,44 @@
       "explanation": "El Bulli closed permanently in July 2011; Adrià transformed it into the elBulli Foundation, a creativity and innovation center based in Roses, Catalonia (elbullifoundation.com; Wikipedia: 'El Bulli')."
     },
     {
+      "id": "cuisine-6",
+      "prompt": "Mole poblano, one of Mexico's most celebrated sauces, famously blends dried chiles with which unexpected ingredient?",
+      "choices": ["Chocolate", "Coffee", "Coconut", "Maple syrup"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Mole poblano combines dried chiles, spices, and nuts with a small amount of Mexican chocolate, which adds depth and a subtle bitterness rather than sweetness (Wikipedia: 'Mole poblano'; Diana Kennedy, 'The Cuisines of Mexico')."
+    },
+    {
+      "id": "cuisine-7",
+      "prompt": "Which spice, harvested from the dried stigmas of a crocus flower, is the world's most expensive by weight and colors dishes like biryani and paella?",
+      "choices": ["Saffron", "Turmeric", "Paprika", "Cardamom"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Saffron comes from the hand-picked stigmas of Crocus sativus — it takes roughly 150,000 flowers to yield a single kilogram, making it the most expensive spice by weight (Wikipedia: 'Saffron')."
+    },
+    {
+      "id": "technique-2",
+      "prompt": "Which culinary technique creates a stable blend of two liquids that normally separate, as in mayonnaise and hollandaise?",
+      "choices": ["Emulsification", "Caramelization", "Fermentation", "Reduction"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Emulsification disperses one liquid (e.g. oil) within another (e.g. water or egg yolk) as tiny stabilized droplets; mayonnaise and hollandaise are classic emulsions held together by the lecithin in egg yolks (Harold McGee, 'On Food and Cooking'; Wikipedia: 'Emulsion')."
+    },
+    {
       "id": "cuisine-3",
       "prompt": "Paul Bocuse held three Michelin stars for over 50 consecutive years. Which French president made the unconventional gesture of traveling to Bocuse's restaurant outside Lyon in 1975 to personally award him the Legion of Honour?",
       "choices": ["Georges Pompidou", "Valéry Giscard d'Estaing", "François Mitterrand", "Jacques Chirac"],
       "correctIndex": 1,
       "difficulty": 3,
       "explanation": "In February 1975, President Valéry Giscard d'Estaing dined at L'Auberge du Pont de Collonges to present Bocuse with the Legion of Honour — an unprecedented act that elevated the chef to a symbol of French national identity (Wikipedia: 'Paul Bocuse'; James Beard Foundation)."
+    },
+    {
+      "id": "history-1",
+      "prompt": "The Caesar salad is generally credited to restaurateur Caesar Cardini, who is said to have improvised it in 1924 — in which city?",
+      "choices": ["Rome, Italy", "Tijuana, Mexico", "New York, USA", "Las Vegas, USA"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Despite the name, the Caesar salad has no link to Julius Caesar: Italian-American restaurateur Caesar Cardini is widely credited with creating it at his restaurant in Tijuana, Mexico, in 1924, reportedly improvising from ingredients on hand during a busy Fourth of July rush (Wikipedia: 'Caesar salad')."
     }
   ]
 }
