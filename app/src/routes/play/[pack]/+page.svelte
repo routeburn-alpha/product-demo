@@ -1,34 +1,52 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { Pack } from '$lib/packs';
+	import Scorecard from '$lib/components/Scorecard.svelte';
+	import { type AnswerRecord, summarize } from '$lib/scoring';
 
 	let { data } = $props();
 	const pack = $derived<Pack>(data.pack);
 
 	let index = $state(0);
 	let selected = $state<number | null>(null);
-	let answers = $state<number[]>([]);
+	let answers = $state<AnswerRecord[]>([]);
 	let finished = $state(false);
+
+	// Per-question timing: clock starts when a question is shown, stops when answered.
+	let questionStart = now();
+	let lastMs = 0;
 
 	const question = $derived(pack.questions[index]);
 	const isCorrect = $derived(selected !== null && selected === question.correctIndex);
-	const score = $derived(
-		answers.filter((a: number, i: number) => a === pack.questions[i].correctIndex).length
-	);
+	const summary = $derived(summarize(answers, pack.questions));
+
+	function now(): number {
+		return typeof performance !== 'undefined' ? performance.now() : 0;
+	}
 
 	function choose(i: number) {
 		if (selected !== null) return;
 		selected = i;
+		lastMs = now() - questionStart;
 	}
 
 	function next() {
 		if (selected === null) return;
-		answers = [...answers, selected];
+		answers = [
+			...answers,
+			{
+				qId: question.id,
+				chosen: selected,
+				correct: selected === question.correctIndex,
+				msToAnswer: lastMs
+			}
+		];
 		if (index + 1 >= pack.questions.length) {
 			finished = true;
 		} else {
 			index = index + 1;
 			selected = null;
+			questionStart = now();
 		}
 	}
 
@@ -37,6 +55,7 @@
 		selected = null;
 		answers = [];
 		finished = false;
+		questionStart = now();
 	}
 </script>
 
@@ -90,30 +109,15 @@
 					{question.explanation}
 				</div>
 				<button type="button" class="next" onclick={next}>
-					{index + 1 >= pack.questions.length ? 'See your score' : 'Next question →'}
+					{index + 1 >= pack.questions.length ? 'See your results' : 'Next question →'}
 				</button>
 			{/if}
 		</div>
 	{:else}
-		<div class="result-card">
-			<p class="result-label">You scored</p>
-			<p class="result-score">{score} <span class="of">/ {pack.questions.length}</span></p>
-			<p class="result-summary">
-				{#if score === pack.questions.length}
-					Perfect round. Send this pack to a friend who thinks they're better.
-				{:else if score >= pack.questions.length * 0.7}
-					Strong showing — try one of the other packs next.
-				{:else if score >= pack.questions.length * 0.4}
-					Not bad. Run it back.
-				{:else}
-					Rough one. The explanations are there for a reason — give it another go.
-				{/if}
-			</p>
-			<div class="result-actions">
-				<button type="button" class="primary" onclick={restart}>Play again</button>
-				<a class="secondary" href="{base}/">Pick another pack</a>
-			</div>
+		<div class="progress-row">
+			<a class="back" href="{base}/">← All packs</a>
 		</div>
+		<Scorecard packTitle={pack.title} {summary} onPlayAgain={restart} />
 	{/if}
 </div>
 
@@ -297,20 +301,6 @@
 		margin: 0 0 0.5rem;
 	}
 
-	.result-score {
-		font-size: 4rem;
-		font-weight: 800;
-		color: #1d4ed8;
-		margin: 0;
-		line-height: 1;
-	}
-
-	.result-score .of {
-		color: var(--text-muted);
-		font-weight: 400;
-		font-size: 2rem;
-	}
-
 	.result-summary {
 		color: #555;
 		font-size: 1rem;
@@ -325,7 +315,7 @@
 		justify-content: center;
 	}
 
-	.primary, .secondary {
+	.secondary {
 		padding: 0.75rem 1.25rem;
 		border-radius: 8px;
 		font: inherit;
@@ -335,16 +325,6 @@
 		text-decoration: none;
 		display: inline-flex;
 		align-items: center;
-	}
-
-	.primary {
-		background: #1d4ed8;
-		color: #fff;
-		border: none;
-	}
-
-	.primary:hover {
-		background: #1e40af;
 	}
 
 	.secondary {
