@@ -64,9 +64,22 @@
 		el.setAttribute('tabindex', '-1');
 		el.focus({ preventScroll: true });
 	}
+
+	// Subtle parallax — the hero drifts as the page scrolls (motion-safe only).
+	let heroEl = $state<HTMLElement>();
+	$effect(() => {
+		if (!heroEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const onScroll = () => {
+			const shift = Math.min(window.scrollY * 0.15, 40);
+			heroEl?.style.setProperty('--parallax', `${shift}px`);
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		onScroll();
+		return () => window.removeEventListener('scroll', onScroll);
+	});
 </script>
 
-<section class="hero">
+<section class="hero" bind:this={heroEl}>
 	<p class="eyebrow">Trivia, leveled up</p>
 	<h1>Quiz&nbsp;Arena</h1>
 
@@ -97,6 +110,27 @@
 	.hero {
 		text-align: center;
 		padding: 1rem 0 2.75rem;
+		transform: translateY(var(--parallax, 0));
+		will-change: transform;
+	}
+
+	/* Fade-in from top on load (motion-safe; overrides the base transform
+	   only while running, after which the parallax transform takes over). */
+	@media (prefers-reduced-motion: no-preference) {
+		.hero {
+			animation: hero-in 0.6s ease;
+		}
+	}
+
+	@keyframes hero-in {
+		from {
+			opacity: 0;
+			transform: translateY(-18px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	.eyebrow {
