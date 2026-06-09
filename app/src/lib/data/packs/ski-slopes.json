@@ -1,0 +1,112 @@
+{
+  "id": "ski-slopes",
+  "title": "World's Best Ski Slopes",
+  "category": "Sports",
+  "description": "Test your knowledge of epic ski destinations worldwide",
+  "coverColor": "#2563eb",
+  "coverEmoji": "🎿",
+  "addedAt": "2026-06-09",
+  "questions": [
+    {
+      "id": "ski-geo-1",
+      "prompt": "In which U.S. state would you find the ski town of Aspen?",
+      "choices": ["Utah", "Colorado", "Vermont", "Montana"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Aspen sits in the Rocky Mountains of central Colorado and comprises four mountains — Aspen Mountain, Aspen Highlands, Buttermilk, and Snowmass (Wikipedia: 'Aspen, Colorado')."
+    },
+    {
+      "id": "ski-resort-1",
+      "prompt": "Which season pass gives access to Vail, Whistler Blackcomb, Park City, and Breckenridge?",
+      "choices": ["Ikon Pass", "Epic Pass", "Mountain Collective", "Indy Pass"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Epic Pass, sold by Vail Resorts, covers its owned mountains including Vail, Whistler Blackcomb, Park City, and Breckenridge (epicpass.com; Wikipedia: 'Epic Pass')."
+    },
+    {
+      "id": "ski-geo-2",
+      "prompt": "The pyramid-shaped Matterhorn looms over which Swiss ski resort?",
+      "choices": ["Zermatt", "St. Moritz", "Davos", "Verbier"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "The car-free village of Zermatt sits directly beneath the 4,478 m Matterhorn (Monte Cervino) on the Swiss–Italian border (Wikipedia: 'Zermatt')."
+    },
+    {
+      "id": "ski-slope-1",
+      "prompt": "On a North American trail map, which symbol marks the easiest beginner runs?",
+      "choices": ["Green circle", "Blue square", "Black diamond", "Double black diamond"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "North American resorts rate trails by symbol: green circle (easiest), blue square (intermediate), black diamond (advanced), and double black diamond (expert) (Wikipedia: 'Piste § North America')."
+    },
+    {
+      "id": "ski-resort-2",
+      "prompt": "Which British Columbia resort hosted the alpine skiing events of the 2010 Winter Olympics?",
+      "choices": ["Banff", "Lake Louise", "Whistler", "Mont-Tremblant"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "The 2010 Vancouver Winter Olympics held their alpine events at Whistler Creekside, on Whistler Mountain in British Columbia (Wikipedia: 'Alpine skiing at the 2010 Winter Olympics')."
+    },
+    {
+      "id": "ski-geo-3",
+      "prompt": "The resort town of Chamonix sits at the base of which mountain, the highest in the Alps?",
+      "choices": ["The Eiger", "Monte Rosa", "The Matterhorn", "Mont Blanc"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "Chamonix-Mont-Blanc lies beneath the 4,808 m Mont Blanc, the Alps' highest peak, and hosted the first Winter Olympics in 1924 (Wikipedia: 'Chamonix')."
+    },
+    {
+      "id": "ski-resort-3",
+      "prompt": "Which of these resorts is NOT on the Epic Pass?",
+      "choices": ["Vail", "Heavenly", "Stowe", "Aspen Snowmass"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "Vail, Heavenly, and Stowe are all Vail Resorts mountains on the Epic Pass; Aspen Snowmass is an Ikon Pass destination owned by the Aspen Skiing Company (Wikipedia: 'Epic Pass', 'Ikon Pass')."
+    },
+    {
+      "id": "ski-cult-1",
+      "prompt": "The fearsome Hahnenkamm 'Streif' downhill, one of ski racing's most dangerous World Cup courses, is held in which Austrian town?",
+      "choices": ["St. Anton", "Kitzbühel", "Sölden", "Innsbruck"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Hahnenkamm races run each January on the Streif course above Kitzbühel, Austria — its near-vertical Mausefalle start is infamous on the World Cup circuit (Wikipedia: 'Hahnenkamm (Kitzbühel)')."
+    },
+    {
+      "id": "ski-slope-2",
+      "prompt": "A 'couloir' — like Jackson Hole's notorious Corbet's Couloir — refers to what kind of terrain?",
+      "choices": [
+        "A wide, gently groomed beginner slope",
+        "A steep, narrow gully running between rock walls",
+        "A flat cross-country touring trail",
+        "An artificial jump in a terrain park"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "A couloir is a steep, narrow gully flanked by rock. Corbet's Couloir at Jackson Hole, Wyoming, is entered via a mandatory drop-in and is one of North America's most famous expert lines (Wikipedia: 'Couloir', 'Corbet's Couloir')."
+    },
+    {
+      "id": "ski-slope-3",
+      "prompt": "Whistler Blackcomb has the greatest lift-served vertical drop in North America — roughly how much?",
+      "choices": ["3,450 ft", "4,140 ft", "5,280 ft", "6,800 ft"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "Blackcomb Mountain's vertical drop is about 5,280 ft (1,609 m) — a full mile — the largest of any resort in North America (Wikipedia: 'Whistler Blackcomb')."
+    },
+    {
+      "id": "ski-cult-2",
+      "prompt": "Which California resort hosted the 1960 Winter Olympics, the first Winter Games televised in the United States?",
+      "choices": ["Sun Valley", "Squaw Valley", "Aspen", "Mammoth Mountain"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Squaw Valley, near Lake Tahoe, hosted the 1960 Winter Olympics — the first carried on U.S. television (by CBS). The resort was renamed Palisades Tahoe in 2021 (Wikipedia: '1960 Winter Olympics', 'Palisades Tahoe')."
+    },
+    {
+      "id": "ski-geo-4",
+      "prompt": "St. Moritz, the only town to host the Winter Olympics twice, lies in which Swiss Alpine region?",
+      "choices": ["Valais", "Bernese Oberland", "Engadin", "Aosta Valley"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "St. Moritz sits in the Engadin valley of canton Graubünden and hosted the Winter Olympics in 1928 and 1948 (Aosta Valley is in Italy, not Switzerland) (Wikipedia: 'St. Moritz')."
+    }
+  ]
+}
