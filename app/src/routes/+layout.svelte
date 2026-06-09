@@ -18,6 +18,8 @@
 	<meta name="theme-color" content="#15803d" />
 </svelte:head>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 <nav class="top-nav">
 	<a class="brand" href="{base}/">Quiz Arena</a>
 	<div class="nav-right">
@@ -39,7 +41,7 @@
 	</div>
 </nav>
 
-<main>
+<main id="main-content">
 	{@render children()}
 </main>
 
@@ -102,10 +104,39 @@
 
 	/* High-contrast green focus ring for keyboard users, app-wide. */
 	:global(a:focus-visible),
-	:global(button:focus-visible) {
+	:global(button:focus-visible),
+	:global(input:focus-visible),
+	:global(select:focus-visible) {
 		outline: 3px solid var(--quiz-focus);
 		outline-offset: 2px;
 		border-radius: 2px;
+	}
+
+	/* Skip link — visually hidden until focused. */
+	.skip-link {
+		position: absolute;
+		left: 0.5rem;
+		top: -3rem;
+		z-index: 100;
+		padding: 0.5rem 0.9rem;
+		border-radius: 0 0 8px 8px;
+		background: var(--quiz-primary);
+		color: var(--quiz-on-primary);
+		font-family: Calibri, sans-serif;
+		font-weight: 700;
+		text-decoration: none;
+		transition: top var(--transition-fast);
+	}
+
+	.skip-link:focus {
+		top: 0;
+	}
+
+	/* Respect Windows high-contrast / forced-colors mode. */
+	@media (prefers-contrast: more) {
+		.top-nav {
+			border-bottom: 1px solid var(--ink);
+		}
 	}
 
 	:global(body) {
