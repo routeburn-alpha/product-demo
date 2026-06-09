@@ -154,6 +154,24 @@
 		margin-bottom: 1rem;
 	}
 
+	/* Filter controls slide in from the side on load (motion-safe). */
+	@media (prefers-reduced-motion: no-preference) {
+		.sidebar {
+			animation: slide-in-side 0.5s ease 0.1s backwards;
+		}
+	}
+
+	@keyframes slide-in-side {
+		from {
+			opacity: 0;
+			transform: translateX(-16px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
 	/* Desktop (>= 1025px): a sticky filter sidebar beside a wider grid. */
 	@media (min-width: 1025px) {
 		.container {

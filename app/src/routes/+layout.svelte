@@ -2,11 +2,30 @@
 	import { onMount } from 'svelte';
 	import favicon from '$lib/assets/favicon.svg';
 	import { base } from '$app/paths';
+	import { onNavigate } from '$app/navigation';
 	import { initPlayer, levelFor, player } from '$lib/player';
 
 	let { children } = $props();
 
 	onMount(initPlayer);
+
+	// App-like cross-fade between pages via the View Transitions API,
+	// when supported and motion is allowed.
+	onNavigate((navigation) => {
+		if (
+			typeof document === 'undefined' ||
+			!document.startViewTransition ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			return;
+		}
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 
 	const level = $derived(levelFor($player.xp).level);
 	const showBadge = $derived($player.lastPlayedDate !== null);

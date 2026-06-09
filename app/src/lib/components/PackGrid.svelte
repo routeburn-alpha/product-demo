@@ -1,9 +1,16 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { flip as flipAnimate } from 'svelte/animate';
 	import { computePosition, offset, flip, shift, autoUpdate } from '@floating-ui/dom';
 	import type { Pack } from '$lib/packs';
 
 	let { packs, gridId = 'pack-grid' }: { packs: Pack[]; gridId?: string } = $props();
+
+	// Reduced-motion gate for the JS-driven flip reordering.
+	let reduceMotion = $state(false);
+	$effect(() => {
+		reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	});
 
 	const NEW_PILL_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
 	const now = Date.now();
@@ -101,14 +108,15 @@
 </script>
 
 <div class="pack-grid" id={gridId} bind:this={gridEl}>
-	{#each packs as pack (pack.id)}
+	{#each packs as pack, i (pack.id)}
 		{@const range = difficultyRange(pack.questions)}
 		{@const showNew = isNew(pack.addedAt)}
 		{@const accent = categoryAccent(pack.category)}
 		<a
 			class="pack-card"
 			href="{base}/play/{pack.id}"
-			style="--card-accent: {accent}"
+			style="--card-accent: {accent}; --i: {i}"
+			animate:flipAnimate={{ duration: reduceMotion ? 0 : 260 }}
 			aria-label={cardLabel(pack)}
 			onmouseenter={(e) => openPreview(e.currentTarget, pack)}
 			onmouseleave={closePreview}
@@ -226,6 +234,24 @@
 
 		.pack-card:active {
 			transform: translateY(-1px) scale(0.995);
+		}
+
+		/* Staggered entrance — each card fades/rises in, offset by its index.
+		   Runs once per card on creation (incl. when a filter re-adds one). */
+		.pack-card {
+			animation: card-in 0.45s var(--ease-bounce) backwards;
+			animation-delay: calc(var(--i, 0) * 45ms);
+		}
+	}
+
+	@keyframes card-in {
+		from {
+			opacity: 0;
+			transform: translateY(14px) scale(0.98);
+		}
+		to {
+			opacity: 1;
+			transform: none;
 		}
 	}
 
