@@ -1,8 +1,15 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import favicon from '$lib/assets/favicon.svg';
 	import { base } from '$app/paths';
+	import { initPlayer, levelFor, player } from '$lib/player';
 
 	let { children } = $props();
+
+	onMount(initPlayer);
+
+	const level = $derived(levelFor($player.xp).level);
+	const showBadge = $derived($player.lastPlayedDate !== null);
 </script>
 
 <svelte:head>
@@ -11,7 +18,23 @@
 
 <nav class="top-nav">
 	<a class="brand" href="{base}/">Quiz Lab</a>
-	<a class="github" href="https://github.com/routeburn-alpha/product-demo-template" rel="noopener" target="_blank">View on GitHub</a>
+	<div class="nav-right">
+		{#if showBadge}
+			<span
+				class="player-badge"
+				aria-label="Level {level}, {$player.xp} XP, {$player.streakDays}-day streak"
+			>
+				<span class="badge-part">Lv {level}</span>
+				<span class="badge-sep" aria-hidden="true">·</span>
+				<span class="badge-part">{$player.xp} XP</span>
+				{#if $player.streakDays >= 2}
+					<span class="badge-sep" aria-hidden="true">·</span>
+					<span class="badge-part badge-streak"><span aria-hidden="true">🔥</span> {$player.streakDays}-day</span>
+				{/if}
+			</span>
+		{/if}
+		<a class="github" href="https://github.com/routeburn-alpha/product-demo-template" rel="noopener" target="_blank">View on GitHub</a>
+	</div>
 </nav>
 
 <main>
@@ -106,6 +129,36 @@
 		letter-spacing: -0.01em;
 	}
 
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	/* Player progression badge — uses the green palette tokens. */
+	.player-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.3rem 0.7rem;
+		border: 1px solid var(--green-800);
+		border-radius: 999px;
+		background: var(--green-50);
+		color: var(--green-800);
+		font-size: 0.8rem;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.badge-sep {
+		color: var(--green-600);
+		font-weight: 400;
+	}
+
+	.badge-streak {
+		color: var(--green-900);
+	}
+
 	.github {
 		font-size: 0.85rem;
 		color: var(--text-muted);
@@ -115,5 +168,12 @@
 
 	.github:hover {
 		color: var(--quiz-link);
+	}
+
+	@media (max-width: 420px) {
+		.player-badge {
+			font-size: 0.72rem;
+			padding: 0.25rem 0.55rem;
+		}
 	}
 </style>

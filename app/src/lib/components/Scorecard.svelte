@@ -10,11 +10,15 @@
 	let {
 		packTitle,
 		summary,
-		onPlayAgain
+		onPlayAgain,
+		xpEarned = 0,
+		leveledUpTo = null
 	}: {
 		packTitle: string;
 		summary: Summary;
 		onPlayAgain: () => void;
+		xpEarned?: number;
+		leveledUpTo?: number | null;
 	} = $props();
 
 	const band = $derived(scoreBand(summary.score, summary.total));
@@ -67,6 +71,15 @@
 		{summary.score}<span class="of">/ {summary.total}</span>
 	</h1>
 	<p class="headline">{HEADLINE[band]}</p>
+
+	{#if xpEarned > 0}
+		<p class="xp-earned">
+			<span class="xp-amount">+{xpEarned} XP</span>
+			{#if leveledUpTo !== null}
+				<span class="levelup">⬆ Reached level {leveledUpTo}</span>
+			{/if}
+		</p>
+	{/if}
 
 	<dl class="meta">
 		<div>
@@ -179,9 +192,34 @@
 	.headline {
 		color: #333;
 		font-size: 1.05rem;
-		margin: 1rem auto 1.75rem;
+		margin: 1rem auto 0.75rem;
 		max-width: 40ch;
 		line-height: 1.5;
+	}
+
+	.xp-earned {
+		display: inline-flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem 0.75rem;
+		margin: 0 auto 1.5rem;
+	}
+
+	.xp-amount {
+		background: var(--green-tint);
+		color: var(--green);
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		padding: 0.25rem 0.7rem;
+		font-weight: 700;
+		font-size: 0.9rem;
+	}
+
+	.levelup {
+		color: var(--green-bright);
+		font-weight: 700;
+		font-size: 0.9rem;
 	}
 
 	.meta {
