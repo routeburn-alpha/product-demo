@@ -1,17 +1,126 @@
 <script lang="ts">
+	import Fuse from 'fuse.js';
 	import type { Pack } from '$lib/packs';
 	import HeroSection from '$lib/components/HeroSection.svelte';
 	import PackGrid from '$lib/components/PackGrid.svelte';
+	import SearchBar from '$lib/components/SearchBar.svelte';
+	import CategoryFilter from '$lib/components/CategoryFilter.svelte';
+
+	type SortKey = 'recent' | 'difficulty' | 'az';
 
 	let { data } = $props();
 	const packs = $derived<Pack[]>(data.packs);
+
+	// ── Filter / search / sort state (initialised from the URL on mount) ──
+	let query = $state('');
+	let category = $state('All');
+	let sort = $state<SortKey>('recent');
+
+	const categories = $derived([
+		'All',
+		...Array.from(new Set(packs.map((p) => p.category))).sort((a, b) => a.localeCompare(b))
+	]);
+
+	const fuse = $derived(
+		new Fuse(packs, {
+			keys: ['title', 'category', 'description', 'tags'],
+			threshold: 0.4,
+			ignoreLocation: true
+		})
+	);
+
+	function minDifficulty(p: Pack): number {
+		return p.questions.reduce((m, q) => Math.min(m, q.difficulty), Infinity);
+	}
+
+	function sortPacks(list: Pack[], key: SortKey): Pack[] {
+		const copy = [...list];
+		if (key === 'az') return copy.sort((a, b) => a.title.localeCompare(b.title));
+		if (key === 'difficulty') return copy.sort((a, b) => minDifficulty(a) - minDifficulty(b));
+		// 'recent' — newest addedAt first; undated packs sink to the bottom.
+		return copy.sort((a, b) => {
+			const ta = a.addedAt ? Date.parse(a.addedAt) : -Infinity;
+			const tb = b.addedAt ? Date.parse(b.addedAt) : -Infinity;
+			return tb - ta;
+		});
+	}
+
+	const searched = $derived(
+		query.trim() ? fuse.search(query.trim()).map((r) => r.item) : packs
+	);
+	const filtered = $derived(
+		category === 'All' ? searched : searched.filter((p) => p.category === category)
+	);
+	const visible = $derived(sortPacks(filtered, sort));
+
+	const isFiltering = $derived(query.trim() !== '' || category !== 'All');
+	const resultLabel = $derived(`${visible.length} ${visible.length === 1 ? 'pack' : 'packs'}`);
+
+	function resetFilters() {
+		query = '';
+		category = 'All';
+		sort = 'recent';
+	}
+
+	// ── URL state preservation (browser-only) ──
+	let initialised = false;
+
+	$effect(() => {
+		// Initialise from the URL once, on mount — must run before the writer below.
+		if (initialised) return;
+		const params = new URLSearchParams(window.location.search);
+		query = params.get('q') ?? '';
+		const cat = params.get('cat');
+		if (cat && categories.includes(cat)) category = cat;
+		const s = params.get('sort');
+		if (s === 'difficulty' || s === 'az' || s === 'recent') sort = s;
+		initialised = true;
+	});
+
+	$effect(() => {
+		// Mirror state into the URL (after init, so we don't clobber inbound params).
+		const q = query.trim();
+		const cat = category;
+		const s = sort;
+		if (!initialised) return;
+		const url = new URL(window.location.href);
+		const params = url.searchParams;
+		q ? params.set('q', q) : params.delete('q');
+		cat !== 'All' ? params.set('cat', cat) : params.delete('cat');
+		s !== 'recent' ? params.set('sort', s) : params.delete('sort');
+		const next = `${url.pathname}${params.toString() ? `?${params}` : ''}`;
+		history.replaceState(history.state, '', next);
+	});
 </script>
 
 <div class="container">
 	<HeroSection {packs} scrollTargetId="pack-grid" />
 
-	<section>
-		<PackGrid {packs} gridId="pack-grid" />
+	<section aria-label="Browse packs">
+		<div class="controls">
+			<SearchBar bind:value={query} />
+			<CategoryFilter {categories} bind:selected={category} bind:sort />
+		</div>
+
+		<div class="result-bar">
+			<span class="result-count">{resultLabel}</span>
+			{#if isFiltering}
+				<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
+			{/if}
+		</div>
+
+		<!-- Announce result-count changes to screen readers. -->
+		<p class="sr-only" role="status" aria-live="polite">{resultLabel} found</p>
+
+		{#if visible.length > 0}
+			<PackGrid packs={visible} gridId="pack-grid" />
+		{:else}
+			<div class="empty" id="pack-grid">
+				<p class="empty-emoji" aria-hidden="true">🔍</p>
+				<p class="empty-title">No packs match your search</p>
+				<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
+			</div>
+		{/if}
 	</section>
 
 	<footer>
@@ -28,6 +137,67 @@
 		margin: 0 auto;
 		padding: 2.5rem 2rem;
 		font-family: Calibri, sans-serif;
+	}
+
+	.controls {
+		margin-bottom: 1rem;
+	}
+
+	.result-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin: 0.25rem 0 1.25rem;
+	}
+
+	.result-count {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--text-muted);
+	}
+
+	.reset {
+		border: none;
+		background: none;
+		padding: 0.25rem 0.25rem;
+		color: var(--quiz-link);
+		font: inherit;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.empty {
+		text-align: center;
+		padding: 3rem 1rem;
+		border: 1px dashed var(--quiz-border);
+		border-radius: 12px;
+		background: var(--quiz-surface);
+	}
+
+	.empty-emoji {
+		font-size: 2.5rem;
+		margin: 0 0 0.5rem;
+	}
+
+	.empty-title {
+		font-weight: 700;
+		color: var(--text-strong);
+		margin: 0 0 1rem;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 
 	footer {
