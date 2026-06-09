@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
+	import { navigating } from '$app/stores';
 	import type { Pack } from '$lib/packs';
 	import HeroSection from '$lib/components/HeroSection.svelte';
 	import PackGrid from '$lib/components/PackGrid.svelte';
+	import PackGridSkeleton from '$lib/components/PackGridSkeleton.svelte';
 	import SearchBar from '$lib/components/SearchBar.svelte';
 	import CategoryFilter from '$lib/components/CategoryFilter.svelte';
 
@@ -62,6 +64,9 @@
 		sort = 'recent';
 	}
 
+	// Show skeletons while a client-side navigation *to this page* is in flight.
+	const loading = $derived(!!$navigating && $navigating.to?.route?.id === '/');
+
 	// ── URL state preservation (browser-only) ──
 	let initialised = false;
 
@@ -113,7 +118,9 @@
 			<!-- Announce result-count changes to screen readers. -->
 			<p class="sr-only" role="status" aria-live="polite">{resultLabel} found</p>
 
-			{#if visible.length > 0}
+			{#if loading}
+				<PackGridSkeleton count={packs.length || 6} />
+			{:else if visible.length > 0}
 				<PackGrid packs={visible} gridId="pack-grid" />
 			{:else}
 				<div class="empty" id="pack-grid">

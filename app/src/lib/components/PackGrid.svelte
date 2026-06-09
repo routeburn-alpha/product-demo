@@ -171,6 +171,9 @@
 		flex-direction: column;
 		break-inside: avoid;
 		margin-bottom: 1rem;
+		/* Skip rendering work for off-screen cards (cheap perf win for long lists). */
+		content-visibility: auto;
+		contain-intrinsic-size: 0 320px;
 		border: 1px solid var(--quiz-border);
 		border-radius: 12px;
 		overflow: hidden;
