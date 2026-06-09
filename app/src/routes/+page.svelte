@@ -96,31 +96,33 @@
 <div class="container">
 	<HeroSection {packs} scrollTargetId="pack-grid" />
 
-	<section aria-label="Browse packs">
-		<div class="controls">
+	<section class="browse" aria-label="Browse packs">
+		<div class="sidebar">
 			<SearchBar bind:value={query} />
 			<CategoryFilter {categories} bind:selected={category} bind:sort />
 		</div>
 
-		<div class="result-bar">
-			<span class="result-count">{resultLabel}</span>
-			{#if isFiltering}
-				<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
+		<div class="results">
+			<div class="result-bar">
+				<span class="result-count">{resultLabel}</span>
+				{#if isFiltering}
+					<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
+				{/if}
+			</div>
+
+			<!-- Announce result-count changes to screen readers. -->
+			<p class="sr-only" role="status" aria-live="polite">{resultLabel} found</p>
+
+			{#if visible.length > 0}
+				<PackGrid packs={visible} gridId="pack-grid" />
+			{:else}
+				<div class="empty" id="pack-grid">
+					<p class="empty-emoji" aria-hidden="true">🔍</p>
+					<p class="empty-title">No packs match your search</p>
+					<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
+				</div>
 			{/if}
 		</div>
-
-		<!-- Announce result-count changes to screen readers. -->
-		<p class="sr-only" role="status" aria-live="polite">{resultLabel} found</p>
-
-		{#if visible.length > 0}
-			<PackGrid packs={visible} gridId="pack-grid" />
-		{:else}
-			<div class="empty" id="pack-grid">
-				<p class="empty-emoji" aria-hidden="true">🔍</p>
-				<p class="empty-title">No packs match your search</p>
-				<button class="reset" type="button" onclick={resetFilters}>Clear filters</button>
-			</div>
-		{/if}
 	</section>
 
 	<footer>
@@ -139,8 +141,29 @@
 		font-family: Calibri, sans-serif;
 	}
 
-	.controls {
+	/* Mobile / tablet: filters stack above the results. */
+	.sidebar {
 		margin-bottom: 1rem;
+	}
+
+	/* Desktop (>= 1025px): a sticky filter sidebar beside a wider grid. */
+	@media (min-width: 1025px) {
+		.container {
+			max-width: 1180px;
+		}
+
+		.browse {
+			display: grid;
+			grid-template-columns: 240px 1fr;
+			gap: 2rem;
+			align-items: start;
+		}
+
+		.sidebar {
+			position: sticky;
+			top: 1rem;
+			margin-bottom: 0;
+		}
 	}
 
 	.result-bar {
