@@ -51,6 +51,33 @@ describe('listPacks()', () => {
 		}
 	);
 
+	describe('tuscany-wine-regions pack (Idea #15)', () => {
+		const twr = packs.find((p) => p.id === 'tuscany-wine-regions');
+
+		it('exists', () => {
+			expect(twr).toBeDefined();
+		});
+
+		it('has between 5 and 7 questions', () => {
+			expect(twr!.questions.length).toBeGreaterThanOrEqual(5);
+			expect(twr!.questions.length).toBeLessThanOrEqual(7);
+		});
+
+		it('has only difficulty 1 and 2 questions', () => {
+			for (const q of twr!.questions) {
+				expect(q.difficulty).toBeGreaterThanOrEqual(1);
+				expect(q.difficulty).toBeLessThanOrEqual(2);
+			}
+		});
+
+		it('covers at least geography, characteristics, and tourism topics', () => {
+			const topics = new Set(twr!.questions.map((q) => q.id.split('-')[1]!));
+			expect(topics.has('geo')).toBe(true);
+			expect(topics.has('char')).toBe(true);
+			expect(topics.has('tour')).toBe(true);
+		});
+	});
+
 	describe('san-francisco pack (Idea #2)', () => {
 		const sf = packs.find((p) => p.id === 'san-francisco');
 
