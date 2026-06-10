@@ -8,8 +8,9 @@
 	}: { categories: string[]; selected?: string; sort?: SortKey } = $props();
 </script>
 
-<div class="filters">
-	<div class="pills" role="group" aria-label="Filter packs by category">
+<div class="cf-root">
+	<div class="filters">
+		<div class="pills" role="group" aria-label="Filter packs by category">
 		{#each categories as cat (cat)}
 			<button
 				class="pill"
@@ -31,9 +32,17 @@
 			<option value="az">A–Z</option>
 		</select>
 	</label>
+	</div>
 </div>
 
 <style>
+	/* Adapt to the *container* width (e.g. the 240px desktop sidebar), not the
+	   viewport — otherwise a wide viewport keeps the row layout in a narrow
+	   sidebar and the pills get clipped. */
+	.cf-root {
+		container-type: inline-size;
+	}
+
 	.filters {
 		display: flex;
 		align-items: center;
@@ -48,6 +57,7 @@
 		gap: 0.5rem;
 		overflow-x: auto;
 		flex: 1;
+		min-width: 0;
 		padding-bottom: 0.25rem;
 		scrollbar-width: thin;
 		scroll-snap-type: x proximity;
@@ -131,7 +141,8 @@
 		outline-offset: 2px;
 	}
 
-	@media (max-width: 560px) {
+	/* Stack pills above sort when the container is narrow (sidebar or phone). */
+	@container (max-width: 360px) {
 		.filters {
 			flex-direction: column;
 			align-items: stretch;
@@ -139,6 +150,16 @@
 
 		.sort {
 			justify-content: flex-end;
+		}
+	}
+
+	/* Fallback for browsers without container-query support. */
+	@supports not (container-type: inline-size) {
+		@media (max-width: 560px) {
+			.filters {
+				flex-direction: column;
+				align-items: stretch;
+			}
 		}
 	}
 </style>
