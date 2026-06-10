@@ -25,9 +25,18 @@
 
 	const fuse = $derived(
 		new Fuse(packs, {
-			keys: ['title', 'category', 'description', 'tags'],
-			threshold: 0.4,
-			ignoreLocation: true
+			// Weight title/category above description so a query matches the most
+			// relevant field; a tighter threshold + min match length keeps fuzzy
+			// search from returning unrelated packs (e.g. "ski" matched 4 before).
+			keys: [
+				{ name: 'title', weight: 3 },
+				{ name: 'category', weight: 2 },
+				'description',
+				'tags'
+			],
+			threshold: 0.3,
+			ignoreLocation: true,
+			minMatchCharLength: 2
 		})
 	);
 
