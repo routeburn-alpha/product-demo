@@ -1,0 +1,67 @@
+{
+  "id": "tuscany-wine-regions",
+  "title": "Tuscany Wine Regions",
+  "category": "Travel",
+  "description": "Chianti Classico hills, Brunello's hilltop fortress, and Vernaccia's medieval towers — explore Tuscany's great wine appellations.",
+  "coverColor": "#14532d",
+  "coverEmoji": "🍇",
+  "addedAt": "2026-06-10",
+  "questions": [
+    {
+      "id": "twr-geo-1",
+      "prompt": "The Chianti Classico DOCG zone occupies the hills between which two Tuscan cities?",
+      "choices": ["Florence and Siena", "Pisa and Siena", "Florence and Arezzo", "Lucca and Florence"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Chianti Classico DOCG covers the historic heartland of Chianti between Florence to the north and Siena to the south, spanning roughly 72,000 hectares across the provinces of Firenze and Siena (Consorzio Vino Chianti Classico; Wikipedia: 'Chianti Classico')."
+    },
+    {
+      "id": "twr-geo-2",
+      "prompt": "Brunello di Montalcino DOCG is produced in the municipality of Montalcino, which lies in which Tuscan province?",
+      "choices": ["Grosseto", "Arezzo", "Siena", "Florence"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Montalcino is a hilltop town in the province of Siena in southern Tuscany. The Brunello DOCG production zone is entirely contained within the municipal boundaries of Montalcino (Consorzio del Vino Brunello di Montalcino; Wikipedia: 'Brunello di Montalcino')."
+    },
+    {
+      "id": "twr-char-1",
+      "prompt": "Brunello di Montalcino DOCG must be produced from 100% of which grape variety?",
+      "choices": ["Canaiolo", "Trebbiano", "Montepulciano", "Sangiovese"],
+      "correctIndex": 3,
+      "difficulty": 1,
+      "explanation": "Brunello di Montalcino is made entirely from Sangiovese Grosso, a thick-skinned clone known locally as 'Brunello'. It is one of Italy's most age-worthy reds, requiring a minimum of five years aging before release (Wikipedia: 'Brunello di Montalcino'; Denominazione di Origine Controllata e Garantita regulations)."
+    },
+    {
+      "id": "twr-char-2",
+      "prompt": "Which emblematic symbol appears on the neck label of every bottle certified under the Chianti Classico DOCG, linked by legend to a medieval contest between Florence and Siena?",
+      "choices": ["A golden lily", "A red horse", "A black rooster", "A white wolf"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "The Gallo Nero (black rooster) has been the symbol of the Chianti Classico zone since at least the 13th century. Legend holds that a rooster's crow at dawn determined the boundary between Florence and Siena. The Consorzio del Vino Chianti Classico, founded in 1924, still uses it on all certified DOCG bottles (Wikipedia: 'Chianti Classico')."
+    },
+    {
+      "id": "twr-char-3",
+      "prompt": "Vino Nobile di Montepulciano DOCG must be made from at least 70% of which grape, a local Sangiovese clone?",
+      "choices": ["Colorino", "Ciliegiolo", "Malvasia Nera", "Prugnolo Gentile"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "Vino Nobile di Montepulciano requires a minimum of 70% Prugnolo Gentile, the Montepulciano name for a Sangiovese clone. The DOCG was established in 1980, making Vino Nobile one of Italy's earliest wines to receive that classification (Wikipedia: 'Vino Nobile di Montepulciano')."
+    },
+    {
+      "id": "twr-tour-1",
+      "prompt": "Vernaccia di San Gimignano holds the historic distinction of being Italy's first wine to receive which quality designation, awarded in 1966?",
+      "choices": ["IGT", "DOC", "DOCG", "DOP"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Vernaccia di San Gimignano was awarded Italy's very first DOC (Denominazione di Origine Controllata) in 1966, and was later upgraded to DOCG in 1993. It is a dry white wine grown around the medieval tower town of San Gimignano in the province of Siena (Wikipedia: 'Vernaccia di San Gimignano')."
+    },
+    {
+      "id": "twr-tour-2",
+      "prompt": "The annual 'Benvenuto Brunello' event held each February in Montalcino's medieval fortress is used to preview and present which release to wine journalists and buyers?",
+      "choices": ["The harvest just completed", "The current year's Rosso di Montalcino", "The newest Brunello vintage cleared for release", "A reserve selection aged 10+ years"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "'Benvenuto Brunello' (Welcome Brunello) is an annual February event in the Fortezza di Montalcino where producers present the newest Brunello vintage entering the market. Because Brunello di Montalcino DOCG requires at least five years of aging (six for Riserva), the wines debuted at the event are typically five to six years old at release (Consorzio del Vino Brunello di Montalcino)."
+    }
+  ]
+}
