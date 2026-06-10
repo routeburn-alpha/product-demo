@@ -36,37 +36,27 @@
 </div>
 
 <style>
-	/* Adapt to the *container* width (e.g. the 240px desktop sidebar), not the
-	   viewport — otherwise a wide viewport keeps the row layout in a narrow
-	   sidebar and the pills get clipped. */
-	.cf-root {
-		container-type: inline-size;
-	}
-
+	/* Pills stack vertically, with the sort control beneath them — no
+	   horizontal scroll, so every category is visible regardless of width. */
 	.filters {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		align-items: flex-start;
 		gap: 1rem;
 		margin-top: 1rem;
 	}
 
-	/* Horizontal scrollable category selector — native swipe on touch,
-	   with scroll-snap for a tactile feel. */
+	/* Vertical category selector — pills stack so every category is visible at
+	   once, with no horizontal scroll. */
 	.pills {
 		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 		gap: 0.5rem;
-		overflow-x: auto;
-		flex: 1;
-		min-width: 0;
-		padding-bottom: 0.25rem;
-		scrollbar-width: thin;
-		scroll-snap-type: x proximity;
-		-webkit-overflow-scrolling: touch;
 	}
 
 	.pill {
 		flex: 0 0 auto;
-		scroll-snap-align: start;
 		min-height: 36px;
 		padding: 0.4rem 0.9rem;
 		border: 1.5px solid var(--quiz-border);
@@ -139,27 +129,5 @@
 	select:focus-visible {
 		outline: 3px solid var(--quiz-focus);
 		outline-offset: 2px;
-	}
-
-	/* Stack pills above sort when the container is narrow (sidebar or phone). */
-	@container (max-width: 360px) {
-		.filters {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.sort {
-			justify-content: flex-end;
-		}
-	}
-
-	/* Fallback for browsers without container-query support. */
-	@supports not (container-type: inline-size) {
-		@media (max-width: 560px) {
-			.filters {
-				flex-direction: column;
-				align-items: stretch;
-			}
-		}
 	}
 </style>
