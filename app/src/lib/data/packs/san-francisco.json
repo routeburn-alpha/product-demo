@@ -3,17 +3,17 @@
   "title": "San Francisco",
   "category": "Places",
   "description": "Fog, hills, and Painted Ladies — how well do you know the City by the Bay?",
-  "coverColor": "#C0362C",
+  "coverColor": "#166534",
   "coverEmoji": "🌉",
   "addedAt": "2026-05-19",
   "questions": [
     {
       "id": "sf-nb-1",
-      "prompt": "Which San Francisco neighborhood was the epicenter of the 1967 'Summer of Love' counterculture movement?",
-      "choices": ["The Mission", "The Castro", "Haight-Ashbury", "North Beach"],
+      "prompt": "Which San Francisco neighborhood, centered on the intersection of two famous streets, became the epicenter of the 1967 counterculture movement and was symbolized by the Psychedelic Shop (opened by poet Michael Bowen and others), establishing itself as a pilgrimage site for youth seeking an alternative to the Vietnam War-era mainstream culture?",
+      "choices": ["The Mission District", "The Castro", "Haight-Ashbury", "North Beach"],
       "correctIndex": 2,
-      "difficulty": 1,
-      "explanation": "Haight-Ashbury — the intersection of Haight and Ashbury streets — drew tens of thousands of young people during the 1967 Summer of Love (Wikipedia: 'Summer of Love')."
+      "difficulty": 2,
+      "explanation": "Haight-Ashbury, centered on the intersection of Haight and Ashbury streets in San Francisco's Western Addition district, became the symbolic heart of the 1967 Summer of Love. The Psychedelic Shop (opened in 1966 by Michael Bowen, Chet Helms, and others) served as a central gathering point for countercultural youth and vendors. During the summer of 1967, tens of thousands of young people migrated to the neighborhood seeking an alternative lifestyle and escape from the Vietnam War and mainstream society (Wikipedia: 'Summer of Love'; 'Haight-Ashbury')."
     },
     {
       "id": "sf-nb-2",

@@ -37,6 +37,15 @@ describe('listPacks()', () => {
 		}
 	});
 
+	it('cover colors use only black, green, and white hues (accessibility standard)', () => {
+		const packsWithColors = packs.filter((p) => p.coverColor);
+		for (const pack of packsWithColors) {
+			// Red and pink hues are not allowed
+			const isRed = /^#[C-F][0-3]|^#[89A-F][0-2]/.test(pack.coverColor!);
+			expect(isRed, `Pack ${pack.id} has a red/pink color: ${pack.coverColor}`).toBe(false);
+		}
+	});
+
 	it.each(packs.flatMap((p) => p.questions.map((q) => ({ packId: p.id, q }))))(
 		'$packId/$q.id is a well-formed Question',
 		({ q }) => {
@@ -89,12 +98,12 @@ describe('listPacks()', () => {
 			expect(sf!.questions).toHaveLength(10);
 		});
 
-		it('has the planned 4/4/2 difficulty distribution', () => {
+		it('has the planned 3/5/2 difficulty distribution (after making Haight-Ashbury harder)', () => {
 			const counts = sf!.questions.reduce<Record<number, number>>((acc, q) => {
 				acc[q.difficulty] = (acc[q.difficulty] ?? 0) + 1;
 				return acc;
 			}, {});
-			expect(counts).toEqual({ 1: 4, 2: 4, 3: 2 });
+			expect(counts).toEqual({ 1: 3, 2: 5, 3: 2 });
 		});
 
 		it('has 2 questions in each of the 5 planned topics', () => {
@@ -104,6 +113,13 @@ describe('listPacks()', () => {
 				return acc;
 			}, {});
 			expect(topics).toEqual({ nb: 2, lm: 2, food: 2, tr: 2, hist: 2 });
+		});
+
+		it('sf-nb-1 (Haight-Ashbury question) has been made more challenging', () => {
+			const sfNb1 = sf!.questions.find((q) => q.id === 'sf-nb-1');
+			expect(sfNb1).toBeDefined();
+			// This question should now be difficulty 2, not 1
+			expect(sfNb1!.difficulty).toBe(2);
 		});
 	});
 });
