@@ -78,6 +78,40 @@ describe('listPacks()', () => {
 		});
 	});
 
+	describe('nba-trivia pack (Idea #16)', () => {
+		const nba = packs.find((p) => p.id === 'nba-trivia');
+
+		it('exists', () => {
+			expect(nba).toBeDefined();
+		});
+
+		it('has between 15 and 20 questions', () => {
+			expect(nba!.questions.length).toBeGreaterThanOrEqual(15);
+			expect(nba!.questions.length).toBeLessThanOrEqual(20);
+		});
+
+		it('has category "Sports"', () => {
+			expect(nba!.category).toBe('Sports');
+		});
+
+		it('has coverEmoji 🏀', () => {
+			expect(nba!.coverEmoji).toBe('🏀');
+		});
+
+		it('has all three difficulty levels represented', () => {
+			const levels = new Set(nba!.questions.map((q) => q.difficulty));
+			expect(levels.has(1)).toBe(true);
+			expect(levels.has(2)).toBe(true);
+			expect(levels.has(3)).toBe(true);
+		});
+
+		it('has question IDs in nba-N format', () => {
+			for (const q of nba!.questions) {
+				expect(q.id).toMatch(/^nba-\d+$/);
+			}
+		});
+	});
+
 	describe('san-francisco pack (Idea #2)', () => {
 		const sf = packs.find((p) => p.id === 'san-francisco');
 

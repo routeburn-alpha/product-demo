@@ -1,0 +1,147 @@
+{
+  "id": "nba-trivia",
+  "title": "NBA Trivia",
+  "category": "Sports",
+  "description": "From Wilt Chamberlain's 100-point game to the modern era — test your NBA knowledge.",
+  "coverColor": "#15803d",
+  "coverEmoji": "🏀",
+  "addedAt": "2026-06-11",
+  "questions": [
+    {
+      "id": "nba-1",
+      "prompt": "Who holds the NBA record for most points scored in a single game?",
+      "choices": ["Michael Jordan", "Kobe Bryant", "Wilt Chamberlain", "LeBron James"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Wilt Chamberlain scored 100 points for the Philadelphia Warriors against the New York Knicks on March 2, 1962."
+    },
+    {
+      "id": "nba-2",
+      "prompt": "How many NBA championships did Michael Jordan win with the Chicago Bulls?",
+      "choices": ["4", "5", "6", "7"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Michael Jordan won 6 NBA championships with the Chicago Bulls in 1991, 1992, 1993, 1996, 1997, and 1998."
+    },
+    {
+      "id": "nba-3",
+      "prompt": "Which team has won the most NBA championships in history?",
+      "choices": ["Chicago Bulls", "Golden State Warriors", "Los Angeles Lakers", "Boston Celtics"],
+      "correctIndex": 3,
+      "difficulty": 1,
+      "explanation": "The Boston Celtics have won 17 NBA championships, tied with the Los Angeles Lakers as the most in NBA history."
+    },
+    {
+      "id": "nba-4",
+      "prompt": "Who is the NBA's all-time leading scorer?",
+      "choices": ["Michael Jordan", "Kareem Abdul-Jabbar", "LeBron James", "Karl Malone"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "LeBron James surpassed Kareem Abdul-Jabbar in February 2023 to become the NBA's all-time leading scorer."
+    },
+    {
+      "id": "nba-5",
+      "prompt": "Which player is nicknamed 'The Mamba'?",
+      "choices": ["LeBron James", "Kevin Durant", "Kobe Bryant", "Dwyane Wade"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Kobe Bryant coined the nickname 'Black Mamba' for himself, inspired by the deadly snake."
+    },
+    {
+      "id": "nba-6",
+      "prompt": "In which year was the NBA founded?",
+      "choices": ["1946", "1950", "1954", "1960"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "The NBA was founded on June 6, 1946, as the Basketball Association of America (BAA), before merging with the NBL in 1949 to form the NBA."
+    },
+    {
+      "id": "nba-7",
+      "prompt": "Which team did LeBron James lead to a historic 3-1 Finals comeback in 2016?",
+      "choices": ["Miami Heat", "Los Angeles Lakers", "Cleveland Cavaliers", "Boston Celtics"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "LeBron James led the Cleveland Cavaliers to overcome a 3-1 deficit against the Golden State Warriors in the 2016 NBA Finals."
+    },
+    {
+      "id": "nba-8",
+      "prompt": "Who was the first player to win back-to-back MVP and Defensive Player of the Year awards in the same season?",
+      "choices": ["Tim Duncan", "Kevin Garnett", "Hakeem Olajuwon", "David Robinson"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Hakeem Olajuwon won both the MVP and Defensive Player of the Year awards in 1993-94, a feat that has never been repeated."
+    },
+    {
+      "id": "nba-9",
+      "prompt": "Stephen Curry plays his home games at which arena?",
+      "choices": ["Staples Center", "Chase Center", "Oracle Arena", "SAP Center"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Golden State Warriors moved to Chase Center in San Francisco in 2019, leaving Oracle Arena in Oakland."
+    },
+    {
+      "id": "nba-10",
+      "prompt": "Which player holds the record for most three-pointers made in a single NBA season?",
+      "choices": ["Ray Allen", "Klay Thompson", "Stephen Curry", "James Harden"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Stephen Curry set the record with 402 three-pointers in the 2015-16 season, breaking his own previous record."
+    },
+    {
+      "id": "nba-11",
+      "prompt": "Which team drafted Kobe Bryant with the 13th overall pick in the 1996 NBA Draft?",
+      "choices": ["Los Angeles Lakers", "Charlotte Hornets", "Minnesota Timberwolves", "New Jersey Nets"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Charlotte Hornets drafted Kobe Bryant 13th overall, then traded him to the Los Angeles Lakers for Vlade Divac."
+    },
+    {
+      "id": "nba-12",
+      "prompt": "Who won the first ever NBA MVP award in 1956?",
+      "choices": ["Bill Russell", "Bob Cousy", "George Mikan", "Bob Pettit"],
+      "correctIndex": 3,
+      "difficulty": 3,
+      "explanation": "Bob Pettit of the St. Louis Hawks won the inaugural NBA MVP award in 1956, the year the award was first given out."
+    },
+    {
+      "id": "nba-13",
+      "prompt": "Which coach has the most NBA championship wins as a head coach?",
+      "choices": ["Pat Riley", "Larry Brown", "Phil Jackson", "Gregg Popovich"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Phil Jackson won 11 NBA championships as a head coach — 6 with the Chicago Bulls and 5 with the Los Angeles Lakers."
+    },
+    {
+      "id": "nba-14",
+      "prompt": "What is the diameter of an NBA regulation basketball hoop?",
+      "choices": ["16 inches", "18 inches", "20 inches", "22 inches"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "An NBA regulation basketball hoop has an inner diameter of 18 inches (45.72 cm), which is just slightly larger than two basketballs."
+    },
+    {
+      "id": "nba-15",
+      "prompt": "Which player scored 81 points in a single NBA game in 2006, the second-highest total ever?",
+      "choices": ["LeBron James", "Dwyane Wade", "Allen Iverson", "Kobe Bryant"],
+      "correctIndex": 3,
+      "difficulty": 1,
+      "explanation": "Kobe Bryant scored 81 points for the Los Angeles Lakers against the Toronto Raptors on January 22, 2006, the second-highest single-game total in NBA history."
+    },
+    {
+      "id": "nba-16",
+      "prompt": "The 'Dream Team' that won gold at the 1992 Barcelona Olympics was the first US Olympic team to include NBA players. Who coached them?",
+      "choices": ["Pat Riley", "Chuck Daly", "Larry Brown", "Don Nelson"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Chuck Daly, who had previously coached the Detroit Pistons to two championships, coached the legendary 1992 Dream Team to gold in Barcelona."
+    },
+    {
+      "id": "nba-17",
+      "prompt": "Which NBA franchise was previously known as the Seattle SuperSonics?",
+      "choices": ["Memphis Grizzlies", "Oklahoma City Thunder", "New Orleans Pelicans", "Utah Jazz"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The Oklahoma City Thunder relocated from Seattle in 2008, where they had been the SuperSonics since 1967."
+    }
+  ]
+}
