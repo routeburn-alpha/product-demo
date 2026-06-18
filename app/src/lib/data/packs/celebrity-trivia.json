@@ -1,0 +1,131 @@
+{
+  "id": "celebrity-trivia",
+  "title": "Celebrity Trivia",
+  "category": "Entertainment",
+  "description": "Test your knowledge of famous celebrities, from Hollywood icons to music legends and beyond.",
+  "coverColor": "#1a1a1a",
+  "coverEmoji": "⭐",
+  "addedAt": "2026-06-18",
+  "questions": [
+    {
+      "id": "ct-1",
+      "prompt": "Which actor won the Academy Award for Best Actor in 2022?",
+      "choices": ["Will Smith", "Andrew Garfield", "Benedict Cumberbatch", "Denzel Washington"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "Will Smith won the Oscar for Best Actor at the 2022 Academy Awards for his role in 'King Richard'."
+    },
+    {
+      "id": "ct-2",
+      "prompt": "In which country was Taylor Swift born?",
+      "choices": ["Canada", "United States", "Australia", "United Kingdom"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Taylor Swift was born in Reading, Pennsylvania, United States on December 13, 1989."
+    },
+    {
+      "id": "ct-3",
+      "prompt": "Which celebrity is married to Hailey Baldwin?",
+      "choices": ["Harry Styles", "Justin Bieber", "The Weeknd", "Shawn Mendes"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Justin Bieber married model Hailey Baldwin in September 2018. They have been together since 2015."
+    },
+    {
+      "id": "ct-4",
+      "prompt": "What is Oprah Winfrey's real first name?",
+      "choices": ["Oprah", "Orpah", "Ophelia", "Orlando"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Oprah Winfrey's birth name is Orpah Gail Winfrey, but she is known as Oprah to the world."
+    },
+    {
+      "id": "ct-5",
+      "prompt": "Which actor starred as Tony Stark in the Marvel Cinematic Universe?",
+      "choices": ["Tom Cruise", "Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Robert Downey Jr. played Tony Stark/Iron Man throughout the Marvel Cinematic Universe films."
+    },
+    {
+      "id": "ct-6",
+      "prompt": "How many Grammy Awards did Beyoncé win at the 2023 Grammy Awards?",
+      "choices": ["2", "4", "7", "10"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Beyoncé won 7 Grammy Awards at the 2023 Grammy Awards, breaking records with her wins."
+    },
+    {
+      "id": "ct-7",
+      "prompt": "Which musician is known as the 'King of Pop'?",
+      "choices": ["Prince", "Michael Jackson", "Elvis Presley", "David Bowie"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Michael Jackson earned the title 'King of Pop' for his revolutionary music and influence on popular culture."
+    },
+    {
+      "id": "ct-8",
+      "prompt": "What is the real name of the rapper Eminem?",
+      "choices": ["Marshall Mathers", "Eric Marshall", "Evan MacKay", "Eric McGee"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "Eminem's real name is Marshall Mathers. He adopted the stage name based on his initials (M&M)."
+    },
+    {
+      "id": "ct-9",
+      "prompt": "Which actress won the Academy Award for Best Actress in 2021?",
+      "choices": ["Chloe Zhao", "Frances McDormand", "Zendaya", "Carey Mulligan"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Frances McDormand won the Oscar for Best Actress at the 2021 Academy Awards for her role in 'Nomadland'."
+    },
+    {
+      "id": "ct-10",
+      "prompt": "How many children does Angelina Jolie have?",
+      "choices": ["2", "4", "6", "8"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Angelina Jolie has 6 children, whom she shares with Brad Pitt and some whom she adopted internationally."
+    },
+    {
+      "id": "ct-11",
+      "prompt": "What is the stage name of Marshall Bruce Mathers III?",
+      "choices": ["50 Cent", "Dr. Dre", "Eminem", "Slim Shady"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Marshall Bruce Mathers III goes by the stage name Eminem, one of the best-selling artists of all time."
+    },
+    {
+      "id": "ct-12",
+      "prompt": "Which actor directed and starred in 'Dune: Part One' (2021)?",
+      "choices": ["Christopher Nolan", "Denis Villeneuve", "Timothée Chalamet", "Oscar Isaac"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Denis Villeneuve directed 'Dune: Part One', though Timothée Chalamet starred as the protagonist Paul Atreides."
+    },
+    {
+      "id": "ct-13",
+      "prompt": "In what year did Meghan Markle marry Prince Harry?",
+      "choices": ["2016", "2017", "2018", "2019"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Meghan Markle married Prince Harry on May 19, 2018 at St. George's Chapel in Windsor Castle."
+    },
+    {
+      "id": "ct-14",
+      "prompt": "Which actor is known for playing Batman in the 2022 film 'The Batman'?",
+      "choices": ["Ben Affleck", "Robert Pattinson", "Christian Bale", "George Clooney"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "Robert Pattinson starred as Batman/Bruce Wayne in the 2022 film directed by Matt Reeves."
+    },
+    {
+      "id": "ct-15",
+      "prompt": "How many Academy Awards has Meryl Streep been nominated for?",
+      "choices": ["12", "17", "21", "25"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "Meryl Streep has received 21 Academy Award nominations, more than any other actor in history, and has won 3 Oscars."
+    }
+  ]
+}
