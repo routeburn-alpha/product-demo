@@ -22,6 +22,14 @@ export type Pack = {
 	questions: Question[];
 };
 
+export type DifficultyKey = 'easy' | 'medium' | 'hard';
+
+export const DIFFICULTY_KEYS: Record<Question['difficulty'], DifficultyKey> = {
+	1: 'easy',
+	2: 'medium',
+	3: 'hard'
+};
+
 const PACKS_DIR = resolve('src/lib/data/packs');
 
 export function listPacks(): Pack[] {

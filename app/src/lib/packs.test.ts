@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { listPacks } from './packs';
+import { DIFFICULTY_KEYS, listPacks } from './packs';
+
+describe('DIFFICULTY_KEYS', () => {
+	it('maps numeric difficulty to label strings', () => {
+		expect(DIFFICULTY_KEYS[1]).toBe('easy');
+		expect(DIFFICULTY_KEYS[2]).toBe('medium');
+		expect(DIFFICULTY_KEYS[3]).toBe('hard');
+	});
+});
 
 describe('listPacks()', () => {
 	const packs = listPacks();
