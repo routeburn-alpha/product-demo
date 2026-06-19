@@ -1,0 +1,19 @@
+{
+	"name": "Quiz Arena",
+	"short_name": "Quiz Arena",
+	"description": "World cuisines, ski slopes, football and more — pick a pack, race the clock, and test what you know.",
+	"start_url": ".",
+	"scope": ".",
+	"display": "standalone",
+	"orientation": "portrait-primary",
+	"background_color": "#ffffff",
+	"theme_color": "#15803d",
+	"icons": [
+		{
+			"src": "favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any maskable"
+		}
+	]
+}
