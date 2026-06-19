@@ -1,4 +1,6 @@
 import type { Question } from './packs';
+import { DIFFICULTY_KEYS, type DifficultyKey } from './packs';
+export type { DifficultyKey } from './packs';
 
 /** One player's outcome on a single question, captured as they play. */
 export type AnswerRecord = {
@@ -7,8 +9,6 @@ export type AnswerRecord = {
 	correct: boolean;
 	msToAnswer: number;
 };
-
-export type DifficultyKey = 'easy' | 'medium' | 'hard';
 
 /** Correct-vs-total tally for one difficulty band. */
 export type Tally = { correct: number; total: number };
@@ -20,12 +20,6 @@ export type Summary = {
 	totalMs: number;
 	/** Questions the player got wrong, in play order, for the missed-questions review. */
 	missed: Question[];
-};
-
-const DIFFICULTY_KEYS: Record<Question['difficulty'], DifficultyKey> = {
-	1: 'easy',
-	2: 'medium',
-	3: 'hard'
 };
 
 /**
