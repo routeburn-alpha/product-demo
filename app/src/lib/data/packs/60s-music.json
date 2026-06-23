@@ -1,0 +1,19 @@
+{
+  "id": "60s-music",
+  "title": "1960s British Music Invasion",
+  "category": "Music",
+  "description": "Questions about the revolutionary British music scene that conquered the world in the 1960s.",
+  "coverColor": "#FF1493",
+  "coverEmoji": "🎸",
+  "addedAt": "2026-06-07",
+  "questions": [
+    {
+      "id": "bm-1",
+      "prompt": "Which British band released 'Please Please Me' in 1963, their debut album that launched the British Invasion?",
+      "choices": ["The Rolling Stones", "The Beatles", "The Who", "The Kinks"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The Beatles' 'Please Please Me' album was a turning point that sparked Beatlemania and the British Invasion of American rock music."
+    }
+  ]
+}
