@@ -156,4 +156,37 @@ describe('listPacks()', () => {
 			expect(sfNb1!.difficulty).toBe(2);
 		});
 	});
+
+	describe('lord-of-the-rings pack (Task #229)', () => {
+		const lotr = packs.find((p) => p.id === 'lord-of-the-rings');
+
+		it('exists', () => {
+			expect(lotr).toBeDefined();
+		});
+
+		it('has between 6 and 7 questions', () => {
+			expect(lotr!.questions.length).toBeGreaterThanOrEqual(6);
+			expect(lotr!.questions.length).toBeLessThanOrEqual(7);
+		});
+
+		it('has only difficulty 1 questions', () => {
+			for (const q of lotr!.questions) {
+				expect(q.difficulty).toBe(1);
+			}
+		});
+
+		it('has question IDs in lotr-N format', () => {
+			for (const q of lotr!.questions) {
+				expect(q.id).toMatch(/^lotr-\d+$/);
+			}
+		});
+
+		it('has all choices at most 32 characters', () => {
+			for (const q of lotr!.questions) {
+				for (const choice of q.choices) {
+					expect(choice.length).toBeLessThanOrEqual(32);
+				}
+			}
+		});
+	});
 });

@@ -5,5 +5,62 @@
   "description": "Journey through Middle-earth as Tolkien wrote it — no films, no extras, just the pages of The Hobbit and The Lord of the Rings trilogy.",
   "coverColor": "#166534",
   "coverEmoji": "💍",
-  "questions": []
+  "questions": [
+    {
+      "id": "lotr-1",
+      "prompt": "What is the name of the hobbit hole where Bilbo Baggins lives?",
+      "choices": ["Brandy Hall", "Bag End", "The Green Dragon", "Crickhollow"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Bilbo Baggins lives at Bag End, Bagshot Row, Hobbiton, as established in the opening of The Hobbit."
+    },
+    {
+      "id": "lotr-2",
+      "prompt": "Who is the wizard that recruits Bilbo Baggins for the quest to reclaim Erebor?",
+      "choices": ["Saruman", "Radagast", "Gandalf", "Celeborn"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Gandalf arranges Bilbo's participation in the quest to reclaim the Lonely Mountain in Chapter 1 of The Hobbit."
+    },
+    {
+      "id": "lotr-3",
+      "prompt": "What is the name of the dragon who occupies the Lonely Mountain?",
+      "choices": ["Ancalagon", "Glaurung", "Smaug", "Scatha"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Smaug the Tremendous drove the dwarves from Erebor and hoards their treasure, as described in The Hobbit."
+    },
+    {
+      "id": "lotr-4",
+      "prompt": "In The Fellowship of the Ring, what is the name of the inn in Bree where Frodo first meets Strider?",
+      "choices": ["The Ivy Bush", "The Green Dragon", "The Prancing Pony", "The Golden Perch"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Frodo and his companions meet Aragorn (Strider) at The Prancing Pony inn in Bree in The Fellowship of the Ring."
+    },
+    {
+      "id": "lotr-5",
+      "prompt": "What is the elvish name for the forest realm ruled by Galadriel and Celeborn?",
+      "choices": ["Rivendell", "Lothlórien", "Mirkwood", "Lindon"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Lothlórien is the golden-wooded realm of Galadriel and Celeborn, visited by the Fellowship in The Fellowship of the Ring."
+    },
+    {
+      "id": "lotr-6",
+      "prompt": "What creature does Gollum call the One Ring?",
+      "choices": ["My jewel", "My precious", "My treasure", "My beauty"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Gollum obsessively calls the One Ring 'my precious' throughout both The Hobbit and The Lord of the Rings."
+    },
+    {
+      "id": "lotr-7",
+      "prompt": "Into what volcanic mountain must the One Ring be cast to destroy it?",
+      "choices": ["Mount Doom", "Thangorodrim", "Orodruin", "Mount Gundabad"],
+      "correctIndex": 0,
+      "difficulty": 1,
+      "explanation": "The One Ring can only be destroyed in the fires of Mount Doom (Orodruin) in Mordor, as revealed in The Fellowship of the Ring."
+    }
+  ]
 }
