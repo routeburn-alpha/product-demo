@@ -157,6 +157,36 @@ describe('listPacks()', () => {
 		});
 	});
 
+	describe('england-football-failures pack (Task #235)', () => {
+		const eng = packs.find((p) => p.id === 'england-football-failures');
+
+		it('exists', () => {
+			expect(eng).toBeDefined();
+		});
+
+		it('has between 10 and 15 questions', () => {
+			expect(eng!.questions.length).toBeGreaterThanOrEqual(10);
+			expect(eng!.questions.length).toBeLessThanOrEqual(15);
+		});
+
+		it('has category "Sports"', () => {
+			expect(eng!.category).toBe('Sports');
+		});
+
+		it('has all three difficulty levels represented', () => {
+			const levels = new Set(eng!.questions.map((q) => q.difficulty));
+			expect(levels.has(1)).toBe(true);
+			expect(levels.has(2)).toBe(true);
+			expect(levels.has(3)).toBe(true);
+		});
+
+		it('has question IDs in eng-N format', () => {
+			for (const q of eng!.questions) {
+				expect(q.id).toMatch(/^eng-\d+$/);
+			}
+		});
+	});
+
 	describe('lord-of-the-rings pack (Task #229)', () => {
 		const lotr = packs.find((p) => p.id === 'lord-of-the-rings');
 
