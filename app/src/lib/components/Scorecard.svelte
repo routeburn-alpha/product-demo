@@ -147,11 +147,24 @@
 		--line: #d9e6dd;
 
 		text-align: center;
-		background: #fff;
-		border: 1px solid #e2e2e2;
+		background: var(--white);
+		border: 1px solid var(--quiz-border);
 		border-radius: 12px;
 		padding: 2.5rem 2rem;
 		margin-top: 1rem;
+	}
+
+	/*
+	 * Dark theme: retune the local green ramp for dark surfaces and give the
+	 * solid "Play again" button dark text (bright green + white text fails AA).
+	 * Black/green/white only — no red here.
+	 */
+	:global(:root[data-theme='dark']) .scorecard {
+		--ink: #a7f3c4;        /* bright green ink for summary / headings */
+		--green: #4ade80;      /* green accents (text + outlines) */
+		--green-bright: #22c55e;
+		--green-tint: #102a1b; /* dark green tint surface */
+		--line: #2c362d;
 	}
 
 	.eyebrow {
@@ -179,7 +192,7 @@
 	}
 
 	.scorecard[data-band='low'] .score {
-		color: #1a1a1a;
+		color: var(--text-strong);
 	}
 
 	.score .of {
@@ -190,7 +203,7 @@
 	}
 
 	.headline {
-		color: #333;
+		color: var(--text-strong);
 		font-size: 1.05rem;
 		margin: 1rem auto 0.75rem;
 		max-width: 40ch;
@@ -250,7 +263,7 @@
 		margin: 0;
 		font-size: 1.5rem;
 		font-weight: 700;
-		color: #1a1a1a;
+		color: var(--text-strong);
 	}
 
 	.breakdown {
@@ -277,7 +290,7 @@
 	}
 
 	.bar-label {
-		color: #333;
+		color: var(--text-strong);
 		font-weight: 600;
 	}
 
@@ -344,7 +357,7 @@
 	.missed-prompt {
 		margin: 0 0 0.5rem;
 		font-weight: 600;
-		color: #1a1a1a;
+		color: var(--text-strong);
 		font-size: 0.95rem;
 	}
 
@@ -365,7 +378,7 @@
 
 	.missed-explanation {
 		margin: 0;
-		color: #444;
+		color: var(--text-muted);
 		font-size: 0.88rem;
 		line-height: 1.5;
 	}
@@ -402,7 +415,7 @@
 	}
 
 	.secondary {
-		background: #fff;
+		background: var(--white);
 		color: var(--green);
 		border: 1.5px solid var(--green);
 	}
@@ -413,12 +426,22 @@
 
 	.ghost {
 		background: transparent;
-		color: #1a1a1a;
-		border: 1.5px solid #cfcfcf;
+		color: var(--text-strong);
+		border: 1.5px solid var(--quiz-border);
 	}
 
 	.ghost:hover {
-		border-color: #1a1a1a;
+		border-color: var(--text-strong);
+	}
+
+	/* Solid button needs dark text on the brighter dark-mode green. */
+	:global(:root[data-theme='dark']) .primary {
+		background: #22c55e;
+		color: #0c110c;
+	}
+
+	:global(:root[data-theme='dark']) .primary:hover {
+		background: #4ade80;
 	}
 
 	.primary:focus-visible,
