@@ -155,7 +155,7 @@
 	}
 
 	.back {
-		color: #1d4ed8;
+		color: var(--quiz-link);
 		text-decoration: none;
 		font-weight: 500;
 	}
@@ -179,7 +179,7 @@
 
 	.question-card {
 		background: var(--quiz-primary);
-		border: 1px solid #e2e2e2;
+		border: 1px solid var(--quiz-border);
 		border-radius: 12px;
 		padding: 1.75rem;
 	}
@@ -204,19 +204,19 @@
 		gap: 0.875rem;
 		text-align: left;
 		padding: 0.875rem 1rem;
-		border: 1.5px solid #e2e2e2;
+		border: 1.5px solid var(--quiz-border);
 		border-radius: 10px;
-		background: #fff;
+		background: var(--white);
 		font: inherit;
 		font-size: 0.95rem;
-		color: #222;
+		color: var(--text-strong);
 		cursor: pointer;
 		transition: border-color 100ms ease, background 100ms ease, transform 100ms ease;
 	}
 
 	.choice:not(:disabled):hover {
-		border-color: #1d4ed8;
-		background: #f5f9ff;
+		border-color: var(--quiz-hover);
+		background: var(--green-50);
 	}
 
 	.choice:disabled {
@@ -242,10 +242,10 @@
 		width: 2.25rem;
 		height: 2.25rem;
 		border-radius: 6px;
-		background: #f5f5f5;
+		background: var(--quiz-surface);
 		font-size: 1.2rem;
 		font-weight: 700;
-		color: #555;
+		color: var(--text-muted);
 		flex-shrink: 0;
 	}
 
@@ -287,8 +287,8 @@
 		padding: 0.75rem 1rem;
 		border: none;
 		border-radius: 8px;
-		background: #1d4ed8;
-		color: #fff;
+		background: var(--quiz-primary);
+		color: var(--quiz-on-primary);
 		font: inherit;
 		font-weight: 600;
 		font-size: 0.95rem;
@@ -297,13 +297,13 @@
 	}
 
 	.next:hover {
-		background: #1e40af;
+		background: var(--green-800);
 	}
 
 	.result-card {
 		text-align: center;
-		background: #fff;
-		border: 1px solid #e2e2e2;
+		background: var(--white);
+		border: 1px solid var(--quiz-border);
 		border-radius: 12px;
 		padding: 3rem 2rem;
 		margin-top: 1rem;
@@ -319,7 +319,7 @@
 	}
 
 	.result-summary {
-		color: #555;
+		color: var(--text-muted);
 		font-size: 1rem;
 		margin: 1.5rem auto 2rem;
 		max-width: 36ch;
@@ -345,12 +345,41 @@
 	}
 
 	.secondary {
-		background: #fff;
-		color: #1d4ed8;
-		border: 1.5px solid #1d4ed8;
+		background: var(--white);
+		color: var(--quiz-link);
+		border: 1.5px solid var(--quiz-primary);
 	}
 
 	.secondary:hover {
-		background: #f5f9ff;
+		background: var(--green-50);
+	}
+
+	/*
+	 * Dark-mode state colours for the answer feedback. The base correct/wrong
+	 * styles above are tuned for a light card; on dark surfaces they'd glare, so
+	 * darken the fills and brighten the text to stay readable (and AA). The
+	 * "wrong" state keeps the pre-existing red token — retiring red entirely is
+	 * the tracked Idea #14 follow-up, out of scope here.
+	 */
+	:global(:root[data-theme='dark']) .choice.correct {
+		border-color: #22c55e;
+		background: #102a1b;
+		color: #86efac;
+	}
+
+	:global(:root[data-theme='dark']) .choice.correct .letter {
+		background: #22c55e;
+		color: #0c110c;
+	}
+
+	:global(:root[data-theme='dark']) .explanation.correct {
+		background: #102a1b;
+		color: #a7f3c4;
+	}
+
+	:global(:root[data-theme='dark']) .choice.wrong,
+	:global(:root[data-theme='dark']) .explanation.wrong {
+		background: #2a1a1a;
+		color: var(--quiz-danger);
 	}
 </style>

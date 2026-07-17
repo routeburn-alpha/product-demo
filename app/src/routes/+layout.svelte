@@ -4,10 +4,14 @@
 	import { base } from '$app/paths';
 	import { onNavigate } from '$app/navigation';
 	import { initPlayer, levelFor, player } from '$lib/player';
+	import { initTheme, theme, toggleTheme } from '$lib/theme';
 
 	let { children } = $props();
 
-	onMount(initPlayer);
+	onMount(() => {
+		initPlayer();
+		initTheme();
+	});
 
 	// App-like cross-fade between pages via the View Transitions API,
 	// when supported and motion is allowed.
@@ -57,6 +61,17 @@
 			</span>
 		{/if}
 		<a class="github" href="https://github.com/routeburn-alpha/product-demo-template" rel="noopener" target="_blank">View on GitHub</a>
+		<button
+			class="theme-toggle"
+			type="button"
+			role="switch"
+			aria-checked={$theme === 'dark'}
+			aria-label="Dark mode"
+			title="Toggle dark mode"
+			onclick={toggleTheme}
+		>
+			<span class="theme-icon" aria-hidden="true">{$theme === 'dark' ? '☀️' : '🌙'}</span>
+		</button>
 	</div>
 </nav>
 
@@ -121,6 +136,43 @@
 		--quiz-danger: var(--arsenal-red); /* play-view incorrect state (pre-existing red) */
 	}
 
+	/*
+	 * Dark theme (Idea #14). Active when <html data-theme="dark"> — set by
+	 * src/lib/theme.ts on toggle and by the no-FOUC inline script in app.html.
+	 * Same black / green / white system, inverted: near-black surfaces, greens
+	 * brightened so green *text* clears WCAG AA on dark, and light neutrals for
+	 * body copy. Overriding the tokens here retunes every token-based component
+	 * (home, hero, pack grid, filters, search) in one place.
+	 */
+	:global(:root[data-theme='dark']) {
+		color-scheme: dark;
+
+		/* Green ramp — retuned for dark surfaces. */
+		--green-100: #14331f; /* faint green surface → dark tint */
+		--green-50: #0f2417;  /* fainter green surface → darker tint */
+
+		--ink: #e9f1ea;       /* near-white — primary text on dark */
+		--white: #161c17;     /* raised card / control surface (was pure white) */
+		--gray-50: #10160f;   /* app surface */
+		--gray-200: #2c362d;  /* subtle borders */
+		--gray-500: #9aa89b;  /* muted text — AA on dark surfaces */
+
+		/* Green fills keep white text (5:1); interactive green *text* brightens. */
+		--quiz-primary: var(--green-700);
+		--quiz-on-primary: #ffffff; /* real white on green (don't inherit --white) */
+		--quiz-secondary: #4ade80;
+		--quiz-hover: #22c55e;
+		--quiz-link: #4ade80;       /* green interactive text — ~8:1 on dark */
+		--quiz-focus: #22c55e;      /* visible focus ring on dark */
+
+		--quiz-surface: #1b221c;
+		--quiz-border: var(--gray-200);
+		--quiz-shadow: rgba(0, 0, 0, 0.55);
+
+		--text-strong: var(--ink);
+		--text-muted: var(--gray-500);
+	}
+
 	/* High-contrast green focus ring for keyboard users, app-wide. */
 	:global(a:focus-visible),
 	:global(button:focus-visible),
@@ -161,6 +213,10 @@
 	:global(body) {
 		margin: 0;
 		background: #fafafa;
+	}
+
+	:global(:root[data-theme='dark'] body) {
+		background: #0c110c;
 	}
 
 	.top-nav {
@@ -209,6 +265,53 @@
 
 	.badge-streak {
 		color: var(--green-900);
+	}
+
+	/* Badge greens are too dark to read on the dark tint — brighten in dark mode. */
+	:global(:root[data-theme='dark']) .player-badge {
+		border-color: #2f7d4f;
+		color: #7ee2a8;
+	}
+
+	:global(:root[data-theme='dark']) .badge-sep {
+		color: #4ade80;
+	}
+
+	:global(:root[data-theme='dark']) .badge-streak {
+		color: #a7f3c4;
+	}
+
+	/* Dark-mode toggle — a circular icon button that fits the nav. */
+	.theme-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.1rem;
+		height: 2.1rem;
+		padding: 0;
+		border: 1px solid var(--quiz-border);
+		border-radius: 999px;
+		background: var(--quiz-surface);
+		cursor: pointer;
+		line-height: 1;
+		transition:
+			border-color var(--transition-fast),
+			background var(--transition-fast),
+			transform var(--transition-fast);
+	}
+
+	.theme-toggle:hover {
+		border-color: var(--quiz-hover);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.theme-toggle:active {
+			transform: scale(0.92);
+		}
+	}
+
+	.theme-icon {
+		font-size: 1rem;
 	}
 
 	.github {
