@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="text-scale" content="scale" />
+		<title>Quiz Arena</title>
+		<!--
+			Paint the saved (or OS) colour scheme before first render to avoid a
+			flash of the light palette. Mirrors loadTheme() in src/lib/theme.ts;
+			keep the storage key in sync.
+		-->
+		<script>
+			try {
+				var t = localStorage.getItem('quizlab.theme.v1');
+				if (t !== 'light' && t !== 'dark') {
+					t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				document.documentElement.dataset.theme = t;
+			} catch (e) {
+				/* storage/matchMedia unavailable — leave the default light palette */
+			}
+		</script>
+		<link href="../_app/immutable/entry/start.C6d6WWEj.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DxOWZ7sa.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uR0yWfaI.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CGqeG0ml.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DEDqjojZ.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.DTnB1BJo.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CM3Glr9i.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/3.BWFfMPHf.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="icon" href="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='107'%20height='128'%20viewBox='0%200%20107%20128'%3e%3ctitle%3esvelte-logo%3c/title%3e%3cpath%20d='M94.157%2022.819c-10.4-14.885-30.94-19.297-45.792-9.835L22.282%2029.608A29.92%2029.92%200%200%200%208.764%2049.65a31.5%2031.5%200%200%200%203.108%2020.231%2030%2030%200%200%200-4.477%2011.183%2031.9%2031.9%200%200%200%205.448%2024.116c10.402%2014.887%2030.942%2019.297%2045.791%209.835l26.083-16.624A29.92%2029.92%200%200%200%2098.235%2078.35a31.53%2031.53%200%200%200-3.105-20.232%2030%2030%200%200%200%204.474-11.182%2031.88%2031.88%200%200%200-5.447-24.116'%20style='fill:%23ff3e00'/%3e%3cpath%20d='M45.817%20106.582a20.72%2020.72%200%200%201-22.237-8.243%2019.17%2019.17%200%200%201-3.277-14.503%2018%2018%200%200%201%20.624-2.435l.49-1.498%201.337.981a33.6%2033.6%200%200%200%2010.203%205.098l.97.294-.09.968a5.85%205.85%200%200%200%201.052%203.878%206.24%206.24%200%200%200%206.695%202.485%205.8%205.8%200%200%200%201.603-.704L69.27%2076.28a5.43%205.43%200%200%200%202.45-3.631%205.8%205.8%200%200%200-.987-4.371%206.24%206.24%200%200%200-6.698-2.487%205.7%205.7%200%200%200-1.6.704l-9.953%206.345a19%2019%200%200%201-5.296%202.326%2020.72%2020.72%200%200%201-22.237-8.243%2019.17%2019.17%200%200%201-3.277-14.502%2017.99%2017.99%200%200%201%208.13-12.052l26.081-16.623a19%2019%200%200%201%205.3-2.329%2020.72%2020.72%200%200%201%2022.237%208.243%2019.17%2019.17%200%200%201%203.277%2014.503%2018%2018%200%200%201-.624%202.435l-.49%201.498-1.337-.98a33.6%2033.6%200%200%200-10.203-5.1l-.97-.294.09-.968a5.86%205.86%200%200%200-1.052-3.878%206.24%206.24%200%200%200-6.696-2.485%205.8%205.8%200%200%200-1.602.704L37.73%2051.72a5.42%205.42%200%200%200-2.449%203.63%205.79%205.79%200%200%200%20.986%204.372%206.24%206.24%200%200%200%206.698%202.486%205.8%205.8%200%200%200%201.602-.704l9.952-6.342a19%2019%200%200%201%205.295-2.328%2020.72%2020.72%200%200%201%2022.237%208.242%2019.17%2019.17%200%200%201%203.277%2014.503%2018%2018%200%200%201-8.13%2012.053l-26.081%2016.622a19%2019%200%200%201-5.3%202.328'%20style='fill:%23fff'/%3e%3c/svg%3e"/> <link rel="manifest" href="../manifest.webmanifest"/> <meta name="theme-color" content="#15803d"/><!---->
+		<link href="../_app/immutable/assets/0.eziBPaxc.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/3.C3Ja7gF9.css" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><a class="skip-link svelte-12qhfyh" href="#main-content">Skip to content</a> <nav class="top-nav svelte-12qhfyh"><a class="brand svelte-12qhfyh" href="../">Quiz Arena</a> <div class="nav-right svelte-12qhfyh"><!--[-1--><!--]--> <a class="github svelte-12qhfyh" href="https://github.com/routeburn-alpha/product-demo-template" rel="noopener" target="_blank">View on GitHub</a> <button class="theme-toggle svelte-12qhfyh" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Toggle dark mode"><span class="theme-icon svelte-12qhfyh" aria-hidden="true">🌙</span></button></div></nav> <main id="main-content"><!--[--><div class="container svelte-1tmeqxj"><!--[1--><div class="progress-row svelte-1tmeqxj"><a class="back svelte-1tmeqxj" href="../">← All packs</a> <span class="progress svelte-1tmeqxj">Question 1 of 7</span></div> <h1 class="pack-title svelte-1tmeqxj">Lord of the Rings: Books Only</h1> <div class="question-card svelte-1tmeqxj"><p class="prompt svelte-1tmeqxj">What is the name of the hobbit hole where Bilbo Baggins lives?</p> <div class="choices svelte-1tmeqxj"><!--[--><button type="button" class="choice svelte-1tmeqxj"><span class="letter svelte-1tmeqxj">A</span> <span class="choice-text svelte-1tmeqxj">Brandy Hall</span></button><button type="button" class="choice svelte-1tmeqxj"><span class="letter svelte-1tmeqxj">B</span> <span class="choice-text svelte-1tmeqxj">Bag End</span></button><button type="button" class="choice svelte-1tmeqxj"><span class="letter svelte-1tmeqxj">C</span> <span class="choice-text svelte-1tmeqxj">The Green Dragon</span></button><button type="button" class="choice svelte-1tmeqxj"><span class="letter svelte-1tmeqxj">D</span> <span class="choice-text svelte-1tmeqxj">Crickhollow</span></button><!--]--></div> <!--[-1--><!--]--></div><!--]--></div><!--]--><!----></main><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1aa7fmc = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						assets: "/product-demo/pr-85"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.C6d6WWEj.js"),
+						import("../_app/immutable/entry/app.CGqeG0ml.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3],
+							data: [null,{type:"data",data:{pack:{id:"lord-of-the-rings",title:"Lord of the Rings: Books Only",category:"Literature",description:"Journey through Middle-earth as Tolkien wrote it — no films, no extras, just the pages of The Hobbit and The Lord of the Rings trilogy.",coverColor:"#166534",coverEmoji:"💍",questions:[{id:"lotr-1",prompt:"What is the name of the hobbit hole where Bilbo Baggins lives?",choices:["Brandy Hall","Bag End","The Green Dragon","Crickhollow"],correctIndex:1,difficulty:1,explanation:"Bilbo Baggins lives at Bag End, Bagshot Row, Hobbiton, as established in the opening of The Hobbit."},{id:"lotr-2",prompt:"Who is the wizard that recruits Bilbo Baggins for the quest to reclaim Erebor?",choices:["Saruman","Radagast","Gandalf","Celeborn"],correctIndex:2,difficulty:1,explanation:"Gandalf arranges Bilbo's participation in the quest to reclaim the Lonely Mountain in Chapter 1 of The Hobbit."},{id:"lotr-3",prompt:"What is the name of the dragon who occupies the Lonely Mountain?",choices:["Ancalagon","Glaurung","Smaug","Scatha"],correctIndex:2,difficulty:1,explanation:"Smaug the Tremendous drove the dwarves from Erebor and hoards their treasure, as described in The Hobbit."},{id:"lotr-4",prompt:"In The Fellowship of the Ring, what is the name of the inn in Bree where Frodo first meets Strider?",choices:["The Ivy Bush","The Green Dragon","The Prancing Pony","The Golden Perch"],correctIndex:2,difficulty:1,explanation:"Frodo and his companions meet Aragorn (Strider) at The Prancing Pony inn in Bree in The Fellowship of the Ring."},{id:"lotr-5",prompt:"What is the elvish name for the forest realm ruled by Galadriel and Celeborn?",choices:["Rivendell","Lothlórien","Mirkwood","Lindon"],correctIndex:1,difficulty:1,explanation:"Lothlórien is the golden-wooded realm of Galadriel and Celeborn, visited by the Fellowship in The Fellowship of the Ring."},{id:"lotr-6",prompt:"What creature does Gollum call the One Ring?",choices:["My jewel","My precious","My treasure","My beauty"],correctIndex:1,difficulty:1,explanation:"Gollum obsessively calls the One Ring 'my precious' throughout both The Hobbit and The Lord of the Rings."},{id:"lotr-7",prompt:"Into what volcanic mountain must the One Ring be cast to destroy it?",choices:["Mount Doom","Thangorodrim","Orodruin","Mount Gundabad"],correctIndex:0,difficulty:1,explanation:"The One Ring can only be destroyed in the fires of Mount Doom (Orodruin) in Mordor, as revealed in The Fellowship of the Ring."}]}},uses:{params:["pack"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
