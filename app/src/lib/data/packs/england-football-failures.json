@@ -1,0 +1,107 @@
+{
+  "id": "england-football-failures",
+  "title": "England Football Failures",
+  "category": "Sports",
+  "description": "Penalty shootouts, tournament exits, and heartbreaks — how well do you know England's most painful football moments?",
+  "coverColor": "#003082",
+  "coverEmoji": "🦁",
+  "addedAt": "2026-07-16",
+  "questions": [
+    {
+      "id": "eng-1",
+      "prompt": "In which year did England lose a penalty shootout to West Germany in the 1990 World Cup semi-final?",
+      "choices": ["1986", "1990", "1994", "1998"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "England lost 4–3 on penalties to West Germany in the 1990 World Cup semi-final in Turin, Italia 90."
+    },
+    {
+      "id": "eng-2",
+      "prompt": "Which England player missed the decisive penalty against Argentina in the 1998 World Cup?",
+      "choices": ["David Beckham", "Paul Ince", "Gareth Southgate", "David Batty"],
+      "correctIndex": 3,
+      "difficulty": 2,
+      "explanation": "David Batty's miss meant England were eliminated by Argentina in the last 16 of the 1998 World Cup."
+    },
+    {
+      "id": "eng-3",
+      "prompt": "Gareth Southgate famously missed a penalty in which tournament?",
+      "choices": ["1994 World Cup", "Euro 1996", "1998 World Cup", "Euro 2000"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Southgate missed England's crucial penalty in the Euro 1996 semi-final shootout against Germany at Wembley."
+    },
+    {
+      "id": "eng-4",
+      "prompt": "England were famously knocked out of the 2010 World Cup in the last 16 by which country?",
+      "choices": ["Uruguay", "Ghana", "Germany", "Argentina"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Germany beat England 4–1 in the Round of 16 at the 2010 World Cup, controversially disallowing a Lampard goal."
+    },
+    {
+      "id": "eng-5",
+      "prompt": "What was the score when England lost to Iceland at Euro 2016?",
+      "choices": ["1–2", "2–3", "0–2", "1–3"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "England lost 1–2 to Iceland in the Round of 16 at Euro 2016, one of their most embarrassing exits."
+    },
+    {
+      "id": "eng-6",
+      "prompt": "England lost the Euro 2020 final on penalties to which country?",
+      "choices": ["Spain", "France", "Italy", "Germany"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "Italy beat England 3–2 on penalties in the Euro 2020 final at Wembley after a 1–1 draw."
+    },
+    {
+      "id": "eng-7",
+      "prompt": "Which England player received a red card against Argentina at the 1998 World Cup, reducing England to 10 men?",
+      "choices": ["Roy Keane", "Paul Scholes", "David Beckham", "Nicky Butt"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "David Beckham was sent off for a petulant kick at Diego Simeone, leaving England to play most of the match with 10 men."
+    },
+    {
+      "id": "eng-8",
+      "prompt": "England have never won a major international tournament other than which one?",
+      "choices": ["Euro 1966", "World Cup 1966", "Copa América 1966", "Nations League 1966"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The 1966 FIFA World Cup on home soil remains England's only major international honour."
+    },
+    {
+      "id": "eng-9",
+      "prompt": "Which goalkeeper saved the decisive penalty for Portugal against England in the Euro 2004 quarter-final?",
+      "choices": ["Vítor Baía", "Rui Patrício", "Ricardo", "Eduardo"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "Ricardo saved Darius Vassell's penalty and then scored the winning penalty himself to send England out of Euro 2004."
+    },
+    {
+      "id": "eng-10",
+      "prompt": "England were eliminated in the group stage of which World Cup after losing to the USA?",
+      "choices": ["1950", "1958", "1970", "1982"],
+      "correctIndex": 0,
+      "difficulty": 3,
+      "explanation": "England lost 1–0 to the USA at the 1950 World Cup in Brazil, considered one of the greatest upsets in football history."
+    },
+    {
+      "id": "eng-11",
+      "prompt": "Which England player missed the crucial penalty in the Euro 2020 final shootout first?",
+      "choices": ["Jadon Sancho", "Marcus Rashford", "Bukayo Saka", "Jordan Henderson"],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Bukayo Saka had his penalty saved by Donnarumma, handing Italy the Euro 2020 title. Sancho and Rashford also missed."
+    },
+    {
+      "id": "eng-12",
+      "prompt": "In which year did England fail to qualify for a World Cup, finishing behind Poland on goal difference?",
+      "choices": ["1970", "1974", "1978", "1994"],
+      "correctIndex": 1,
+      "difficulty": 3,
+      "explanation": "England failed to qualify for the 1974 World Cup after a 1–1 draw with Poland meant they missed out on goal difference."
+    }
+  ]
+}
