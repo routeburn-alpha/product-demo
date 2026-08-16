@@ -86,6 +86,14 @@
       "correctIndex": 1,
       "difficulty": 2,
       "explanation": "Pot Noodle is a just-add-boiling-water instant noodle pot that embraced its trashy reputation in its own advertising."
+    },
+    {
+      "id": "bf-11",
+      "prompt": "The beloved British chocolate bar with a distinctive wafer texture, known for its slogan 'a finger of Fudge':",
+      "choices": ["Twix", "Cadbury Fudge", "Bounty", "Mars bar"],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "Cadbury Fudge is a chocolate-covered wafer bar with a catchy jingle — the 'finger of Fudge' slogan is iconic British advertising."
     }
   ]
 }

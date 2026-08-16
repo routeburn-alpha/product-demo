@@ -189,4 +189,14 @@ describe('listPacks()', () => {
 			}
 		});
 	});
+
+	describe('british-food pack', () => {
+		const bf = packs.find((p) => p.id === 'british-food');
+
+		it('has a question about british candy', () => {
+			expect(bf).toBeDefined();
+			const candyQuestion = bf!.questions.find((q) => q.id === 'bf-11');
+			expect(candyQuestion).toBeDefined();
+		});
+	});
 });
